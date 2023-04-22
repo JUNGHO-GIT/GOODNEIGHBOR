@@ -1,0 +1,22 @@
+{
+	"Print Width" : 100,
+	"Tab Width" : 2,
+	"Tabs" : true,
+	"Semicolons" : true,
+	"Quotes" : false,
+	"Quote Props" : "as-needed",
+	"JSX Quotes" : false,
+	"Trailing Commas" : "all",
+	"Bracket Spacing" : false,
+	"Bracket Line" : true,
+	"Arrow Function Parentheses" : "always",
+	"Range" : 0,
+	"File Path" : "none",
+	"Insert Pragma" : "false",
+	"Prose Wrap" : "always",
+	"HTML Whitespace Sensitivity" : "ignore",
+	"Vue files script and style tags indentation" : "true",
+	"End of Line" : "lf",
+	"Embedded Language Formatting" : "auto",
+	"Single Attribute Per Line" : "false"
+}

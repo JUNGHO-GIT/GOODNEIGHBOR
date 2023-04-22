@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+  <!-- 0. resultMap  - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <resultMap id="ResultMap" type="productDTO">
+    <result property="product_id" column="product_id"/>
+    <result property="product_name" column="product_name"/>
+    <result property="product_detail" column="product_detail"/>
+    <result property="product_price" column="product_price"/>
+    <result property="product_stock" column="product_stock"/>
+    <result property="product_company" column="product_company"/>
+    <result property="product_date" column="product_date"/>
+    <result property="product_image" column="product_image"/>
+    <result property="product_imageName" column="product_imageName"/>
+  </resultMap>
+
+  <!-- 0.총 상품 개수 구하기  - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <select id="countProduct" resultType="int">
+    select count(*) from product
+  </select>
+
+  <!-- 1. 상품 등록 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -->
+  <insert id="insertProduct" parameterType="productDTO">
+    insert into product
+    (product_name, product_detail, product_price, product_stock, product_company, product_date, product_image, product_imageName)
+    values
+    (#{product_name}, #{product_detail}, #{product_price}, #{product_stock}, #{product_company}, NOW(), #{product_image}, #{product_imageName})
+  </insert>
+
+  <!-- 2. 상품 목록 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <select id="listProduct" resultMap="ResultMap" parameterType="java.util.Map">
+    select * from product
+    order by product_id DESC
+  </select>
+
+  <!-- 3.상품 상세 - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <select id="detailProduct" parameterType="Integer" resultType="productDTO">
+    select * from
+    product
+    where
+    product_id = #{product_id}
+  </select>
+
+  <!-- 4. 상품 검색 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <select id="searchProduct" parameterType="String" resultType="productDTO">
+    select * from
+    product
+    where
+    product_name like '%${product_name}%'
+  </select>
+
+  <!-- 5. 상품 수정 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <update id="updateProduct" parameterType="productDTO">
+    update product
+    set
+    product_name=#{product_name},
+    product_detail=#{product_detail},
+    product_price=#{product_price},
+    product_stock=#{product_stock},
+    product_company=#{product_company},
+    product_date=NOW(),
+    product_image=#{product_image},
+    product_imageName=#{product_imageName}
+    where
+    product_id=#{product_id}
+  </update>
+
+  <!-- 6. 상품 삭제 - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <delete id="deleteProduct" parameterType="Integer">
+    delete from product
+    where
+    product_id=#{product_id}
+  </delete>
+
+</mapper>

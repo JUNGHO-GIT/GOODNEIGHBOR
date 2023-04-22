@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+    <typeAlias type="com.good.neighbor.model.MemberDTO" alias="memberDTO"/>
+    <typeAlias type="com.good.neighbor.model.AdminDTO" alias="adminDTO"/>
+    <typeAlias type="com.good.neighbor.model.NoticeDTO" alias="noticeDTO"/>
+    <typeAlias type="com.good.neighbor.model.BoardDTO" alias="boardDTO"/>
+    <typeAlias type="com.good.neighbor.model.ProductDTO" alias="productDTO"/>
+    <typeAlias type="com.good.neighbor.model.QnaDTO" alias="qnaDTO"/>
+	</typeAliases>
+
+	<mappers>
+    <mapper resource="/mybatis/notice.xml"/>
+    <mapper resource="/mybatis/member.xml"/>
+    <mapper resource="/mybatis/admin.xml"/>
+    <mapper resource="/mybatis/board.xml"/>
+    <mapper resource="/mybatis/product.xml"/>
+    <mapper resource="/mybatis/qna.xml"/>
+	</mappers>
+
+</configuration>
