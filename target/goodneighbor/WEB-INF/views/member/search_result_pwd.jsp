@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@
 	</head>
 
 	<body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
@@ -31,9 +30,9 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <input type="button" class="btn btn-primary me-2" value="로그인" onclick="location='${ctxpath}/member/loginForm.do'" />
+        <input type="button" class="btn btn-primary me-2" value="로그인" onclick="location='${ctxPath}/member/loginForm.do'" />
         &nbsp;&nbsp;
-        <input type="button" class="btn btn-primary" value="메인화면으로" onclick="location='${ctxpath}'" />
+        <input type="button" class="btn btn-primary" value="메인화면으로" onclick="location='${ctxPath}'" />
       </div>
 
     </main><br/><br/><br/><br/>

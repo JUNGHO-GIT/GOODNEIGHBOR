@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -21,12 +21,13 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8">
           <h1 class="text-center">관리자 회원가입</h1>
-          <form method="POST" action="${ctxpath}/admin/insertPro.do" onsubmit="return adminCheck()">
+          <form method="POST" action="${ctxPath}/admin/insertPro.do" onsubmit="return adminCheck()">
             <div class="mb-3">
               <label for="admin_id" class="form-label">아이디</label>
               <div class="input-group">
                 <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="6-12자의 영문 대소문자, 숫자"/>
-                <button type="button" class="btn btn-primary" id="admin_id_button" onclick="confirmAdminIdCheck(); return false;">ID중복 체크</button>
+                <button type="button" class="btn btn-primary" id="admin_id_button"
+                onclick="return confirmAdminIdCheck();">ID중복 체크</button>
               </div>
               <div id="olmessage" class="form-text"></div>
             </div>
@@ -37,7 +38,7 @@
             </div>
             <div class="mb-3">
               <label for="admin_pw2" class="form-label">비밀번호 재입력</label>
-              <input type="password" class="form-control" name="admin_pw2" id="admin_pw2" size="20" onblur="confirmAdminPwCheck(); return false;"/>
+              <input type="password" class="form-control" name="admin_pw2" id="admin_pw2" size="20" onblur="return confirmAdminPwCheck();"/>
             </div>
             <div class="mb-3">
               <label for="admin_name" class="form-label">이름</label>
@@ -45,7 +46,7 @@
             </div>
             <div class="mb-3">
               <label for="admin_tel" class="form-label">전화번호</label>
-              <input type="text" class="form-control" name="admin_tel" id="admin_tel" size="30" placeholder="휴대폰 번호 입력('-'제외)" onblur="confirmTelCheck(); return false;"/>
+              <input type="text" class="form-control" name="admin_tel" id="admin_tel" size="30" placeholder="휴대폰 번호 입력('-'제외)" onblur="return confirmAdminTelCheck();"/>
             </div>
             <div class="text-center">
               <input type="submit" value="가입하기" class="btn btn-primary"/>

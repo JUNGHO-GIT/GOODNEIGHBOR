@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!-- meta -->
@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
 <link rel="shortcut icon" href="${srcPath}/imgs/etc/fav.jpg">
-<link rel="stylesheet" href="${srcPath}/css/main/style.css"/>
+<link rel="stylesheet" href="${srcPath}/css/style.css"/>
 
 <!-- script -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -31,6 +31,10 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed-min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
 </script>
-<script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="${srcPath}/js/main/script.js"></script>
-<script defer src="${srcPath}/js/main/member.js"></script>
+<script defer src="//t1.daumcdn.net/mapjsapi/bundle/POSTcode/prod/POSTcode.v2.js"></script>
+<script defer src="${srcPath}/js/admin.js"></script>
+<script defer src="${srcPath}/js/member.js"></script>
+<script defer src="${srcPath}/js/main.js"></script>
+<script defer src="${srcPath}/js/product.js"></script>
+<script defer src="${srcPath}/js/qna.js"></script>
+<script defer src="${srcPath}/js/notice.js"></script>

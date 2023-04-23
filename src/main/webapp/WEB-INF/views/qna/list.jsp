@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 
       <c:if test="${member_id != null || admin_id  != null}">
         <div class="d-flex justify-content-end mb-3">
-          <a href="${ctxpath}/qna/insertForm.do" class="btn btn-primary">글쓰기</a>
+          <a href="${ctxPath}/qna/insertForm.do" class="btn btn-primary">글쓰기</a>
         </div>
       </c:if>
 
@@ -56,11 +56,11 @@
                       <img src="../resources/imgs/level.gif" width="${5*dto.qna_level}" height="16"/>
                     </c:if>
                     <c:if test="${admin_id != null}">
-                      <a href="${ctxpath}/qna/content.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none">${dto.qna_title}</a>
+                      <a href="${ctxPath}/qna/content.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none">${dto.qna_title}</a>
                     </c:if>
                     <c:if test="${admin_id == null}">
-                      <a href="${ctxpath}/qna/secretForm.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none">
-                        <img src="${ctxpath}/resources/imgs/lock.png" width="25" height="25"/> 비밀글입니다
+                      <a href="${ctxPath}/qna/secretForm.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none">
+                        <img src="${ctxPath}/resources/imgs/lock.png" width="25" height="25"/> 비밀글입니다
                         <input type="hidden" name="qna_title" value="${dto.qna_title}"/>
                       </a>
                     </c:if>
@@ -80,13 +80,13 @@
           <nav aria-label="Page navigation">
             <ul class="pagination">
               <c:if test="${pt.startPage>10}">
-                <li class="page-item"><a class="page-link" href="${ctxpath}/qna/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+                <li class="page-item"><a class="page-link" href="${ctxPath}/qna/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
               </c:if>
               <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-                <li class="page-item"><a class="page-link" href="${ctxpath}/qna/list.do?pageNum=${i}">${i}</a></li>
+                <li class="page-item"><a class="page-link" href="${ctxPath}/qna/list.do?pageNum=${i}">${i}</a></li>
               </c:forEach>
               <c:if test="${pt.endPage<pt.pageCnt}">
-                <li class="page-item"><a class="page-link" href="${ctxpath}/qna/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+                <li class="page-item"><a class="page-link" href="${ctxPath}/qna/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
               </c:if>
             </ul>
           </nav>

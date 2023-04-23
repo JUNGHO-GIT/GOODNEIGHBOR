@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 
       <!-- container -->
       <div class="container">
-        <form action="${proPath}/product/insertProduct" method="post" enctype="multipart/form-data">
+        <form action="${ctxPath}/product/insertProduct" method="POST" enctype="multipart/form-data">
 
           <div class="bold-jungho">
             <div class="row">

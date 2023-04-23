@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
     <main class="main container-fluid w-50 mx-auto">
 
-      <form action="${ctxpath}/member/updatePro.do" method="post" onsubmit="return memberCheck();">
+      <form action="${ctxPath}/member/updatePro.do" method="POST" onsubmit="return memberCheck();">
         <div class="mb-3">
           <label for="member_id" class="form-label">ID</label>
           ${dto.member_id}
@@ -54,12 +54,12 @@
         </div>
         <div class="text-center">
           <input type="submit" value="내 정보 수정" class="btn btn-primary"/>
-          <input type="button" value="회원탈퇴" onclick="location.href='${ctxpath}/member/deleteForm.do'" class="btn btn-danger"/>
-          <input type="button" onclick="location='${ctxpath}'" value="메인으로" class="btn btn-outline-secondary"/>
+          <input type="button" value="회원탈퇴" onclick="location.href='${ctxPath}/member/deleteForm.do'" class="btn btn-danger"/>
+          <input type="button" onclick="location='${ctxPath}'" value="메인으로" class="btn btn-outline-secondary"/>
         </div>
       </form>
 
-      <form name="delForm" method="post" class="d-none">
+      <form name="delForm" method="POST" class="d-none">
         <input type="hidden" name="member_id" value="${member_id}"/>
       </form>
 

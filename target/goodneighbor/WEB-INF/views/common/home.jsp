@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -17,55 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main">
-
-      <!-- About ---------------------------------------------------------------------------------->
-      <div class="about-us container-fluid">
-        <div class="container">
-          <div class="row natur-row no-margin w-100">
-            <div class="text-part col-md-6">
-              <h2>About Our Charity</h2>
-              <p>
-                안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
-              </p>
-              <p>
-                안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
-              </p>
-              <p>
-                안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
-              </p>
-            </div>
-            <div class="image-part col-md-6">
-              <div class="about-quick-box row">
-                <div class="col-md-6">
-                  <div class="about-qcard">
-                    <i class="fas fa-user"></i>
-                    <p>Becom a Volunteer</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="about-qcard">
-                    <i class="fas fa-search-dollar red"></i>
-                    <p>Quick Fundrais</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="about-qcard">
-                    <i class="fas fa-후원하기 yell"></i>
-                    <p>Giv Donation</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="about-qcard">
-                    <i class="fas fa-hands-helping blu"></i>
-                    <p>Help Someone</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <main class="main container-fluid">
 
       <!-- Mission -------------------------------------------------------------------------------->
       <section class="container-fluid mission-vision">
@@ -113,7 +65,6 @@
                 <p class="desic">
                   안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
                 </p>
-                <button class="btn btn-success btn-sm"> 후원하기 </button>
               </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -126,7 +77,6 @@
                 <p class="desic">
                   안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
                 </p>
-                <button class="btn btn-success btn-sm"> 후원하기 </button>
               </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -139,7 +89,6 @@
                 <p class="desic">
                   안녕하세요 반갑습니다 안녕하세요 반갑습니다 안녕하세요
                 </p>
-                <button class="btn btn-success btn-sm"> 후원하기 </button>
               </div>
             </div>
           </div>

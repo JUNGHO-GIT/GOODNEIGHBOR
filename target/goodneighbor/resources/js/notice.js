@@ -1,0 +1,34 @@
+// 1. noticeCheck() ------------------------------------------------------------------------------->
+function noticeCheck() {
+	if ($("#title").val() == "") {
+		alert("글제목을 입력하세요");
+		$("#title").focus();
+		return false;
+	}
+	if ($("#content").val() == "") {
+		alert("글내용을 입력하세요");
+		$("#content").focus();
+		return false;
+	}
+	if ($("#pw").val() == "") {
+		alert("pw를 입력하세요");
+		$("#pw").focus();
+		return false;
+	}
+	if ($("#writer").val() == "") {
+		alert("글쓴이를 입력하세요");
+		$("#writer").focus();
+		return false;
+	}
+	return true;
+}
+
+// 2. noticeSearchCheck() ------------------------------------------------------------------------->
+function noticeSearchCheck() {
+	if (!document.searchForm.keyWord.value) {
+		alert("검색어를 입력하세요");
+		document.searchForm.keyWord.focus();
+		return false;
+	}
+	document.searchForm.submit();
+}

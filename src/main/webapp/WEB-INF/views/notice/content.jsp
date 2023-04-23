@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@
   </head>
 
   <body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
@@ -40,16 +39,16 @@
 
       <div class="d-flex justify-content-end">
         <c:if test="${admin_id  != null}">
-          <a class="btn btn-primary me-1" href="${ctxpath}/notice/editForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
+          <a class="btn btn-primary me-1" href="${ctxPath}/notice/editForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
           <c:if test="${dto.notice_fix==false}">
-            <a class="btn btn-danger me-1" href="${ctxpath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>
+            <a class="btn btn-danger me-1" href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>
           </c:if>
           <c:if test="${dto.notice_fix==true}">
-            <a class="btn btn-danger me-1" href="${ctxpath}/notice/deletePro.do?notice_number=${dto.notice_number}">글삭제</a>
+            <a class="btn btn-danger me-1" href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}">글삭제</a>
           </c:if>
-          <a class="btn btn-primary me-1" href="${ctxpath}/notice/insertForm.do">글쓰기</a>
+          <a class="btn btn-primary me-1" href="${ctxPath}/notice/insertForm.do">글쓰기</a>
         </c:if>
-        <a class="btn btn-primary" href="${ctxpath}/notice/list.do">리스트</a>
+        <a class="btn btn-primary" href="${ctxPath}/notice/list.do">리스트</a>
       </div>
 
     </main>

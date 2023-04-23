@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -77,13 +77,13 @@
                 <!-- buttons -->
                 <div class="row">
                   <div class="right-jungho-2">
-                    <button type="button" class="btn btn-primary" onclick="updateConfirmation('${proPath}', ${productDTO.product_id})">
+                    <button type="button" class="btn btn-primary" onclick="updateConfirmation('${ctxPath}', ${productDTO.product_id})">
                       수정하기
                     </button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary" onclick="deleteConfirmation('${proPath}', ${productDTO.product_id})">
+                    <button type="button" class="btn btn-primary" onclick="deleteConfirmation('${ctxPath}', ${productDTO.product_id})">
                       삭제하기
                     </button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary" onclick="location.href='${proPath}/product/listProduct'">
+                    <button type="button" class="btn btn-primary" onclick="location.href='${ctxPath}/product/listProduct'">
                       목록보기
                     </button>&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" class="btn btn-primary" onclick="location.reload()">

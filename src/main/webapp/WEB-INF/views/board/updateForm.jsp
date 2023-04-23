@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
     <main class="main container-fluid w-50 mx-auto">
       <h2 class="mb-4">글 수정 폼</h2>
-      <form name="updateForm" method="post" action="${ctxpath}/board/updatePro.do" onsubmit="return writeSave()">
+      <form name="updateForm" method="POST" action="${ctxPath}/board/updatePro.do" onsubmit="return boardWriteSave();">
         <input type="hidden" name="board_pw1" id="board_pw1" value="${dto.board_pw}" />
         <div class="row mb-3">
           <label for="board_writer" class="col-sm-2 col-form-label">글쓴이</label>
@@ -57,7 +57,7 @@
               <input type="submit" value="답글쓰기" class="btn btn-primary" />
             </c:if>
             <input type="submit" value="글수정" class="btn btn-primary" />
-            <input type="button" value="글목록" onclick="location='${ctxpath}/board/list.do'" class="btn btn-outline-primary" />
+            <input type="button" value="글목록" onclick="location='${ctxPath}/board/list.do'" class="btn btn-outline-primary" />
           </div>
         </div>
       </form>

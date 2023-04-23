@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
     <main class="main container-fluid w-50 mx-auto mb-10">
 
-      <form name="pw_search" action="${ctxpath}/member/search_pwd.do" method="POST" onsubmit="return pwCheck()" class="row g-3 d-flex justify-content-center">
+      <form name="pw_search" action="${ctxPath}/member/search_pwd.do" method="POST" onsubmit="return findPwCheck()" class="row g-3 d-flex justify-content-center">
 
         <div class="col-md-12 text-center" id="write">
           <h1>아이디를 입력하세요</h1>

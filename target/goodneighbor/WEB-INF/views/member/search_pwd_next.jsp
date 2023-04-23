@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto">
-      <form name="search_pwd_next" action="search_pwd_next" method="POST" onsubmit="return pwCheck()" class="row g-3">
+      <form name="search_pwd_next" action="search_pwd_next" method="POST" onsubmit="return findPwCheck()" class="row g-3">
         <h1 class="text-center">비밀번호 찾기</h1>
 
         <div class="col-md-12">
@@ -47,7 +47,7 @@
 
         <div class="col-md-12">
           <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="for_search_id" id="search_email" />
+            <input type="radio" class="form-check-input" name="search_email" id="search_email" />
             <label class="form-check-label" for="search_email">이메일에 등록한 휴대전화 번호로 찾기</label>
           </div>
         </div>

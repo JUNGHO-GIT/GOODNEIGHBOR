@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto">
-      <form name="id_search" id="id_search" action="${ctxpath}/member/search_id_pro" method="POST" onsubmit="return idpwCheck()">
+      <form name="id_search" id="id_search" action="${ctxPath}/member/search_id_pro" method="POST" onsubmit="return memberIdPwCheck()">
 
         <h1 class="text-center mb-4">아이디 찾기</h1>
 

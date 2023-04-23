@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@
   </head>
 
   <body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
@@ -43,11 +42,11 @@
             </tr>
             <tr>
               <td colspan="7" align="right" id="buttons">
-                <button class="btn btn-outline-secondary" onclick="location='${ctxpath}/board/updateForm.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글수정</button>
-                <button class="btn btn-outline-secondary" onclick="location='${ctxpath}/board/deletePro.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글삭제</button>
-                <button class="btn btn-outline-secondary" onclick="location='${ctxpath}/board/writeForm.do'">새글쓰기</button>
-                <button class="btn btn-outline-secondary" onclick="location='${ctxpath}/board/writeForm.do?board_number=${dto.board_number}&board_ref=${dto.board_ref}&board_re_step=${dto.board_re_step}&board_re_level=${dto.board_re_level}'">답글쓰기</button>
-                <button class="btn btn-outline-secondary" onclick="location='${ctxpath}/board/list.do?pageNum=${pageNum}'">리스트</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/updateForm.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글수정</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/deletePro.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글삭제</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/writeForm.do'">새글쓰기</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/writeForm.do?board_number=${dto.board_number}&board_ref=${dto.board_ref}&board_re_step=${dto.board_re_step}&board_re_level=${dto.board_re_level}'">답글쓰기</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/list.do?pageNum=${pageNum}'">리스트</button>
               </td>
             </tr>
           </tbody>

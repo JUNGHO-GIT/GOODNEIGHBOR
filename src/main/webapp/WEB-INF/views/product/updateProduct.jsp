@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 
         <!-- container -->
         <div class="container">
-          <form action="${proPath}/product/updateProduct" method="post" enctype="multipart/form-data">
+          <form action="${ctxPath}/product/updateProduct" method="POST" enctype="multipart/form-data">
             <!-- row -->
             <div class="bold-jungho">
               <div class="row">
@@ -122,7 +122,7 @@
                       <button type="button" class="btn btn-primary" onclick="return deleteCheck('${productDTO.product_id}')">
                         삭제하기
                       </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <button type="button" class="btn btn-primary" onclick="location.href='${proPath}/product/listProduct?pageNum=${pageNum}'">
+                      <button type="button" class="btn btn-primary" onclick="location.href='${ctxPath}/product/listProduct?pageNum=${pageNum}'">
                         목록보기
                       </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <button type="button" class="btn btn-primary" onclick="location.reload()">

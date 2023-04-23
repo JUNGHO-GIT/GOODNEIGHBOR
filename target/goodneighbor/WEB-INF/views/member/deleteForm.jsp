@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@
 	</head>
 
 	<body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
@@ -32,7 +31,7 @@
         </div>
       </div>
 
-      <form name="delForm" method="post" action="${ctxpath}/member/deletePro.do" onsubmit="return pwCheck()">
+      <form name="delForm" method="POST" action="${ctxPath}/member/deletePro.do" onsubmit="return memberPwCheck()">
         <div class="mb-3">
           <label for="member_pw" class="form-label">비밀번호 입력</label>
           <input type="password" name="member_pw" id="member_pw" class="form-control" size="30" placeholder="암호를 입력해 주세요."/>

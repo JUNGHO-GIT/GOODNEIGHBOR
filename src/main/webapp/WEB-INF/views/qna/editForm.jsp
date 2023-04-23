@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h2>Q&A 게시글 수정</h2>
-      <form name="writeFrom" method="post" action="${ctxpath}/qna/editPro.do" onsubmit="return check()">
+      <form name="writeFrom" method="POST" action="${ctxPath}/qna/editPro.do" onsubmit="return qnaCheck()">
         <table border="1">
           <tr>
             <td>글쓴이</td>
@@ -52,8 +52,8 @@
           </tr>
           <tr>
             <td colspan="2" align="center">
-              <input type="submit" value="글수정" onclick="return pwcheck()"/>
-              <input type="button" value="취소" onclick="location='${ctxpath}/qna/list.do'"/>
+              <input type="submit" value="글수정" onclick="return qnaPwCheck()"/>
+              <input type="button" value="취소" onclick="location='${ctxPath}/qna/list.do'"/>
             </td>
           </tr>
         </table>

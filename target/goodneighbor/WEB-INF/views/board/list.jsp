@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -29,7 +29,6 @@
   </head>
 
   <body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
@@ -38,7 +37,7 @@
 
       <div class="d-flex justify-content-end mb-3">
         <c:if test="${member_id != null || admin_id != null}">
-          <a href="${ctxpath}/board/writeForm.do" class="btn btn-primary">글쓰기</a>
+          <a href="${ctxPath}/board/writeForm.do" class="btn btn-primary">글쓰기</a>
         </c:if>
       </div>
 
@@ -69,7 +68,7 @@
                     <img src="../resources/imgs/level.gif" width="${5*dto.board_re_level}" class="me-2"/>
                     <img src="../resources/imgs/re.gif" class="me-2"/>
                   </c:if>
-                  <a href="${ctxpath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none">${dto.board_subject}
+                  <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none">${dto.board_subject}
                   </a>
                   <c:if test="${dto.board_readcount>=10}">
                     <img src="../resources/imgs/hot.gif" class="ms-2"/>
@@ -85,7 +84,7 @@
         </table>
       </c:if>
 
-      <form name="searchForm" method="post" action="list.do">
+      <form name="searchForm" method="POST" action="list.do">
         <div class="input-group my-3">
           <select class="form-select" name="keyField" id="select_option">
             <option value="board_subject">글제목</option>
@@ -93,12 +92,12 @@
             <option value="board_content">글내용</option>
           </select>
           <input class="form-control" type="text" name="keyWord" size="16" placeholder="검색어를 입력하세요."/>
-          <button class="btn btn-primary" type="submit" onclick="return check();">검색</button>
+          <button class="btn btn-primary" type="submit" onclick="return searchBoardCheck();">검색</button>
           <input type="hidden" name="page" value="0" />
         </div>
       </form>
 
-      <form name="listForm" method="post">
+      <form name="listForm" method="POST">
         <input type="hidden" name="reload" value="true"/>
         <input type="hidden" name="nowBlock" value="0"/>
       </form>
@@ -107,15 +106,15 @@
         <c:if test="${pt.cnt > 0}">
           <div class="d-flex align-items-center">
             <c:if test="${pt.startPage > 10}">
-              <a class="btn btn-outline-primary" href="${ctxpath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
+              <a class="btn btn-outline-primary" href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
             </c:if>
 
             <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-              <a class="btn btn-outline-primary mx-1" href="${ctxpath}/board/list.do?pageNum=[${i}]&keyWord=${keyWord}&keyField=${keyField}">[${i}]</a>
+              <a class="btn btn-outline-primary mx-1" href="${ctxPath}/board/list.do?pageNum=[${i}]&keyWord=${keyWord}&keyField=${keyField}">[${i}]</a>
             </c:forEach>
 
             <c:if test="${pt.endPage < pt.pageCnt}">
-              <a class="btn btn-outline-primary" href="${ctxpath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
+              <a class="btn btn-outline-primary" href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
             </c:if>
           </div>
         </c:if>

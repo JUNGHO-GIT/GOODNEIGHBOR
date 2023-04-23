@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -13,14 +13,13 @@
   </head>
 
   <body>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto">
 
       <h2 class="text-center my-4">공지사항</h2>
-      <form name="writeForm" method="post" action="${ctxpath}/notice/insertPro.do" onsubmit="return check()">
+      <form name="writeForm" method="POST" action="${ctxPath}/notice/insertPro.do" onsubmit="return noticeCheck()">
         <table class="table table-bordered">
           <tr>
             <td class="text-center" width="150">작성자</td>
@@ -42,7 +41,7 @@
               </div>
               <div class="mt-3">
                 <input type="submit" class="btn btn-primary me-1" value="글쓰기"/>
-                <input type="button" class="btn btn-primary" value="취소" onclick="location='${ctxpath}/notice/list.do'"/>
+                <input type="button" class="btn btn-primary" value="취소" onclick="location='${ctxPath}/notice/list.do'"/>
               </div>
             </td>
           </tr>

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto">
-      <form name="delForm" method="post" action="${ctxpath}/qna/deletePro.do" onsubmit="return pwcheck()">
+      <form name="delForm" method="POST" action="${ctxPath}/qna/deletePro.do" onsubmit="return qnaPwCheck()">
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
@@ -38,7 +38,7 @@
               <tr>
                 <td class="text-center">
                   <input type="submit" class="btn btn-primary me-2" value="삭제"/>
-                  <input type="button" class="btn btn-primary" value="글목록" onclick="location='${ctxpath}/qna/list.do'"/>
+                  <input type="button" class="btn btn-primary" value="글목록" onclick="location='${ctxPath}/qna/list.do'"/>
                 </td>
               </tr>
             </tbody>

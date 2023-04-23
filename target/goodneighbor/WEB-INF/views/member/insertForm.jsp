@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxpath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 
 <!DOCTYPE html>
@@ -20,13 +20,13 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h1 class="text-center my-4">회원가입</h1>
-      <form action="${ctxpath}/member/insertPro.do" method="post" onsubmit="return memberCheck();">
+      <form action="${ctxPath}/member/insertPro.do" method="POST" onsubmit="return memberCheck();">
 
         <div class="mb-3">
           <label for="member_id" class="form-label">아이디</label>
           <div class="input-group">
             <input type="text" class="form-control" name="member_id" id="member_id" placeholder="6-12자의 영문 대소문자, 숫자">
-            <button class="btn btn-outline-secondary" type="button" id="dupcheck" onclick="confirmIdCheck();">ID중복 체크</button>
+            <button class="btn btn-primary" type="button" id="dupcheck" onclick="return confirmIdCheck();">ID중복 체크</button>
           </div>
           <span id="olmessage" class="form-text text-danger"></span>
         </div>
@@ -39,7 +39,7 @@
 
         <div class="mb-3">
           <label for="member_pw2" class="form-label">비밀번호 확인</label>
-          <input type="password" class="form-control" name="member_pw2" id="member_pw2" placeholder="8~15자리의 영문 대소문자, 숫자, 특수문자" onblur="confirmPwCheck(); return false;">
+          <input type="password" class="form-control" name="member_pw2" id="member_pw2" placeholder="8~15자리의 영문 대소문자, 숫자, 특수문자" onblur="return confirmPwCheck();">
         </div>
 
         <div class="mb-3">
@@ -48,12 +48,12 @@
         </div>
         <div class="mb-3">
           <label for="member_email" class="form-label">이메일 주소</label>
-          <input type="text" class="form-control" name="member_email" id="member_email" placeholder="이메일 주소 입력" onblur="confirmEmailCheck(); return false;">
+          <input type="text" class="form-control" name="member_email" id="member_email" placeholder="이메일 주소 입력" onblur="return confirmEmailCheck();">
         </div>
 
         <div class="mb-3">
           <label for="member_tel" class="form-label">휴대폰 번호</label>
-          <input type="text" class="form-control" name="member_tel" id="member_tel" placeholder="휴대폰 번호 입력('-'제외)" onblur="confirmTelCheck(); return false;">
+          <input type="text" class="form-control" name="member_tel" id="member_tel" placeholder="휴대폰 번호 입력('-'제외)" onblur="return confirmTelCheck();">
         </div>
 
         <div class="mb-3">
