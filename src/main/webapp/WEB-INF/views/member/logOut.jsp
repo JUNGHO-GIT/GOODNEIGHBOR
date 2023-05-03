@@ -23,7 +23,7 @@
       <c:remove var="member_name" scope="session"/>
       <meta http-equiv="Refresh" content="0;url=${ctxPath}"/>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

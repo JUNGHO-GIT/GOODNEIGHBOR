@@ -58,7 +58,7 @@
         </table>
       </form>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

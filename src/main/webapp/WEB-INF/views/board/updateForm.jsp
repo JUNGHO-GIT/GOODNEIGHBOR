@@ -30,9 +30,9 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="board_subject" class="col-sm-2 col-form-label">글제목</label>
+          <label for="board_title" class="col-sm-2 col-form-label">글제목</label>
           <div class="col-sm-10">
-            <input type="text" name="board_subject" id="board_subject" value="${dto.board_subject}" class="form-control" />
+            <input type="text" name="board_title" id="board_title" value="${dto.board_title}" class="form-control" />
           </div>
         </div>
         <div class="row mb-3">
@@ -61,7 +61,7 @@
           </div>
         </div>
       </form>
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

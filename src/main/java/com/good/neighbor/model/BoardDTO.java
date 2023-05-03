@@ -7,14 +7,14 @@ public class BoardDTO {
   // fields --------------------------------------------------------------------------------------->
 	private int board_number;
 	private String board_writer;
-	private String board_subject;
+	private String board_title;
 	private String board_content;
 	private String board_pw;
 	private Timestamp board_regdate;
 	private int board_readcount;
 	private int board_ref;
-	private int board_re_step;
-	private int board_re_level;
+	private int board_step;
+	private int board_level;
 	private String board_ip;
 
   // getters -------------------------------------------------------------------------------------->
@@ -24,8 +24,8 @@ public class BoardDTO {
   public String getBoard_writer() {
     return board_writer;
   }
-  public String getBoard_subject() {
-    return board_subject;
+  public String getboard_title() {
+    return board_title;
   }
   public String getBoard_content() {
     return board_content;
@@ -42,11 +42,11 @@ public class BoardDTO {
   public int getBoard_ref() {
     return board_ref;
   }
-  public int getBoard_re_step() {
-    return board_re_step;
+  public int getBoard_step() {
+    return board_step;
   }
-  public int getBoard_re_level() {
-    return board_re_level;
+  public int getBoard_level() {
+    return board_level;
   }
   public String getBoard_ip() {
     return board_ip;
@@ -59,8 +59,8 @@ public class BoardDTO {
   public void setBoard_writer(String board_writer) {
     this.board_writer = board_writer;
   }
-  public void setBoard_subject(String board_subject) {
-    this.board_subject = board_subject;
+  public void setboard_title(String board_title) {
+    this.board_title = board_title;
   }
   public void setBoard_content(String board_content) {
     this.board_content = board_content;
@@ -77,11 +77,11 @@ public class BoardDTO {
   public void setBoard_ref(int board_ref) {
     this.board_ref = board_ref;
   }
-  public void setBoard_re_step(int board_re_step) {
-    this.board_re_step = board_re_step;
+  public void setBoard_step(int board_step) {
+    this.board_step = board_step;
   }
-  public void setBoard_re_level(int board_re_level) {
-    this.board_re_level = board_re_level;
+  public void setBoard_level(int board_level) {
+    this.board_level = board_level;
   }
   public void setBoard_ip(String board_ip) {
     this.board_ip = board_ip;

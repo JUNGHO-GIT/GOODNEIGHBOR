@@ -15,9 +15,9 @@ function boardWriteSave() {
 		$("#board_writer").focus();
 		return false;
 	}
-	if ($("#board_subject").val() == "") {
+	if ($("#board_title").val() == "") {
 		alert("글제목을 입력 하세요 ");
-		$("#board_subject").focus();
+		$("#board_title").focus();
 		return false;
 	}
 	if ($("#board_content").val() == "") {

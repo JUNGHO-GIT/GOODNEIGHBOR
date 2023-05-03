@@ -95,13 +95,13 @@
         </table>
       </c:if>
 
-      <form name="searchForm" method="POST" action="${ctxPath}/notice/list.do" class="mb-4">
+      <form name="searchForm" method="GET" action="${ctxPath}/notice/list.do" class="mb-4">
         <div class="input-group">
           <select name="keyField" class="form-select" id="select_option">
-            <option value="notice_title">글제목</option>
-            <option value="notice_content">글내용</option>
+            <option value="notice_title">제목</option>
+            <option value="notice_content">내용</option>
           </select>
-          <input class="form-control" type="text" name="keyWord"/>
+          <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요"/>
           <input type="hidden" name="pageNum" value="1"/>
           <button type="button" class="btn btn-primary" onclick="return noticeSearchCheck()">검색</button>
         </div>
@@ -121,7 +121,7 @@
         </c:if>
       </div>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

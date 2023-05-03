@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna">
+
+  <!-- 1. 전체 게시글 수 -->
+  <select id="getCount" resultType="Integer">
+    select count(*)
+    from qna
+  </select>
+
+  <!-- 2. 최대 글번호 얻기 -->
+  <select id="getMax" resultType="Integer">
+    select NVL (
+      max(qna_number
+    ), 0)
+    from qna
+  </select>
+
+  <!-- 3. 글쓰기 -->
+  <insert id="getInsert" parameterType="qnaDTO">
+    insert into qna (
+      qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_ref, qna_step,qna_level
+    )
+    values (
+      #{qna_number}, #{qna_writer},# {qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_ref}, #{qna_step}, #{qna_level}
+    )
+  </insert>
+
+  <!-- 4. 글번호 업데이트 -->
+  <update id="getUpdateStep" parameterType="qnaDTO">
+    update qna
+    set qna_step = qna_step + 1
+    where qna_ref = #{qna_ref} and qna_step <![CDATA[>]]> #{qna_step}
+  </update>
+
+  <!-- 5. 전체 게시글 목록 -->
+  <select id="getList" parameterType="java.util.Map" resultType="qnaDTO">
+    select *
+    from (
+      select q.*, ROWNUM rnum
+      from (
+        select *
+        from qna
+        order by qna_ref desc, qna_step asc
+      ) q where ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    )
+    where rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 5-1. 검색 게시글 수 -->
+  <select id="getSearchCount" parameterType="java.util.Map" resultType="Integer">
+    SELECT COUNT(*) FROM qna
+    WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+  </select>
+
+  <!-- 5-2. 검색 게시글 목록 -->
+  <select id="getSearch" parameterType="java.util.Map" resultType="qnaDTO">
+    SELECT *
+    FROM (
+      SELECT qna.*, ROWNUM rnum
+      FROM (
+        SELECT *
+        FROM qna
+        WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+        ORDER BY qna_number DESC
+      ) qna
+      WHERE ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    )
+    WHERE rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 6. 글번호 조회수 증가 -->
+  <update id="getUpdateCount" parameterType="int">
+    update qna
+    set qna_readcount = qna_readcount + 1
+    where qna_number = #{qna_number}
+  </update>
+
+  <!-- 7. 글번호에 해당하는 게시글 정보 -->
+  <select id="getDetails" parameterType="int" resultType="qnaDTO">
+    select *
+    from qna
+    where qna_number = #{qna_number}
+  </select>
+
+  <!-- 8. 게시물 수정 -->
+  <update id="getModify" parameterType="qnaDTO">
+    update qna
+    set qna_writer = #{qna_writer}, qna_title = #{qna_title}, qna_content = #{qna_content}
+    where qna_number = #{qna_number} and qna_pw = #{qna_pw}
+  </update>
+
+  <!-- 9. 게시물 삭제 -->
+  <delete id="getDelete" parameterType="int">
+    delete from qna
+    where qna_number = #{qna_number}
+  </delete>
+
+</mapper>

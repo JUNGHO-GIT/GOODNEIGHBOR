@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+  <!-- 1. 전체 게시글 수 -->
+  <select id="getCount" resultType="Integer">
+    select count(*)
+    from board
+  </select>
+
+  <!-- 2. 최대 글번호 얻기 -->
+  <select id="getMax" resultType="Integer">
+    select NVL (
+      max(board_number
+    ), 0)
+    from board
+  </select>
+
+  <!-- 3. 글쓰기 -->
+  <insert id="getInsert" parameterType="boardDTO">
+    insert into board (
+      board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_ref, board_step,board_level
+    )
+    values (
+      #{board_number}, #{board_writer},# {board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_ref}, #{board_step}, #{board_level}
+    )
+  </insert>
+
+  <!-- 4. 글번호 업데이트 -->
+  <update id="getUpdateStep" parameterType="boardDTO">
+    update board
+    set board_step = board_step + 1
+    where board_ref = #{board_ref} and board_step <![CDATA[>]]> #{board_step}
+  </update>
+
+  <!-- 5. 전체 게시글 목록 -->
+  <select id="getList" parameterType="java.util.Map" resultType="boardDTO">
+    select *
+    from (
+      select b.*, ROWNUM rnum
+      from (
+        select *
+        from board
+        order by board_ref desc, board_step asc
+      ) b where ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    )
+    where rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 5-1. 검색 게시글 수 -->
+  <select id="getSearchCount" parameterType="java.util.Map" resultType="Integer">
+    SELECT COUNT(*) FROM board
+    WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+  </select>
+
+  <!-- 5-2. 검색 게시글 목록 -->
+  <select id="getSearch" parameterType="java.util.Map" resultType="boardDTO">
+    SELECT *
+    FROM (
+      SELECT board.*, ROWNUM rnum
+      FROM (
+        SELECT *
+        FROM board
+        WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+        ORDER BY board_number DESC
+      ) board
+      WHERE ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    )
+    WHERE rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 6. 글번호 조회수 증가 -->
+  <update id="getUpdateCount" parameterType="int">
+    update board
+    set board_readcount = board_readcount + 1
+    where board_number = #{board_number}
+  </update>
+
+  <!-- 7. 글번호에 해당하는 게시글 정보 -->
+  <select id="getDetails" parameterType="int" resultType="boardDTO">
+    select *
+    from board
+    where board_number = #{board_number}
+  </select>
+
+  <!-- 8. 게시물 수정 -->
+  <update id="getModify" parameterType="boardDTO">
+    update board
+    set board_writer = #{board_writer}, board_title = #{board_title}, board_content = #{board_content}
+    where board_number = #{board_number} and board_pw = #{board_pw}
+  </update>
+
+  <!-- 9. 게시물 삭제 -->
+  <delete id="getDelete" parameterType="int">
+    delete from board
+    where board_number = #{board_number}
+  </delete>
+
+</mapper>

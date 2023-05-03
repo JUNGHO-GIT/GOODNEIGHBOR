@@ -33,7 +33,7 @@
           </thead>
           <tbody>
             <tr>
-              <td colspan="7" class="text-center" id="content_subject">${dto.board_subject}</td>
+              <td colspan="7" class="text-center" id="content_subject">${dto.board_title}</td>
             </tr>
             <tr>
               <td colspan="7" id="subject" height="400px">
@@ -45,14 +45,14 @@
                 <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/updateForm.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글수정</button>
                 <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/deletePro.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글삭제</button>
                 <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/writeForm.do'">새글쓰기</button>
-                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/writeForm.do?board_number=${dto.board_number}&board_ref=${dto.board_ref}&board_re_step=${dto.board_re_step}&board_re_level=${dto.board_re_level}'">답글쓰기</button>
+                <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/writeForm.do?board_number=${dto.board_number}&board_ref=${dto.board_ref}&board_step=${dto.board_step}&board_level=${dto.board_level}'">답글쓰기</button>
                 <button class="btn btn-outline-secondary" onclick="location='${ctxPath}/board/list.do?pageNum=${pageNum}'">리스트</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

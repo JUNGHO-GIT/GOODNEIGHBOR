@@ -28,8 +28,8 @@
       <form method="POST" name="writeForm" action="${ctxPath}/board/writePro.do" onsubmit="return boardWriteSave();">
         <input type="hidden" name="board_number" value="${board_number}" />
         <input type="hidden" name="board_ref" value="${board_ref}" />
-        <input type="hidden" name="board_re_step" value="${board_re_step}" />
-        <input type="hidden" name="board_re_level" value="${board_re_level}" />
+        <input type="hidden" name="board_step" value="${board_step}" />
+        <input type="hidden" name="board_level" value="${board_level}" />
 
         <div class="row mb-3">
           <label for="board_writer" class="col-sm-2 col-form-label">글쓴이</label>
@@ -39,15 +39,15 @@
         </div>
 
         <div class="row mb-3">
-          <label for="board_subject" class="col-sm-2 col-form-label">글제목</label>
+          <label for="board_title" class="col-sm-2 col-form-label">글제목</label>
           <div class="col-sm-10">
             <!-- 원글 -->
             <c:if test="${board_number==0}">
-              <input type="text" name="board_subject" id="board_subject" size="40" class="form-control" />
+              <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
             </c:if>
             <!--  답글 -->
             <c:if test="${board_number!=0}">
-              <input type="text" name="board_subject" id="board_subject" size="40" value="[답변]" class="form-control" />
+              <input type="text" name="board_title" id="board_title" size="40" value="[답변]" class="form-control" />
             </c:if>
           </div>
         </div>
@@ -75,7 +75,7 @@
         </div>
       </form>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

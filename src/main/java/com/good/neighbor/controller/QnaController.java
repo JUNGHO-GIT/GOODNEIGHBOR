@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,7 +58,7 @@ public class QnaController {
     int maxNum = 0;
 
     if(sqlSession.selectOne("qna.qnaMax") != null) {
-      maxNum = sqlSession.selectOne("qna.qnaMax");
+      maxNum = sqlSession.selectOne("qna.getMax");
     }
     if(maxNum != 0) {
       maxNum = maxNum + 1;
@@ -77,48 +78,84 @@ public class QnaController {
       qnaDTO.setQna_step(0);
       qnaDTO.setQna_level(0);
     }
-    sqlSession.insert("qna.insertQna", qnaDTO);
+    sqlSession.insert("qna.getInsert", qnaDTO);
 
     return "redirect:/qna/list.do";
   }
 
-  // 2-1. listQna() ----------------------------------------------------------------------------->
-  @RequestMapping("list.do")
+  // 2-1. listQna() ------------------------------------------------------------------------------->
+  @RequestMapping(value="/list.do", method=RequestMethod.GET)
   public String listQna (
+    @ModelAttribute("qnaDTO") QnaDTO qnaDTO,
     @RequestParam(value="pageNum",required=false) String pageNum,
-    HttpServletRequest request,
-    QnaDTO qnaDTO, Model model
-  ) {
+    Model model, HttpServletRequest request
+  ) throws Exception {
 
+    String keyWord = "";
+    String keyField = "";
+    int cnt = 0;
+
+    if(request.getParameter("keyWord") != null) {
+      keyWord=request.getParameter("keyWord");
+      keyField=request.getParameter("keyField");
+    }
+    else {
+      keyWord = "";
+      keyField = "";
+    }
     if(pageNum == null) {
       pageNum = "1";
     }
-    int cnt = sqlSession.selectOne("qna.countQna");
-    int curPage=Integer.parseInt(pageNum);
-
-    PageTest pt = new PageTest(cnt,curPage);
-
-    int startline=pt.getStartRow() - 1;
 
     Map<String, Object> map = new HashMap<>();
-    map.put("start", startline);
-    map.put("count", pt.getPageSize());
+    Map<String, Object> map2 = new HashMap<>();
+    Map<String, Object> map3 = new HashMap<>();
 
-    List<QnaDTO> list = sqlSession.selectList("qna.listQna",map);
-
-    if(pt.getEndPage()>pt.getPageCnt()) {
-      pt.setEndPage(pt.getPageCnt());
+    if(keyWord == null || keyWord.length()<1 || keyWord == "") {
+      cnt = sqlSession.selectOne("qna.getCount");
     }
-    int number = cnt-(curPage - 1)*pt.getPageSize();
+    else {
+      map3.put("columnParam", keyField);
+      map3.put("keyWord", keyWord);
+      cnt = sqlSession.selectOne("qna.getSearchCount", map3);
+    }
 
-    model.addAttribute("number", number);
-    model.addAttribute("pageNum", pageNum);
-    model.addAttribute("pt", pt);
-    model.addAttribute("cnt", cnt);
-    model.addAttribute("list",list);
+    int curPage = Integer.parseInt(pageNum);
+    PageTest pt = new PageTest(cnt,curPage);
+    int startPos = pt.getStartRow() - 1;
 
-    return "qna/list";
-  }
+    List<QnaDTO> list = null;
+
+    if(keyWord == null || keyWord.length() < 1 || keyWord == "") {
+      map.put("start", new Integer(startPos));
+      map.put("count", new Integer(pt.getPageSize()));
+
+      list = sqlSession.selectList("qna.getList",map);
+    }
+    else if(keyWord != null || keyWord.length()>1){
+      map2.put("columnParam", keyField);
+      map2.put("keyWord", keyWord);
+      map2.put("start", new Integer(startPos));
+      map2.put("count", new Integer(pt.getPageSize()));
+
+      list = sqlSession.selectList("qna.getSearch",map2);
+    }
+
+		if(pt.getEndPage()>pt.getPageCnt()) {
+			pt.setEndPage(pt.getPageCnt());
+		}
+		int number = cnt-(curPage - 1)*pt.getPageSize();
+
+		model.addAttribute("number", number);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("keyField", keyField);
+		model.addAttribute("keyWord", keyWord);
+		model.addAttribute("pt", pt);
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("list",list);
+
+		return "qna/list";
+	}
 
   // 3-1. content() ------------------------------------------------------------------------------->
   @RequestMapping("content.do")
@@ -127,9 +164,9 @@ public class QnaController {
     String pageNum = request.getParameter("pageNum");
     int num = Integer.parseInt(request.getParameter("qna_number"));
 
-    sqlSession.update("qna.cntQna", num);
+    sqlSession.update("qna.getCount", num);
 
-    QnaDTO dto = sqlSession.selectOne("qna.oneSelect", num);
+    QnaDTO dto = sqlSession.selectOne("qna.getDetails", num);
     model.addAttribute("dto", dto);
     model.addAttribute("pageNum", pageNum);
 
@@ -142,7 +179,7 @@ public class QnaController {
 
     String pageNum = request.getParameter("pageNum");
     int num = Integer.parseInt(request.getParameter("qna_number"));
-    QnaDTO dto = sqlSession.selectOne("qna.oneSelect", num);
+    QnaDTO dto = sqlSession.selectOne("qna.getDetails", num);
 
     model.addAttribute("dto", dto);
     model.addAttribute("pageNum", pageNum);
@@ -156,7 +193,7 @@ public class QnaController {
 
     String pw=request.getParameter("qna_pw");
 
-    sqlSession.update("qna.updateQna", qnaDTO);
+    sqlSession.update("qna.getModify", qnaDTO);
 
     model.addAttribute("qna_pw", pw);
     model.addAttribute("qnaDTO", qnaDTO);
@@ -170,7 +207,7 @@ public class QnaController {
 
     String pageNum = request.getParameter("pageNum");
     int num = Integer.parseInt(request.getParameter("qna_number"));
-    QnaDTO dto = sqlSession.selectOne("qna.oneSelect", num);
+    QnaDTO dto = sqlSession.selectOne("qna.getDetails", num);
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("dto", dto);
@@ -185,8 +222,8 @@ public class QnaController {
     int num = Integer.parseInt(request.getParameter("qna_number"));
     String pageNum = request.getParameter("pageNum");
 
-    QnaDTO dto = sqlSession.selectOne("qna.oneSelect", num);
-    sqlSession.delete("qna.deleteQna", num);
+    QnaDTO dto = sqlSession.selectOne("qna.getDetails", num);
+    sqlSession.delete("qna.getDelete", num);
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("dto", dto);
@@ -200,7 +237,7 @@ public class QnaController {
 
    int num = Integer.parseInt(request.getParameter("qna_number"));
    String pageNum = request.getParameter("pageNum");
-   QnaDTO dto = sqlSession.selectOne("qna.oneSelect", num);
+   QnaDTO dto = sqlSession.selectOne("qna.getDetails", num);
 
    model.addAttribute("pageNum", pageNum);
    model.addAttribute("dto", dto);

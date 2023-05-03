@@ -29,7 +29,7 @@ public class AdminController {
 	@RequestMapping(value="/insertPro", method=RequestMethod.POST)
 	public String insertPro(HttpServletRequest request , Model model ,AdminDTO adminDTO) {
 
-		sqlSession.insert("admin.insertAdmin", adminDTO);
+		sqlSession.insert("admin.getInsert", adminDTO);
 
 		return "common/home";
 	}
@@ -40,7 +40,7 @@ public class AdminController {
 
 		int check = - 1;
 		String admin_id =request.getParameter("admin_id");
-		AdminDTO adminDTO = sqlSession.selectOne("admin.selectOne", admin_id);
+		AdminDTO adminDTO = sqlSession.selectOne("admin.getDetails", admin_id);
 
 		if(adminDTO == null) {
 			check = 1;
@@ -70,7 +70,7 @@ public class AdminController {
 		map.put("admin_id", admin_id);
 		map.put("admin_pw", admin_pw);
 
-		AdminDTO dto = sqlSession.selectOne("admin.selectLogin", map);
+		AdminDTO dto = sqlSession.selectOne("admin.getLogin", map);
 
 		model.addAttribute("dto", dto);
 

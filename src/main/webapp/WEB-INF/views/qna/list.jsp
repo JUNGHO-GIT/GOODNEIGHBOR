@@ -18,7 +18,6 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto mb-10">
-
       <h2 class="text-center my-4">Q&A 게시판</h2>
 
       <c:if test="${member_id != null || admin_id  != null}">
@@ -75,6 +74,18 @@
         </div>
       </c:if>
 
+      <form name="searchForm" method="GET" action="${ctxPath}/qna/list.do" class="mb-4">
+        <div class="input-group">
+          <select name="keyField" class="form-select" id="select_option">
+            <option value="qna_title">제목</option>
+            <option value="qna_content">내용</option>
+          </select>
+          <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요" />
+          <input type="hidden" name="pageNum" value="1" />
+          <button type="button" class="btn btn-primary" onclick="return qnaSearchCheck()">검색</button>
+        </div>
+      </form>
+
       <div class="d-flex justify-content-center">
         <c:if test="${pt.cnt>0}">
           <nav aria-label="Page navigation">
@@ -93,7 +104,7 @@
         </c:if>
       </div>
 
-    </main><br/><br/><br/><br/>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

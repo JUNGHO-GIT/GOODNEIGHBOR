@@ -23,9 +23,8 @@
       <!-- Contact -------------------------------------------------------------------------------->
       <div style="margin-top:0px;" class="row no-margin">
         <iframe style="width:100%"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249759.19784092825!2d79.10145254589841!3d12.009924873581818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1448883859107"
-          height="450" frameborder="0" style="border:0" allowfullscreen>
-        </iframe>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8596255976184!2d126.9769430153173!3d37.56629597978841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2f3176c9891%3A0x17c7136eaa0f8b83!2z7ISc7Jq47Yq567OE7IucIOyEseyjvOq1rCDslYrquLjsnZgg!5e0!3m2!1sen!2skr!4v1620059665300!5m2!1sen!2skr"
+          height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
       <div class="row contact-rooo no-margin">
         <div class="container">
@@ -91,7 +90,7 @@
       </div>
       <!-- /.section -->
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

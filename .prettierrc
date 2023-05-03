@@ -1,0 +1,43 @@
+{
+	"printWidth": 100,
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": false,
+	"quoteProps": "as-needed",
+	"jsxSingleQuote": false,
+	"trailingComma": "all",
+	"bracketSpacing": false,
+	"arrowParens": "always",
+	"proseWrap": "always",
+	"htmlWhitespaceSensitivity": "ignore",
+	"endOfLine": "lf",
+	"embeddedLanguageFormatting": "auto",
+	"bracketSameLine": true,
+  "cursorOffset": -1,
+  "editorconfig": false,
+  "insertPragma": false,
+  "pluginSearchDirs": [
+    "."
+  ],
+  "singleAttributePerLine": false,
+  "vueIndentScriptAndStyle": true,
+  "requirePragma": false,
+  "jsxBracketSameLine": true,
+	"overrides": [
+		{
+			"files": "*.xml",
+			"options": {
+				"parser": "xml",
+				"xmlWhitespaceSensitivity": "ignore"
+			}
+		},
+    {
+      "files": "*.jsp",
+      "options": {
+        "parser": "html",
+      }
+    }
+	],
+	"plugins": ["@prettier/plugin-xml"]
+}

@@ -62,7 +62,7 @@
         <input type="button" class="btn btn-primary" value="리스트" onclick="location='${ctxPath}/qna/list.do?pageNum=${pageNum}'"/>
       </div>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

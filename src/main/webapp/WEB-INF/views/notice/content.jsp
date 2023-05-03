@@ -51,7 +51,7 @@
         <a class="btn btn-primary" href="${ctxPath}/notice/list.do">리스트</a>
       </div>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

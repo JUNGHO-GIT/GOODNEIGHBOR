@@ -33,7 +33,7 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid w-50 mx-auto">
-      <h2 class="text-center">글목록(전체글: ${pt.cnt})</h2>
+      <h2 class="text-center">게시판</h2>
 
       <div class="d-flex justify-content-end mb-3">
         <c:if test="${member_id != null || admin_id != null}">
@@ -64,11 +64,11 @@
                 <td align="center" height="100px">${number}<c:set var="number" value="${number-1}"/>
                 </td>
                 <td align="left" class="d-flex">
-                  <c:if test="${dto.board_re_level>0}">
-                    <img src="../resources/imgs/level.gif" width="${5*dto.board_re_level}" class="me-2"/>
+                  <c:if test="${dto.board_level>0}">
+                    <img src="../resources/imgs/level.gif" width="${5*dto.board_level}" class="me-2"/>
                     <img src="../resources/imgs/re.gif" class="me-2"/>
                   </c:if>
-                  <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none">${dto.board_subject}
+                  <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none">${dto.board_title}
                   </a>
                   <c:if test="${dto.board_readcount>=10}">
                     <img src="../resources/imgs/hot.gif" class="ms-2"/>
@@ -84,12 +84,12 @@
         </table>
       </c:if>
 
-      <form name="searchForm" method="POST" action="list.do">
+      <form name="searchForm" method="GET" action="list.do">
         <div class="input-group my-3">
           <select class="form-select" name="keyField" id="select_option">
-            <option value="board_subject">글제목</option>
+            <option value="board_title">제목</option>
             <option value="board_writer">이름</option>
-            <option value="board_content">글내용</option>
+            <option value="board_content">내용</option>
           </select>
           <input class="form-control" type="text" name="keyWord" size="16" placeholder="검색어를 입력하세요."/>
           <button class="btn btn-primary" type="submit" onclick="return searchBoardCheck();">검색</button>
@@ -120,7 +120,7 @@
         </c:if>
       </div>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

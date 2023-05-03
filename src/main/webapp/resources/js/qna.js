@@ -37,3 +37,12 @@ function qnaCheck() {
 	}
 	return true;
 }
+
+function qnaSearchCheck() {
+  if (!document.searchForm.keyWord.value) {
+    alert("검색어를 입력하세요");
+    document.searchForm.keyWord.focus();
+    return false;
+  }
+  document.searchForm.submit();
+}

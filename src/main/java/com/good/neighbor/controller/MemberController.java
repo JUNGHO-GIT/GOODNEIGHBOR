@@ -51,7 +51,7 @@ public class MemberController {
 		int check =  - 1;
 
 		String member_id=request.getParameter("member_id");
-		MemberDTO memberDTO = sqlSession.selectOne("member.selectOne", member_id);
+		MemberDTO memberDTO = sqlSession.selectOne("member.getDetails", member_id);
 
 		if(memberDTO == null) {
 			check = 1;
@@ -68,7 +68,7 @@ public class MemberController {
     HttpServletRequest request
   ) throws Exception {
 
-		sqlSession.insert("member.insertMember",memberDTO);
+		sqlSession.insert("member.getInsert",memberDTO);
 
 		return "member/loginForm";
 	}
@@ -100,7 +100,7 @@ public class MemberController {
 		map.put("member_id",member_id);
 		map.put("member_pw",member_pw);
 
-		MemberDTO dto = sqlSession.selectOne("member.selectLogin", map);
+		MemberDTO dto = sqlSession.selectOne("member.getLogin", map);
 		Cookie cookie = new Cookie("member_id", member_id);
 
 		System.out.println("checkbox");
@@ -130,16 +130,16 @@ public class MemberController {
 		return "member/logOut";
 	}
 
-  // 3-1. updateMember() -------------------------------------------------------------------------->
-	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
-	public String updateMember(HttpServletRequest request, Model model) {
+  // 3-1. getUpdate() ----------------------------------------------------------------------------->
+	@RequestMapping(value="getUpdate.do", method=RequestMethod.POST)
+	public String getUpdate(HttpServletRequest request, Model model) {
 
 		String member_id = request.getParameter("member_id");
-		MemberDTO dto = sqlSession.selectOne("member.selectOne",member_id);
+		MemberDTO dto = sqlSession.selectOne("member.getDetails",member_id);
 
 		model.addAttribute("dto", dto);
 
-		return "member/updateMember";
+		return "member/getUpdate";
 	}
 
   // 3-2. updatePro() ----------------------------------------------------------------------------->
@@ -150,7 +150,7 @@ public class MemberController {
     Model model
   ) throws Exception {
 
-    sqlSession.update("member.updateMember", memberDTO);
+    sqlSession.update("member.getModify", memberDTO);
 
     return "member/updateSuccess";
   }
@@ -180,7 +180,7 @@ public class MemberController {
     map.put("member_id", member_id);
     map.put("member_pw", member_pw);
 
-    sqlSession.delete("member.deleteMember", map);
+    sqlSession.delete("member.getDelete", map);
 
     return "member/logOut";
   }
@@ -212,7 +212,7 @@ public class MemberController {
     HashMap <String,String> map = new HashMap<>();
     map.put("member_name",search_tel_name);
     map.put("member_tel",search_tel_number);
-    MemberDTO dto = sqlSession.selectOne("member.searchId", map);
+    MemberDTO dto = sqlSession.selectOne("member.getSearchId", map);
 
     model.addAttribute("dto", dto);
 
@@ -231,7 +231,7 @@ public class MemberController {
   public String search_pwdPro(HttpServletRequest request , Model model) {
 
     String writeID_search_pw = request.getParameter("writeID_search_pw");
-    MemberDTO dto = sqlSession.selectOne("member.selectOne",writeID_search_pw);
+    MemberDTO dto = sqlSession.selectOne("member.getDetails", writeID_search_pw);
 
     model.addAttribute("dto", dto);
 
@@ -250,7 +250,7 @@ public class MemberController {
     map.put("member_id",search_tel_id);
     map.put("member_name",search_tel_name);
     map.put("member_tel",search_tel_number);
-    MemberDTO dto = sqlSession.selectOne("member.searchPw", map);
+    MemberDTO dto = sqlSession.selectOne("member.getSearchPw", map);
 
     model.addAttribute("dto", dto);
 

@@ -1,0 +1,38 @@
+# IDE
+.idea/
+.vscode/
+
+# Compiled output
+/target/
+/build/
+/classes/
+/*.class
+
+# Dependency directories
+/lib/
+/bin/
+/boot/
+
+# Log files
+/logs/
+*.log
+
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle specific
+.gradle/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Spring Boot specific
+/maven-wrapper/
+
+# Other
+*.swp
+*~

@@ -21,7 +21,7 @@
             </li>
           </ul>
           <ul class="ulleft">
-            <form name="updateMember" method="POST">
+            <form name="getUpdate" method="POST">
               <input type="hidden" name="member_id" value="${member_id}"/>
             </form>
             <li>
@@ -54,7 +54,7 @@
         <!-- 로그인 o -->
         <c:if test="${member_id != null}">
           <div class="col-lg-6 d-none d-md-block col-md-6 btn-bhed">
-            <form method="POST" action="${ctxPath}/member/updateMember.do">
+            <form method="POST" action="${ctxPath}/member/getUpdate.do">
               <input type="hidden" name="member_name" value="${member_name}"/>
               <button class="btn btn-sm btn-success" onclick="location.href='${ctxPath}/member/logOut.do'" type="button">로그아웃</button>
               <button class="btn btn-sm btn-default" type="submit">내정보 변경</button>

@@ -30,28 +30,28 @@ public class BoardController {
 
     String board_number=request.getParameter("board_number");
     String board_ref=request.getParameter("board_ref");
-    String board_re_step=request.getParameter("board_re_step");
-    String board_re_level=request.getParameter("board_re_level");
+    String board_step=request.getParameter("board_step");
+    String board_level=request.getParameter("board_level");
     String pageNum = request.getParameter("pageNum");
 
     if(board_number == null) {
       board_number = "0";
       board_ref = "1";
-      board_re_step = "0";
-      board_re_level = "0";
+      board_step = "0";
+      board_level = "0";
     }
     else {
       board_number=request.getParameter("board_number");
       board_ref=request.getParameter("board_ref");
-      board_re_step=request.getParameter("board_re_step");
-      board_re_level=request.getParameter("board_re_level");
+      board_step=request.getParameter("board_step");
+      board_level=request.getParameter("board_level");
     }
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("board_number", board_number);
     model.addAttribute("board_ref", board_ref);
-    model.addAttribute("board_re_step", board_re_step);
-    model.addAttribute("board_re_level", board_re_level);
+    model.addAttribute("board_step", board_step);
+    model.addAttribute("board_level", board_level);
 
     return "board/writeForm";
   }
@@ -65,8 +65,8 @@ public class BoardController {
 
     int maxNum = 0;
 
-    if(sqlSession.selectOne("board.numMax") != null) {
-      maxNum = sqlSession.selectOne("board.numMax");
+    if(sqlSession.selectOne("board.getMax") != null) {
+      maxNum = sqlSession.selectOne("board.getMax");
     }
     if(maxNum != 0) {
       maxNum = maxNum + 1;
@@ -81,17 +81,17 @@ public class BoardController {
     if(boardDTO.getBoard_number() != 0) {
 
       sqlSession.update("board.reStep", boardDTO);
-      boardDTO.setBoard_re_step(boardDTO.getBoard_re_step() + 1);
-      boardDTO.setBoard_re_level(boardDTO.getBoard_re_level() + 1);
+      boardDTO.setBoard_step(boardDTO.getBoard_step() + 1);
+      boardDTO.setBoard_level(boardDTO.getBoard_level() + 1);
 
-      System.out.println("re_level = " + boardDTO.getBoard_re_level());
+      System.out.println("_level = " + boardDTO.getBoard_level());
     }
     else {
       boardDTO.setBoard_ref(maxNum);
-      boardDTO.setBoard_re_step(0);
-      boardDTO.setBoard_re_level(0);
+      boardDTO.setBoard_step(0);
+      boardDTO.setBoard_level(0);
     }
-    sqlSession.insert("board.insertDAO", boardDTO);
+    sqlSession.insert("board.getInsert", boardDTO);
 
     return "redirect:/board/list.do";
   }
@@ -127,12 +127,12 @@ public class BoardController {
     Map<String, Object> map3 = new HashMap<>();
 
     if(keyWord == null || keyWord.length()<1 || keyWord == "") {
-      cnt = sqlSession.selectOne("board.selectCount");
+      cnt = sqlSession.selectOne("board.getCount");
     }
     else {
       map3.put("columnParam", keyField);
       map3.put("keyWord", keyWord);
-      cnt = sqlSession.selectOne("board.searchCount", map3);
+      cnt = sqlSession.selectOne("board.getSearchCount", map3);
     }
 
     int curPage = Integer.parseInt(pageNum);
@@ -142,18 +142,18 @@ public class BoardController {
     List<BoardDTO> list = null;
 
     if(keyWord == null || keyWord.length() < 1 || keyWord == "") {
-      map.put("start", startPos);
-      map.put("count", pt.getPageSize());
+      map.put("start", new Integer(startPos));
+      map.put("count", new Integer(pt.getPageSize()));
 
-      list = sqlSession.selectList("board.selectListBoard", map);
+      list = sqlSession.selectList("board.getList", map);
     }
     else if(keyWord != null || keyWord.length() > 1){
       map2.put("columnParam", keyField);
       map2.put("keyWord", keyWord);
-      map2.put("start", startPos);
-      map2.put("count", pt.getPageSize());
+      map2.put("start", new Integer(startPos));
+      map2.put("count", new Integer(pt.getPageSize()));
 
-      list = sqlSession.selectList("board.selectSearchBoard", map2);
+      list = sqlSession.selectList("board.getSearch", map2);
     }
 
     if(pt.getEndPage()>pt.getPageCnt()) {
@@ -179,9 +179,9 @@ public class BoardController {
     String pageNum = request.getParameter("pageNum");
 
     int num1=Integer.parseInt(request.getParameter("board_number"));
-    sqlSession.update("board.readCount", num1);
+    sqlSession.update("board.getUpdateCount", num1);
 
-    BoardDTO dto = sqlSession.selectOne("board.selectOneBoard", num1);
+    BoardDTO dto = sqlSession.selectOne("board.getDetails", num1);
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("dto", dto);
@@ -195,7 +195,7 @@ public class BoardController {
 
     String pageNum = request.getParameter("pageNum");
     int board_number = Integer.parseInt(request.getParameter("board_number"));
-    BoardDTO dto = sqlSession.selectOne("board.selectOneBoard", board_number);
+    BoardDTO dto = sqlSession.selectOne("board.getDetails", board_number);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("board_number", board_number);
@@ -214,7 +214,7 @@ public class BoardController {
   ) throws Exception {
 
     String pageNum = request.getParameter("pageNum");
-    sqlSession.update("board.updateBoard", boardDTO);
+    sqlSession.update("board.getModify", boardDTO);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("pageNum", pageNum);
@@ -227,7 +227,7 @@ public class BoardController {
   @RequestMapping(value="deletePro.do", method=RequestMethod.GET)
   public String deletePro(Model model, String board_number, String pageNum) {
 
-    sqlSession.delete("board.deleteBoard", board_number);
+    sqlSession.delete("board.getDelete", board_number);
 
     model.addAttribute("pageNum", pageNum);
 
@@ -244,7 +244,7 @@ public class BoardController {
 
     map.put("board_pw", board_pw);
 
-    sqlSession.delete("board.deleteMember", map);
+    sqlSession.delete("board.getDelete", map);
     return "redirect:/board/list.do";
   }
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+  <!-- 1. 관리자 상세정보 -->
+  <select id="getDetails" parameterType="String" resultType="adminDTO">
+    select *
+    from admin
+    where admin_id=#{admin_id}
+  </select>
+
+  <!-- 2. 관리자 회원가입 -->
+  <insert id="getInsert" parameterType="adminDTO">
+    insert into admin (
+      admin_id, admin_pw, admin_name, admin_tel, admin_regdate
+    )
+    values (
+      #{admin_id}, #{admin_pw}, #{admin_name}, #{admin_tel}, SYSDATE
+    )
+  </insert>
+
+  <!-- 3. 관리자 로그인 map사용 -->
+  <select id="getLogin" parameterType="java.util.Map" resultType="adminDTO">
+    select *
+    from admin
+    where admin_id = #{admin_id} and admin_pw = #{admin_pw}
+  </select>
+
+</mapper>
