@@ -35,8 +35,6 @@
           <input type="button" onclick="location='${ctxPath}/member/search_id.do'" value="아이디 찾기" class="btn btn-primary" />
           &nbsp;&nbsp;
           <input type="button" onclick="location='${ctxPath}/member/search_pwd.do'" value="비밀번호 찾기" class="btn btn-primary" />
-        </div>
-        <div class="mb-3 text-center">
           <input type="submit" id="submit_button" class="btn btn-primary" value="로그인"/>
         </div>
       </form>

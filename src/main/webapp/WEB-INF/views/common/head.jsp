@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap">
 
 <!-- link -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -31,10 +31,9 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed-min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
 </script>
-<script defer src="//t1.daumcdn.net/mapjsapi/bundle/POSTcode/prod/POSTcode.v2.js"></script>
+<script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script defer src="${srcPath}/js/admin.js"></script>
-<script defer src="${srcPath}/js/member.js"></script>
 <script defer src="${srcPath}/js/main.js"></script>
-<script defer src="${srcPath}/js/product.js"></script>
 <script defer src="${srcPath}/js/qna.js"></script>
 <script defer src="${srcPath}/js/notice.js"></script>
+<script defer src="${srcPath}/js/member.js"></script>

@@ -20,15 +20,14 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h1 class="text-center my-4">회원가입</h1>
-      <form action="${ctxPath}/member/insertPro.do" method="POST" onsubmit="return memberCheck();">
+      <form action="${ctxPath}/member/insertPro.do" method="POST">
 
         <div class="mb-3">
           <label for="member_id" class="form-label">아이디</label>
           <div class="input-group">
             <input type="text" class="form-control" name="member_id" id="member_id" placeholder="6-12자의 영문 대소문자, 숫자">
-            <button class="btn btn-primary" type="button" id="dupcheck" onclick="return confirmIdCheck();">ID중복 체크</button>
+            <button type="button" class="btn btn-primary" id="dupcheck" onclick="confirmIdCheck()">ID중복 체크</button>
           </div>
-          <span id="olmessage" class="form-text text-danger"></span>
         </div>
 
         <div class="mb-3">
@@ -39,7 +38,8 @@
 
         <div class="mb-3">
           <label for="member_pw2" class="form-label">비밀번호 확인</label>
-          <input type="password" class="form-control" name="member_pw2" id="member_pw2" placeholder="8~15자리의 영문 대소문자, 숫자, 특수문자" onblur="return confirmPwCheck();">
+          <input type="password" class="form-control" name="member_pw2" id="member_pw2"
+            type="button"  placeholder="8~15자리의 영문 대소문자, 숫자, 특수문자" onblur="return confirmPwCheck();">
         </div>
 
         <div class="mb-3">
@@ -59,8 +59,8 @@
         <div class="mb-3">
           <label for="member_zipcode" class="form-label">주소</label>
           <div class="input-group">
-          <input type="text" class="form-control" name="member_zipcode" id="member_zipcode" placeholder="우편번호 입력" readonly>
-          <button class="btn btn-outline-secondary" type="button" onclick="openDaumPostcode()">주소찾기</button>
+            <input type="text" class="form-control" name="member_zipcode" id="member_zipcode" placeholder="우편번호 입력" readonly>
+            <button class="btn btn-outline-secondary" type="button" onclick="openDaumPostcode()">주소찾기</button>
           </div>
           <input type="text" class="form-control my-2" name="member_addr" id="member_addr" placeholder="기본주소" readonly>
           <input type="text" class="form-control" name="member_addr2" id="member_addr2" placeholder="상세주소">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary" onclick="return agree_check();">가입하기</button>
+          <button type="submit" class="btn btn-primary" onclick="return memberCheck();">회원가입</button>
         </div>
 
       </form>

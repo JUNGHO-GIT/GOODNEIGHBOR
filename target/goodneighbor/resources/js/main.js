@@ -1,6 +1,6 @@
 // function scrollToFixed() ---------------------------------------------------------------------->
 $(document).ready(function () {
-	var w = window.innerWidth;
+	let w = window.innerWidth;
 
 	if (w > 767) {
 		$("#menu-jk").scrollToFixed();
@@ -11,7 +11,7 @@ $(document).ready(function () {
       maxWidth: 991,
       marginTop: 50,
       limit: function () {
-        var limit = $(".footer").offset().top - $("#menu-jk").outerHeight(true) - 10;
+        let limit = $(".footer").offset().top - $("#menu-jk").outerHeight(true) - 10;
         return limit;
       },
     });
@@ -45,7 +45,7 @@ $(document).ready(function () {
 // function animate() -------------------------------------------------------------------------->
 $(document).ready(function () {
 	$(".filter-button").click(function () {
-		var value = $(this).attr("data-filter");
+		let value = $(this).attr("data-filter");
 
 		if (value == "All") {
 			$(".filter").show("1000");
@@ -111,7 +111,7 @@ $(".checkbox_group").on("click", "#check_all", function () {
 });
 
 $(".checkbox_group").on("click", ".normal", function () {
-	var is_checked = true;
+	let is_checked = true;
 
 	$(".checkbox_group .normal").each(function () {
 		is_checked = is_checked && $(this).is(":checked");

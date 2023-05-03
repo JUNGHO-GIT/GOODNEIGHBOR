@@ -151,7 +151,7 @@ public class NoticeController {
 	}
 
   // 5-2. editPro() ------------------------------------------------------------------------------->
-	@RequestMapping(value="editPro.do", method=RequestMethod.POST)
+	@RequestMapping(value="/editPro.do", method=RequestMethod.POST)
 	public String editPro(NoticeDTO noticeDTO,HttpServletRequest request,Model model) {
 
 		String pageNum = request.getParameter("pageNum");

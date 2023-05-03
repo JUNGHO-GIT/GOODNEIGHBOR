@@ -28,7 +28,7 @@ function adminCheck() {
 // 2. confirmAdminIdCheck() ----------------------------------------------------------------------->
 function confirmAdminIdCheck() {
 
-	var id_validation = /^[a-zA-Z0-9]{6,12}$/;
+	let id_validation = /^[a-zA-Z0-9]{6,12}$/;
 
 	if ($("#admin_id").val() == "") {
 		alert("ID를 입력하세요");
@@ -85,7 +85,7 @@ function adminIdPwCheck() {
 
 // 4. confirmAdminPwCheck() ----------------------------------------------------------------------->
 function confirmAdminPwCheck() {
-	var pw_validation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+	let pw_validation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
 
 	if ($("#admin_pw").val() == "") {
 		$("#password-error").text("비밀번호를 입력하세요.");
@@ -120,7 +120,7 @@ function confirmAdminPwCheck() {
 
 // 4. confirmAdminTelCheck() ---------------------------------------------------------------------->
 function confirmAdminTelCheck() {
-	var tel_validation = /^01[0|1|6|7|8|9].?([0-9]{3,4}).?([0-9]{4})$/;
+	let tel_validation = /^01[0|1|6|7|8|9].?([0-9]{3,4}).?([0-9]{4})$/;
 
 	if ($("#member_tel").val() == "") {
 		return false;

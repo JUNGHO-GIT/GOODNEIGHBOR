@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.good.neighbor.model.MemberDTO;
 
 @Controller
@@ -25,7 +27,7 @@ public class MemberController {
 	private SqlSession sqlSession;
 
   // 1-1. insertForm() ---------------------------------------------------------------------------->
-	@RequestMapping(value="insertForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/insertForm.do", method=RequestMethod.GET)
 	public String insertForm() {
 		return "member/insertForm";
 	}
@@ -45,24 +47,28 @@ public class MemberController {
 	}
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->
-	@RequestMapping(value="idCheck.do", method=RequestMethod.POST)
-	public String idCheck(HttpServletRequest request, Model model) {
+  @ResponseBody
+  @PostMapping("/idCheck.do")
+	public int idCheck(HttpServletRequest request) throws Exception {
 
-		int check =  - 1;
+    String member_id = request.getParameter("member_id");
+    Integer result = sqlSession.selectOne("member.getDetails", member_id);
 
-		String member_id=request.getParameter("member_id");
-		MemberDTO memberDTO = sqlSession.selectOne("member.getDetails", member_id);
-
-		if(memberDTO == null) {
-			check = 1;
+		if(result != null) {
+      return -1;
 		}
-		model.addAttribute("check", check);
+    else if (result == null) {
+      return 1;
+    }
+    else {
+      Exception e = new Exception();
+      throw e;
+    }
+  }
 
-		return "/member/idCheck";
-	}
 
   // 1-5. insertPro() ----------------------------------------------------------------------------->
-	@RequestMapping(value="insertPro.do", method=RequestMethod.POST)
+	@RequestMapping(value="/insertPro.do", method=RequestMethod.POST)
 	public String insertPro (
     @ModelAttribute("memberDTO") MemberDTO memberDTO,
     HttpServletRequest request
@@ -74,7 +80,7 @@ public class MemberController {
 	}
 
   // 2-1. loginForm() ----------------------------------------------------------------------------->
-	@RequestMapping(value="loginForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/loginForm.do", method=RequestMethod.GET)
 	public String loginForm (
 		@CookieValue(value= "rememberMemberId", required = false)
 		String checkbox,
@@ -85,7 +91,7 @@ public class MemberController {
 	}
 
   // 2-2. loginPro() ------------------------------------------------------------------------------>
-	@RequestMapping(value="loginPro.do", method=RequestMethod.POST)
+	@RequestMapping(value="/loginPro.do", method=RequestMethod.POST)
 	public String loginPro (
     HttpServletRequest request,
     HttpServletResponse response,
@@ -124,14 +130,14 @@ public class MemberController {
 	}
 
   // 2-3. logOut() -------------------------------------------------------------------------------->
-	@RequestMapping(value="logOut.do", method=RequestMethod.GET)
+	@RequestMapping(value="/logOut.do", method=RequestMethod.GET)
 	public String logOut() {
 
 		return "member/logOut";
 	}
 
   // 3-1. getUpdate() ----------------------------------------------------------------------------->
-	@RequestMapping(value="getUpdate.do", method=RequestMethod.POST)
+	@RequestMapping(value="/getUpdate.do", method=RequestMethod.POST)
 	public String getUpdate(HttpServletRequest request, Model model) {
 
 		String member_id = request.getParameter("member_id");
@@ -143,7 +149,7 @@ public class MemberController {
 	}
 
   // 3-2. updatePro() ----------------------------------------------------------------------------->
-  @RequestMapping(value="updatePro.do", method=RequestMethod.POST)
+  @RequestMapping(value="/updatePro.do", method=RequestMethod.POST)
   public String updatePro (
     @ModelAttribute("memberDTO") MemberDTO memberDTO,
     HttpServletRequest request,
@@ -156,7 +162,7 @@ public class MemberController {
   }
 
   // 4-1. deleteForm() -------------------------------------------------------------------------->
-  @RequestMapping(value="deleteForm.do", method=RequestMethod.POST)
+  @RequestMapping(value="/deleteForm.do", method=RequestMethod.POST)
   public String deleteForm(Model model,HttpServletRequest request) {
 
     String member_id = request.getParameter("member_id");
@@ -167,7 +173,7 @@ public class MemberController {
   }
 
   // 4-2. deletePro() ----------------------------------------------------------------------------->
-  @RequestMapping(value="deletePro.do", method=RequestMethod.POST)
+  @RequestMapping(value="/deletePro.do", method=RequestMethod.POST)
   public String deletePro (HttpServletRequest request) {
 
     String member_id = request.getParameter("member_id");
@@ -186,21 +192,21 @@ public class MemberController {
   }
 
   // 5-1. search_main() --------------------------------------------------------------------------->
-  @RequestMapping(value="search_main", method=RequestMethod.GET)
+  @RequestMapping(value="/search_main", method=RequestMethod.GET)
   public String search_main () {
 
     return "member/search_main";
   }
 
   // 5-2. search_id() ----------------------------------------------------------------------------->
-  @RequestMapping(value="search_id", method=RequestMethod.GET)
+  @RequestMapping(value="/search_id", method=RequestMethod.GET)
   public String search_id() {
 
     return "member/search_id";
   }
 
   // 5-3. search_id_pro() ------------------------------------------------------------------------->
-  @RequestMapping(value="search_id_pro", method=RequestMethod.POST)
+  @RequestMapping(value="/search_id_pro", method=RequestMethod.POST)
   public String searchIdPro (HttpServletRequest request , Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");
@@ -220,14 +226,14 @@ public class MemberController {
   }
 
   // 5-4. search_pwd() ---------------------------------------------------------------------------->
-  @RequestMapping(value="search_pwd", method=RequestMethod.GET)
+  @RequestMapping(value="/search_pwd", method=RequestMethod.GET)
   public String search_pwdForm() {
 
     return "member/search_pwd";
   }
 
   // 5-5. search_pwd_pro() ------------------------------------------------------------------------>
-  @RequestMapping(value="search_pwd.do", method=RequestMethod.POST)
+  @RequestMapping(value="/search_pwd.do", method=RequestMethod.POST)
   public String search_pwdPro(HttpServletRequest request , Model model) {
 
     String writeID_search_pw = request.getParameter("writeID_search_pw");
