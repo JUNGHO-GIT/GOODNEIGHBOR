@@ -9,10 +9,8 @@
 /classes/
 /*.class
 
-# Dependency directories
-/lib/
-/bin/
-/boot/
+# node
+node_modules/
 
 # Log files
 /logs/
