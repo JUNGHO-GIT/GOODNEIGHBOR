@@ -1,6 +1,7 @@
 # IDE
 .idea/
 .vscode/
+.settings/
 
 # Compiled output
 /target/
