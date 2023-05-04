@@ -32,7 +32,3 @@ release.properties
 
 # Spring Boot specific
 /maven-wrapper/
-
-# Other
-*.swp
-*~
