@@ -86,6 +86,7 @@ const deleteCheck = () => {
           return false;
         }
         else if (xhr.responseText == 1) {
+          alert("글이 삭제되었습니다.");
           window.location.href = "deletePro.do?board_number=" + board_number + "&board_pw=" + board_pw;
           return true;
         }
