@@ -38,7 +38,7 @@
 
         <!-- 로그인 x -->
         <c:if test="${member_id == null && admin_id == null}">
-          <div class="col-lg-6 d-none d-md-block col-md-6 btn-bhed">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 btn-bhed">
             <button class="btn btn-sm btn-success" onclick="location.href='${ctxPath}/member/loginForm.do'">
               로그인
             </button>
@@ -53,7 +53,7 @@
 
         <!-- 로그인 o -->
         <c:if test="${member_id != null}">
-          <div class="col-lg-6 d-none d-md-block col-md-6 btn-bhed">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 btn-bhed">
             <form method="POST" action="${ctxPath}/member/getUpdate.do">
               <input type="hidden" name="member_name" value="${member_name}"/>
               <button class="btn btn-sm btn-success" onclick="location.href='${ctxPath}/member/logOut.do'" type="button">로그아웃</button>
@@ -64,7 +64,7 @@
 
         <!-- 관리자 로그인 o -->
         <c:if test="${admin_id != null}">
-          <div class="col-lg-6 d-none d-md-block col-md-6 btn-bhed">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 btn-bhed">
             <button class="btn btn-sm btn-success" onclick="location.href='${ctxPath}/admin/logOut.do'">
               로그아웃
             </button>
@@ -73,7 +73,6 @@
             </button>
           </div>
         </c:if>
-
       </div>
     </div>
 
@@ -81,7 +80,7 @@
   <div id="menu-jk" class="header-bottom">
     <div class="container">
       <div class="row nav-row">
-        <div class="col-lg-3 col-md-12 logo">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 col-12 logo-col">
           <a href="${ctxPath}">
             <img src="${ctxPath}/resources/imgs/etc/main.png" height="60"/>
             <a data-toggle="collapse" data-target="#menu" href="#menu">

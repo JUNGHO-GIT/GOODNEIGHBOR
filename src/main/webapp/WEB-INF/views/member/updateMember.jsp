@@ -19,7 +19,7 @@
 
     <main class="main container-fluid w-50 mx-auto">
 
-      <form action="${ctxPath}/member/updatePro.do" method="POST" onsubmit="return memberCheck();">
+      <form action="${ctxPath}/member/editPro.do" method="POST" onsubmit="return memberCheck();">
         <div class="mb-3">
           <label for="member_id" class="form-label">ID</label>
           ${dto.member_id}
@@ -41,7 +41,7 @@
           <label for="member_zipcode" class="form-label">우편번호</label>
           <div class="input-group">
             <input type="text" name="member_zipcode" id="member_zipcode" class="form-control" value="${dto.member_zipcode}" readonly />
-            <button type="button" class="btn btn-outline-secondary" onclick="openDaumPostcode()">주소찾기</button>
+            <button type="button" class="btn btn btn-primary btn-sm" onclick="openDaumPostcode()">주소찾기</button>
           </div>
         </div>
         <div class="mb-3">
@@ -53,9 +53,9 @@
           <input type="text" name="member_addr2" id="member_addr2" class="form-control" value="${dto.member_addr2}" size="40"/>
         </div>
         <div class="text-center">
-          <input type="submit" value="내 정보 수정" class="btn btn-primary"/>
+          <input type="submit" value="내 정보 수정" class="btn btn-primary btn-sm"/>
           <input type="button" value="회원탈퇴" onclick="location.href='${ctxPath}/member/deleteForm.do'" class="btn btn-danger"/>
-          <input type="button" onclick="location='${ctxPath}'" value="메인으로" class="btn btn-outline-secondary"/>
+          <input type="button" onclick="window.location.href='${ctxPath}'" value="메인으로" class="btn btn btn-primary btn-sm"/>
         </div>
       </form>
 

@@ -2,58 +2,61 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
-<c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}" />
+<c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-	<head>
-    <jsp:include page="/WEB-INF/views/common/head.jsp"/>
-		<%
-      String keyField = "";
-      String keyWord = "";
+<head>
+  <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  <%
+    String keyField = "";
+    String keyWord = "";
 
-      if(request.getParameter("keyWord") != null) {
-        keyField = request.getParameter("keyField");
-        keyWord = request.getParameter("keyWord");
+    if(request.getParameter("keyWord") != null) {
+      keyField = request.getParameter("keyField");
+      keyWord = request.getParameter("keyWord");
+    }
+    if(request.getParameter("reload") != null) {
+      if(request.getParameter("reload").equals("true")) {
+        keyWord = "";
+        keyField = "";
       }
-      if(request.getParameter("reload") != null) {
-        if(request.getParameter("reload").equals("true")) {
-          keyWord = "";
-          keyField = "";
-        }
-      }
-    %>
-	</head>
+    }
+  %>
+</head>
 
-  <body>
+<body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
+  <jsp:include page="/WEB-INF/views/common/header.jsp" />
+  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-    <main class="main container-fluid w-50 mx-auto">
-      <h2 class="text-center my-4">공지사항</h2>
+  <main class="main container-fluid w-50 mx-auto">
+    <div class="text-center my-4">
+      <h1>공지사항</h1>
+    </div>
 
-      <c:if test="${admin_id  != null}">
-        <div class="d-flex justify-content-end mb-3">
-          <a href="${ctxPath}/notice/insertForm.do" class="btn btn-primary">글쓰기</a>
-        </div>
-      </c:if>
-
-      <div class="alert alert-danger text-center" role="alert" id="no_search">
-        <c:if test="${pt.cnt==0}">게시된 글이 없습니다</c:if>
+    <c:if test="${admin_id != null}">
+      <div class="d-flex justify-content-end mb-3">
+        <a href="${ctxPath}/notice/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
       </div>
-
-      <c:if test="${pt.cnt>0}">
-        <table class="table table-bordered">
+    </c:if>
+    <c:if test="${pt.cnt==0}">
+      <div class="alert alert-danger text-center" role="alert" id="no_search">
+        게시된 글이 없습니다
+      </div>
+    </c:if>
+    <c:if test="${pt.cnt>0}">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr>
               <th scope="col">글번호</th>
               <th scope="col">글제목</th>
               <th scope="col">작성자</th>
               <th scope="col">작성일</th>
-              <th scope="col">조횟수</th>
+              <th scope="col">조회수</th>
             </tr>
           </thead>
           <tbody>
@@ -61,14 +64,16 @@
               <c:if test="${dto.notice_fix == true}">
                 <tr>
                   <td align="center">
-                    <img alt="공지" src="${ctxPath}/resources/imgs/notice_icon.png" width="40" height="30"/>
+                    <img alt="공지" src="${ctxPath}/resources/imgs/etc/notice_icon.png" width="40"
+                    height="30" />
                   </td>
                   <td align="left">
-                    <a href="${ctxPath}/notice/content.do?notice_number=${dto.notice_number}">${dto.notice_title}</a>
+                    <a href="${ctxPath}/notice/content.do?notice_number=${dto.notice_number}"
+                    class="text-decoration-none linkHover">${dto.notice_title}</a>
                   </td>
                   <td align="center">${dto.notice_writer}</td>
                   <td align="center">
-                    <fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy/MM/dd"/>
+                    <fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy/MM/dd" />
                   </td>
                   <td align="center">${dto.notice_readcount}</td>
                 </tr>
@@ -78,14 +83,14 @@
               <c:if test="${dto.notice_fix==false}">
                 <tr>
                   <td align="center">${number}
-                    <c:set var="number" value="${number-1}"/>
+                    <c:set var="number" value="${number-1}" />
                   </td>
                   <td align="left">
-                    <a href="${ctxPath}/notice/content.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">${dto.notice_title}</a>
+                    <a href="${ctxPath}/notice/content.do?notice_number=${dto.notice_number}&pageNum=${pageNum}" class="text-decoration-none linkHover">${dto.notice_title}</a>
                   </td>
                   <td align="center">${dto.notice_writer}</td>
                   <td align="center">
-                    <fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy/MM/dd"/>
+                    <fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy/MM/dd" />
                   </td>
                   <td align="center">${dto.notice_readcount}</td>
                 </tr>
@@ -93,37 +98,46 @@
             </c:forEach>
           </tbody>
         </table>
-      </c:if>
-
-      <form name="searchForm" method="GET" action="${ctxPath}/notice/list.do" class="mb-4">
-        <div class="input-group">
-          <select name="keyField" class="form-select" id="select_option">
-            <option value="notice_title">제목</option>
-            <option value="notice_content">내용</option>
-          </select>
-          <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요"/>
-          <input type="hidden" name="pageNum" value="1"/>
-          <button type="button" class="btn btn-primary" onclick="return noticeSearchCheck()">검색</button>
-        </div>
-      </form>
-
-      <div class="d-flex justify-content-center">
-        <c:if test="${pt.cnt>0}">
-          <c:if test="${pt.startPage>10}">
-            <a href="${ctxPath}/notice/list.do?pageNum=${pt.startPage-10}" class="btn btn-outline-secondary mx-1">이전블럭</a>
-          </c:if>
-          <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-            <a href="${ctxPath}/notice/list.do?pageNum=[${i}]&keyField=${keyField}&keyWord=${keyWord}" class="btn btn-outline-primary mx-1">[${i}]</a>
-          </c:forEach>
-          <c:if test="${pt.endPage < pt.pageCnt}">
-            <a href="${ctxPath}/notice/list.do?pageNum=${pt.startPage+10}" class="btn btn-outline-secondary mx-1">다음블럭</a>
-          </c:if>
-        </c:if>
       </div>
+    </c:if>
 
-    </main><br/><br/>
+    <form name="searchForm" method="GET" action="${ctxPath}/notice/list.do" class="mb-4">
+      <div class="input-group">
+        <select name="keyField" class="form-select" id="select_option">
+          <option value="notice_title">제목</option>
+          <option value="notice_content">내용</option>
+        </select>
+        <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요" />
+        <input type="hidden" name="pageNum" value="1" />
+        <button type="button" class="btn btn-primary btn-sm"
+          onclick="return noticeSearchCheck()">검색</button>
+      </div>
+    </form>
+    <div class="d-flex justify-content-center">
+      <c:if test="${pt.cnt>0}">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <c:if test="${pt.startPage>10}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/notice/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+            </c:if>
+            <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/notice/list.do?pageNum=${i}&keyField=${keyField}&keyWord=${keyWord}">${i}</a>
+              </li>
+            </c:forEach>
+            <c:if test="${pt.endPage<pt.pageCnt}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/notice/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+            </c:if>
+          </ul>
+        </nav>
+      </c:if>
+    </div>
+  </main><br /><br />
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-  </body>
+</body>
+
 </html>

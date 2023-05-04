@@ -35,7 +35,7 @@
     {
       "files": "*.jsp",
       "options": {
-        "parser": "html",
+        "parser": "html"
       }
     }
 	],

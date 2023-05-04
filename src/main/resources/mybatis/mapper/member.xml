@@ -13,6 +13,12 @@
     )
 	</insert>
 
+  <!-- 3-1. 아이디 중복체크 -->
+  <select id="getCheckId" parameterType="String" resultType="Integer">
+    select count(*) from member
+    where member_id=#{member_id}
+  </select>
+
   <!-- 4. 회원 상세정보 -->
 	<select id="getDetails" parameterType="String" resultType="Integer">
 		select *

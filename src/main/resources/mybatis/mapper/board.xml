@@ -20,10 +20,10 @@
   <!-- 3. 글쓰기 -->
   <insert id="getInsert" parameterType="boardDTO">
     insert into board (
-      board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_ref, board_step,board_level
+      board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_group, board_step, board_level
     )
     values (
-      #{board_number}, #{board_writer},# {board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_ref}, #{board_step}, #{board_level}
+      #{board_number}, #{board_writer}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
     )
   </insert>
 
@@ -31,7 +31,7 @@
   <update id="getUpdateStep" parameterType="boardDTO">
     update board
     set board_step = board_step + 1
-    where board_ref = #{board_ref} and board_step <![CDATA[>]]> #{board_step}
+    where board_group = #{board_group} and board_step <![CDATA[>]]> #{board_step}
   </update>
 
   <!-- 5. 전체 게시글 목록 -->
@@ -42,7 +42,7 @@
       from (
         select *
         from board
-        order by board_ref desc, board_step asc
+        order by board_group desc, board_step asc
       ) b where ROWNUM <![CDATA[<=]]> #{start} + #{count}
     )
     where rnum <![CDATA[>]]> #{start}
@@ -90,6 +90,13 @@
     set board_writer = #{board_writer}, board_title = #{board_title}, board_content = #{board_content}
     where board_number = #{board_number} and board_pw = #{board_pw}
   </update>
+
+  <!-- 9. 게시물 비밀번호 확인 -->
+  <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from board
+    where board_number = #{board_number} and board_pw = #{board_pw}
+  </select>
 
   <!-- 9. 게시물 삭제 -->
   <delete id="getDelete" parameterType="int">

@@ -26,7 +26,7 @@
           <label for="member_id" class="form-label">아이디</label>
           <div class="input-group">
             <input type="text" class="form-control" name="member_id" id="member_id" placeholder="6-12자의 영문 대소문자, 숫자">
-            <button type="button" class="btn btn-primary" id="dupcheck" onclick="confirmIdCheck()">ID중복 체크</button>
+            <button type="button" class="btn btn-primary btn-sm" id="dupcheck" onclick="confirmIdCheck()">ID중복 체크</button>
           </div>
         </div>
 
@@ -60,7 +60,7 @@
           <label for="member_zipcode" class="form-label">주소</label>
           <div class="input-group">
             <input type="text" class="form-control" name="member_zipcode" id="member_zipcode" placeholder="우편번호 입력" readonly>
-            <button class="btn btn-outline-secondary" type="button" onclick="openDaumPostcode()">주소찾기</button>
+            <button class="btn btn btn-primary btn-sm" type="button" onclick="openDaumPostcode()">주소찾기</button>
           </div>
           <input type="text" class="form-control my-2" name="member_addr" id="member_addr" placeholder="기본주소" readonly>
           <input type="text" class="form-control" name="member_addr2" id="member_addr2" placeholder="상세주소">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary" onclick="return memberCheck();">회원가입</button>
+          <button type="submit" class="btn btn-primary btn-sm" onclick="return memberCheck();">회원가입</button>
         </div>
 
       </form>

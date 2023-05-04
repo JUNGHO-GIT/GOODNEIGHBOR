@@ -26,7 +26,7 @@
               <label for="admin_id" class="form-label">아이디</label>
               <div class="input-group">
                 <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="6-12자의 영문 대소문자, 숫자"/>
-                <button type="button" class="btn btn-primary" id="admin_id_button"
+                <button type="button" class="btn btn-primary btn-sm" id="admin_id_button"
                 onclick="return confirmAdminIdCheck();">ID중복 체크</button>
               </div>
               <div id="olmessage" class="form-text"></div>
@@ -49,7 +49,7 @@
               <input type="text" class="form-control" name="admin_tel" id="admin_tel" size="30" placeholder="휴대폰 번호 입력('-'제외)" onblur="return confirmAdminTelCheck();"/>
             </div>
             <div class="text-center">
-              <input type="submit" value="가입하기" class="btn btn-primary"/>
+              <input type="submit" value="가입하기" class="btn btn-primary btn-sm"/>
             </div>
           </form>
         </div>

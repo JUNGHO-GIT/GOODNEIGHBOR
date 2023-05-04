@@ -50,8 +50,8 @@
                 <label class="form-check-label" for="fixed">게시물 상단고정</label>
               </div>
               <div class="mt-3">
-                <input type="submit" class="btn btn-primary me-1" value="글수정"/>
-                <input type="button" class="btn btn-primary" value="취소" onclick="location='${ctxPath}/notice/list.do'"/>
+                <input type="submit" class="btn btn-primary btn-sm me-2" value="글수정"/>
+                <input type="button" class="btn btn-primary btn-sm" value="취소" onclick="window.location.href='${ctxPath}/notice/list.do'"/>
               </div>
             </td>
           </tr>

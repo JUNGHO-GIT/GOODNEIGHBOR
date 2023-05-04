@@ -20,10 +20,11 @@
   <!-- 3. 글쓰기 -->
   <insert id="getInsert" parameterType="qnaDTO">
     insert into qna (
-      qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_ref, qna_step,qna_level
+      qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_group, qna_step,qna_level
     )
     values (
-      #{qna_number}, #{qna_writer},# {qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_ref}, #{qna_step}, #{qna_level}
+      #{qna_number}, #{qna_writer}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
+      #{qna_step}, #{qna_level}
     )
   </insert>
 
@@ -31,7 +32,7 @@
   <update id="getUpdateStep" parameterType="qnaDTO">
     update qna
     set qna_step = qna_step + 1
-    where qna_ref = #{qna_ref} and qna_step <![CDATA[>]]> #{qna_step}
+    where qna_group = #{qna_group} and qna_step <![CDATA[>]]> #{qna_step}
   </update>
 
   <!-- 5. 전체 게시글 목록 -->
@@ -42,7 +43,7 @@
       from (
         select *
         from qna
-        order by qna_ref desc, qna_step asc
+        order by qna_group desc, qna_step asc
       ) q where ROWNUM <![CDATA[<=]]> #{start} + #{count}
     )
     where rnum <![CDATA[>]]> #{start}

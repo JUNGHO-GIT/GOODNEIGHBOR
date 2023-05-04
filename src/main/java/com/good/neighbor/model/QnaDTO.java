@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 public class QnaDTO {
 
   // fields --------------------------------------------------------------------------------------->
-  private int qna_number;
-  private int qna_readcount;
-  private int qna_ref;
-  private int qna_step;
-  private int qna_level;
+  private Integer qna_number;
+  private Integer qna_readcount;
+  private Integer qna_group;
+  private Integer qna_step;
+  private Integer qna_level;
   private String qna_writer;
   private String qna_pw;
   private String qna_title;
@@ -17,19 +17,19 @@ public class QnaDTO {
   private Timestamp qna_regdate;
 
   // getters -------------------------------------------------------------------------------------->
-  public int getQna_number() {
+  public Integer getQna_number() {
     return qna_number;
   }
-  public int getQna_readcount() {
+  public Integer getQna_readcount() {
     return qna_readcount;
   }
-  public int getQna_ref() {
-    return qna_ref;
+  public Integer getQna_group() {
+    return qna_group;
   }
-  public int getQna_step() {
+  public Integer getQna_step() {
     return qna_step;
   }
-  public int getQna_level() {
+  public Integer getQna_level() {
     return qna_level;
   }
   public String getQna_writer() {
@@ -49,19 +49,19 @@ public class QnaDTO {
   }
 
   // setters -------------------------------------------------------------------------------------->
-  public void setQna_number(int qna_number) {
+  public void setQna_number(Integer qna_number) {
     this.qna_number = qna_number;
   }
-  public void setQna_readcount(int qna_readcount) {
+  public void setQna_readcount(Integer qna_readcount) {
     this.qna_readcount = qna_readcount;
   }
-  public void setQna_ref(int qna_ref) {
-    this.qna_ref = qna_ref;
+  public void setQna_group(Integer qna_group) {
+    this.qna_group = qna_group;
   }
-  public void setQna_step(int qna_step) {
+  public void setQna_step(Integer qna_step) {
     this.qna_step = qna_step;
   }
-  public void setQna_level(int qna_level) {
+  public void setQna_level(Integer qna_level) {
     this.qna_level = qna_level;
   }
   public void setQna_writer(String qna_writer) {

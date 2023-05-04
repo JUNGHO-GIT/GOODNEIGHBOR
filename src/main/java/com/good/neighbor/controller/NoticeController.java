@@ -74,7 +74,8 @@ public class NoticeController {
 
     if(keyWord == null || keyWord.length()<1 || keyWord.equals("")) {
       cnt = sqlSession.selectOne("notice.getCount");
-    } else {
+    }
+    else {
       map3.put("columnParam", keyField);
       map3.put("keyWord", keyWord);
       cnt = sqlSession.selectOne("notice.getSearchCount", map3);
@@ -87,15 +88,16 @@ public class NoticeController {
     List<NoticeDTO> list = null;
 
     if(keyWord == null || keyWord.length() < 1 || keyWord.equals("")) {
-      map.put("start", startPos);
-      map.put("count", pt.getPageSize());
+      map.put("start", new Integer(startPos));
+      map.put("count", new Integer(pt.getPageSize()));
 
       list = sqlSession.selectList("notice.getList", map);
-    } else if(keyWord != null && keyWord.length() > 1) {
+    }
+    else if(keyWord != null && keyWord.length() > 1) {
       map2.put("columnParam", keyField);
       map2.put("keyWord", keyWord);
-      map2.put("start", startPos);
-      map2.put("count", pt.getPageSize());
+      map2.put("start", new Integer(startPos));
+      map2.put("count", new Integer(pt.getPageSize()));
 
       list = sqlSession.selectList("notice.getSearch", map2);
     }
@@ -122,7 +124,7 @@ public class NoticeController {
 
 
   // 4-1. content() ------------------------------------------------------------------------------->
-	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	@RequestMapping(value="/content.do", method=RequestMethod.GET)
 	public String content(HttpServletRequest request, Model model) {
 
 		String pageNum = request.getParameter("pageNum");

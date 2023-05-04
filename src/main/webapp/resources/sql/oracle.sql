@@ -14,7 +14,7 @@ board_content CLOB NOT NULL,
 board_pw VARCHAR2(20) NOT NULL,
 board_regdate TIMESTAMP NOT NULL,
 board_readcount INT NOT NULL,
-board_ref INT NOT NULL,
+board_group INT NOT NULL,
 board_step INT NOT NULL,
 board_level INT NOT NULL,
 board_ip VARCHAR2(20) NOT NULL
@@ -58,7 +58,7 @@ product_imageName VARCHAR2(50) NOT NULL
 CREATE TABLE qna (
 qna_number INT PRIMARY KEY NOT NULL,
 qna_readcount INT NOT NULL,
-qna_ref INT NOT NULL,
+qna_group INT NOT NULL,
 qna_step INT NOT NULL,
 qna_level INT NOT NULL,
 qna_writer VARCHAR2(20) NOT NULL,

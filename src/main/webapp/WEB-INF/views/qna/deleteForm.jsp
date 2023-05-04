@@ -37,8 +37,8 @@
               </tr>
               <tr>
                 <td class="text-center">
-                  <input type="submit" class="btn btn-primary me-2" value="삭제"/>
-                  <input type="button" class="btn btn-primary" value="글목록" onclick="location='${ctxPath}/qna/list.do'"/>
+                  <input type="submit" class="btn btn-primary btn-sm me-2" value="삭제"/>
+                  <input type="button" class="btn btn-primary btn-sm" value="글목록" onclick="window.location.href='${ctxPath}/qna/list.do'"/>
                 </td>
               </tr>
             </tbody>

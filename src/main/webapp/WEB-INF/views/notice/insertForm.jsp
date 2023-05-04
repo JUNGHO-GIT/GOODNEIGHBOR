@@ -19,7 +19,7 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h2 class="text-center my-4">공지사항</h2>
-      <form name="writeForm" method="POST" action="${ctxPath}/notice/insertPro.do" onsubmit="return noticeCheck()">
+      <form name="insertForm" method="POST" action="${ctxPath}/notice/insertPro.do" onsubmit="return noticeCheck()">
         <table class="table table-bordered">
           <tr>
             <td class="text-center" width="150">작성자</td>
@@ -40,8 +40,8 @@
                 <label class="form-check-label" for="fixed">게시물 고정하기</label>
               </div>
               <div class="mt-3">
-                <input type="submit" class="btn btn-primary me-1" value="글쓰기"/>
-                <input type="button" class="btn btn-primary" value="취소" onclick="location='${ctxPath}/notice/list.do'"/>
+                <input type="submit" class="btn btn-primary btn-sm me-2" value="글쓰기"/>
+                <input type="button" class="btn btn-primary btn-sm" value="취소" onclick="window.location.href='${ctxPath}/notice/list.do'"/>
               </div>
             </td>
           </tr>

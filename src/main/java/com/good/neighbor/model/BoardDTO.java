@@ -5,20 +5,23 @@ import java.sql.Timestamp;
 public class BoardDTO {
 
   // fields --------------------------------------------------------------------------------------->
-	private int board_number;
+	private Integer board_number;
 	private String board_writer;
 	private String board_title;
 	private String board_content;
 	private String board_pw;
 	private Timestamp board_regdate;
-	private int board_readcount;
-	private int board_ref;
-	private int board_step;
-	private int board_level;
+	private Integer board_readcount;
+	private Integer board_group;
+	private Integer board_step;
+	private Integer board_level;
 	private String board_ip;
+  private int next_step;
+  private int next_level;
+
 
   // getters -------------------------------------------------------------------------------------->
-  public int getBoard_number() {
+  public Integer getBoard_number() {
     return board_number;
   }
   public String getBoard_writer() {
@@ -36,24 +39,30 @@ public class BoardDTO {
   public Timestamp getBoard_regdate() {
     return board_regdate;
   }
-  public int getBoard_readcount() {
+  public Integer getBoard_readcount() {
     return board_readcount;
   }
-  public int getBoard_ref() {
-    return board_ref;
+  public Integer getBoard_group() {
+    return board_group;
   }
-  public int getBoard_step() {
+  public Integer getBoard_step() {
     return board_step;
   }
-  public int getBoard_level() {
+  public Integer getBoard_level() {
     return board_level;
   }
   public String getBoard_ip() {
     return board_ip;
   }
+  public int getNext_step() {
+    return next_step;
+  }
+  public int getNext_level() {
+    return next_level;
+  }
 
   // setters -------------------------------------------------------------------------------------->
-  public void setBoard_number(int board_number) {
+  public void setBoard_number(Integer board_number) {
     this.board_number = board_number;
   }
   public void setBoard_writer(String board_writer) {
@@ -71,20 +80,26 @@ public class BoardDTO {
   public void setBoard_regdate(Timestamp board_regdate) {
     this.board_regdate = board_regdate;
   }
-  public void setBoard_readcount(int board_readcount) {
+  public void setBoard_readcount(Integer board_readcount) {
     this.board_readcount = board_readcount;
   }
-  public void setBoard_ref(int board_ref) {
-    this.board_ref = board_ref;
+  public void setBoard_group(Integer board_group) {
+    this.board_group = board_group;
   }
-  public void setBoard_step(int board_step) {
+  public void setBoard_step(Integer board_step) {
     this.board_step = board_step;
   }
-  public void setBoard_level(int board_level) {
+  public void setBoard_level(Integer board_level) {
     this.board_level = board_level;
   }
   public void setBoard_ip(String board_ip) {
     this.board_ip = board_ip;
+  }
+  public void setNext_step(int next_step) {
+    this.next_step = next_step;
+  }
+  public void setNext_level(int next_level) {
+    this.next_level = next_level;
   }
 
 }

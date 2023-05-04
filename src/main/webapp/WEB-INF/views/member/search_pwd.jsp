@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <input type="submit" name="search" value="다음" class="btn btn-primary" />
+          <input type="submit" name="search" value="다음" class="btn btn-primary btn-sm" />
         </div>
 
       </form>

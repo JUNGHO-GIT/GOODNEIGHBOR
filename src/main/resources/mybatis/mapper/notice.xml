@@ -20,10 +20,10 @@
 	<!-- 3. 글쓰기 -->
 	<insert id="getInsert" parameterType="noticeDTO">
 		insert into notice (
-      notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_ref, notice_step,notice_level
+      notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_group, notice_step,notice_level
     )
     values (
-      #{notice_number}, #{notice_writer},# {notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_ref}, #{notice_step}, #{notice_level}
+      #{notice_number}, #{notice_writer}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
     )
 	</insert>
 
@@ -31,7 +31,7 @@
 	<update id="getUpdateStep" parameterType="noticeDTO">
 		update notice
     set notice_step = notice_step + 1
-    where notice_ref = #{notice_ref} and notice_step <![CDATA[>]]> #{notice_step}
+    where notice_group = #{notice_group} and notice_step <![CDATA[>]]> #{notice_step}
 	</update>
 
 	<!-- 5. 전체 게시글 목록 -->
@@ -40,7 +40,7 @@
       select n.*, ROWNUM rnum
       from (
         select * from notice
-        order by notice_ref desc, notice_step asc
+        order by notice_group desc, notice_step asc
       ) n where ROWNUM <![CDATA[<=]]> #{start} + #{count}
     )
     where rnum <![CDATA[>]]> #{start}

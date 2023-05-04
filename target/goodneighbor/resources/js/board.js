@@ -8,8 +8,8 @@ function searchBoardCheck() {
 	document.searchForm.submit();
 }
 
-// 1. boardWriteSave() ---------------------------------------------------------------------------->
-function boardWriteSave() {
+// 1. boardCheck() -------------------------------------------------------------------------------->
+function boardCheck() {
 	if ($("#board_writer").val() == "") {
 		alert("이름을 입력 하세요 ");
 		$("#board_writer").focus();
@@ -63,5 +63,40 @@ function pwCheck2() {
 		return false;
 	}
 }
+
+// 4. deleteCheck() ------------------------------------------------------------------------------->
+const deleteCheck = () => {
+
+  const xhr = new XMLHttpRequest();
+  const board_number = document.getElementById("board_number").value;
+  const board_pw = prompt("글을 삭제하시려면 암호를 입력하세요");
+
+  if (board_pw == null) {
+    alert("암호가 입력되지 않았습니다.");
+    return false;
+  }
+  else {
+    xhr.open("POST", "deleteCheck.do", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("board_pw=" + board_pw + "&board_number=" + board_number);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.responseText == -1) {
+          alert("암호가 일치하지 않습니다.");
+          return false;
+        }
+        else if (xhr.responseText == 1) {
+          window.location.href = "deletePro.do?board_number=" + board_number + "&board_pw=" + board_pw;
+          return true;
+        }
+        else {
+          alert("오류가 발생했습니다.");
+          return false;
+        }
+      }
+    }
+  }
+}
+
 
 

@@ -2,53 +2,53 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
-<c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}" />
+<c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-  <head>
-    <jsp:include page="/WEB-INF/views/common/head.jsp"/>
-    <%
-      String keyField = "";
-      String keyWord = "";
+<head>
+  <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  <%
+    String keyField = "";
+    String keyWord = "";
 
-      if(request.getParameter("keyWord") != null) {
-        keyField = request.getParameter("keyField");
-        keyWord = request.getParameter("keyWord");
+    if(request.getParameter("keyWord") != null) {
+      keyField = request.getParameter("keyField");
+      keyWord = request.getParameter("keyWord");
+    }
+
+    if(request.getParameter("reload") != null) {
+      if(request.getParameter("reload").equals("true")) {
+        keyWord = "";
+        keyField = "";
       }
+    }
+  %>
+</head>
 
-      if(request.getParameter("reload") != null) {
-        if(request.getParameter("reload").equals("true")) {
-          keyWord = "";
-          keyField = "";
-        }
-      }
-    %>
-  </head>
+<body>
+  <jsp:include page="/WEB-INF/views/common/header.jsp" />
+  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-  <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
-
-    <main class="main container-fluid w-50 mx-auto">
-      <h2 class="text-center">게시판</h2>
-
+  <main class="main container-fluid w-50 mx-auto">
+    <div class="text-center my-4">
+      <h1>게시판</h1>
+    </div>
+    <c:if test="${member_id != null || admin_id != null}">
       <div class="d-flex justify-content-end mb-3">
-        <c:if test="${member_id != null || admin_id != null}">
-          <a href="${ctxPath}/board/writeForm.do" class="btn btn-primary">글쓰기</a>
-        </c:if>
+        <a href="${ctxPath}/board/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
       </div>
-
+    </c:if>
+    <c:if test="${pt.cnt == 0}">
       <div class="alert alert-danger text-center" role="alert" id="no_search">
-        <c:if test="${pt.cnt == 0}">
-          게시된 글이 없습니다.
-        </c:if>
+        게시된 글이 없습니다.
       </div>
-
-      <c:if test="${pt.cnt > 0}">
-        <table class="table table-striped table-hover" id="board">
+    </c:if>
+    <c:if test="${pt.cnt > 0}">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr>
               <th scope="col">글번호</th>
@@ -61,68 +61,80 @@
           <tbody>
             <c:forEach var="dto" items="${list}">
               <tr>
-                <td align="center" height="100px">${number}<c:set var="number" value="${number-1}"/>
+                <td>${number}
+                  <c:set var="number" value="${number-1}" />
                 </td>
-                <td align="left" class="d-flex">
+                <td>
                   <c:if test="${dto.board_level>0}">
-                    <img src="../resources/imgs/level.gif" width="${5*dto.board_level}" class="me-2"/>
-                    <img src="../resources/imgs/re.gif" class="me-2"/>
+                    <img src="${ctxPath}/resources/imgs/etc/level.gif" width="${5*dto.board_level}"
+                      width="10" height="10" />
+                    <b>[답변]</b>
                   </c:if>
-                  <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none">${dto.board_title}
-                  </a>
+                  <c:if test="${dto.board_level==0}">
+                    <img src="${ctxPath}/resources/imgs/etc/level.gif" width="${5*dto.board_level}"
+                      width="10" height="10" />
+                  </c:if>
+                  <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}"
+                    height="16" id="none_color"
+                    class="text-decoration-none linkHover">${dto.board_title}</a>
                   <c:if test="${dto.board_readcount>=10}">
-                    <img src="../resources/imgs/hot.gif" class="ms-2"/>
+                    <img src="${ctxPath}/resources/imgs/etc/hot.gif" class="ms-2" width="10"
+                      height="10" />
                   </c:if>
                 </td>
-                <td align="center">${dto.board_writer}</td>
-                <td align="center"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy/MM/dd"/>
+                <td>${dto.board_writer}</td>
+                <td>
+                  <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy/MM/dd" />
                 </td>
-                <td align="center">${dto.board_readcount}</td>
+                <td>${dto.board_readcount}</td>
               </tr>
             </c:forEach>
           </tbody>
         </table>
-      </c:if>
+      </div>
+    </c:if>
 
-      <form name="searchForm" method="GET" action="list.do">
-        <div class="input-group my-3">
-          <select class="form-select" name="keyField" id="select_option">
-            <option value="board_title">제목</option>
-            <option value="board_writer">이름</option>
-            <option value="board_content">내용</option>
-          </select>
-          <input class="form-control" type="text" name="keyWord" size="16" placeholder="검색어를 입력하세요."/>
-          <button class="btn btn-primary" type="submit" onclick="return searchBoardCheck();">검색</button>
-          <input type="hidden" name="page" value="0" />
-        </div>
-      </form>
-
-      <form name="listForm" method="POST">
-        <input type="hidden" name="reload" value="true"/>
-        <input type="hidden" name="nowBlock" value="0"/>
-      </form>
-
-      <div class="d-flex justify-content-center mt-4">
-        <c:if test="${pt.cnt > 0}">
-          <div class="d-flex align-items-center">
-            <c:if test="${pt.startPage > 10}">
-              <a class="btn btn-outline-primary" href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
-            </c:if>
-
-            <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-              <a class="btn btn-outline-primary mx-1" href="${ctxPath}/board/list.do?pageNum=[${i}]&keyWord=${keyWord}&keyField=${keyField}">[${i}]</a>
-            </c:forEach>
-
-            <c:if test="${pt.endPage < pt.pageCnt}">
-              <a class="btn btn-outline-primary" href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
-            </c:if>
-          </div>
-        </c:if>
+    <form name="searchForm" method="GET" action="${ctxPath}/board/list.do" class="mb-4">
+      <div class="input-group">
+        <select class="form-select" name="keyField" id="select_option">
+          <option value="board_title">제목</option>
+          <option value="board_writer">이름</option>
+          <option value="board_content">내용</option>
+        </select>
+        <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요." />
+        <input type="hidden" name="pageNum" value="1" />
+        <button class="btn btn-primary btn-sm" type="submit" onclick="return searchBoardCheck();">검색</button>
       </div>
 
-    </main><br/><br/>
+      <input type="hidden" name="reload" value="true" />
+      <input type="hidden" name="nowBlock" value="0" />
+    </form>
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <div class="d-flex justify-content-center">
+      <c:if test="${pt.cnt > 0}">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <c:if test="${pt.startPage>10}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+            </c:if>
+            <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/board/list.do?pageNum=${i}">${i}</a></li>
+            </c:forEach>
+            <c:if test="${pt.endPage<pt.pageCnt}">
+              <li class="page-item"><a class="page-link"
+                  href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+            </c:if>
+          </ul>
+        </nav>
+      </c:if>
+    </div>
 
-  </body>
+  </main><br /><br />
+
+  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+</body>
+
 </html>

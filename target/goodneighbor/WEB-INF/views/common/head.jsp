@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
 <link rel="shortcut icon" href="${srcPath}/imgs/etc/fav.jpg">
 <link rel="stylesheet" href="${srcPath}/css/style.css"/>
+<link rel="stylesheet" href="${srcPath}/css/jungho.css"/>
 
 <!-- script -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -37,3 +38,27 @@
 <script defer src="${srcPath}/js/qna.js"></script>
 <script defer src="${srcPath}/js/notice.js"></script>
 <script defer src="${srcPath}/js/member.js"></script>
+<script defer src="${srcPath}/js/board.js"></script>
+<script>
+  function hoverIn(event) {
+    event.target.style.color = "#3cc88f";
+    event.target.style.fontWeight = "800";
+    event.target.style.cursor = "pointer";
+  }
+
+  function hoverOut(event) {
+    event.target.style.color = "black";
+    event.target.style.fontWeight = "normal";
+    event.target.style.cursor = "auto";
+  }
+
+  function applyHoverEffect() {
+    const elements = document.getElementsByClassName("linkHover");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener("mouseover", hoverIn);
+      elements[i].addEventListener("mouseout", hoverOut);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", applyHoverEffect);
+</script>

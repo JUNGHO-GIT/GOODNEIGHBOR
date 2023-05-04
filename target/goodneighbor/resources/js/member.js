@@ -77,54 +77,52 @@ function confirmIdCheck() {
 
   if (member_id === "") {
     alert("아이디를 입력하세요.");
+    return false;
   }
   else if (!id_validation.test(member_id)) {
     alert("6~12자리의 영문 대소문자, 숫자로 이루어진 아이디를 작성하시오.");
     memberId.value = "";
     memberId.focus();
+    return false;
   }
   else {
     xhr.open("POST", "idCheck.do", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("member_id=" + member_id);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        if (data.check === 1) {
-          alert("사용 가능한 아이디 입니다.");
-          member_pw.focus();
-        }
-        else if (data.check === -1) {
-          alert("이미 사용중인 아이디 입니다.");
+        if (xhr.responseText == -1) {
+          alert("중복된 아이디입니다.");
           memberId.value = "";
           memberId.focus();
+          return false;
+        }
+        else if (xhr.responseText == 1) {
+          alert("사용 가능한 아이디입니다.");
+          member_pw.focus();
+          return true;
         }
         else {
-          alert("아이디 중복체크에 실패하였습니다.");
+          alert("오류가 발생했습니다.");
+          return false;
         }
       }
-    };
-    xhr.onerror = function () {
-      alert("Error");
-    };
+    }
   }
-  return true;
 }
-
-
-
-
 
 // 2. confirmPwCheck() ---------------------------------------------------------------------------->
 function confirmPwCheck() {
   const pw_validation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
 
   if ($("#member_pw").val() == "") {
-    $("#password-error").text("8~15자리의 영문 대소문자, 숫자, 특수문자가 포함된 암호를 작성하시오.");
+    $("#password-error").text(
+      "8~15자리의 영문 대소문자, 숫자, 특수문자가 포함된 암호를 작성하시오.",
+    );
     $("#password-error").removeClass("password-errorf");
     $("#password-error").addClass("password-errort");
     $("#member_pw").focus();
   } else if (pw_validation.test($("#member_pw").val())) {
-
     if ($("#member_pw").val() != $("#member_pw2").val()) {
       $("#password-error").text("비밀번호와 비밀번호확인이 다릅니다.");
       $("#password-error").addClass("password-errorf");
@@ -137,7 +135,9 @@ function confirmPwCheck() {
     $("#password-error").text("");
     return true;
   } else if (!pw_validation.test($("#member_pw").val())) {
-    $("#password-error").text("8~15자리의 영문 대소문자, 숫자, 특수문자가 포함된 암호를 작성하시오.");
+    $("#password-error").text(
+      "8~15자리의 영문 대소문자, 숫자, 특수문자가 포함된 암호를 작성하시오.",
+    );
     $("#password-error").addClass("password-errorf");
     $("#password-error").removeClass("password-errort");
     $("member_#pw").val("");
@@ -182,7 +182,11 @@ function confirmTelCheck() {
 // 5. viewTerms() -------------------------------------------------------------------------------->
 function viewTerms(event) {
   event.preventDefault();
-  window.open(event.target.href, "팝업", "width=500,height=700,left=100, top=50,scrollbars=no, resizable=no, toolbar=no, menubar=no");
+  window.open(
+    event.target.href,
+    "팝업",
+    "width=500,height=700,left=100, top=50,scrollbars=no, resizable=no, toolbar=no, menubar=no",
+  );
 }
 
 // 6. agree_check() ------------------------------------------------------------------------------->

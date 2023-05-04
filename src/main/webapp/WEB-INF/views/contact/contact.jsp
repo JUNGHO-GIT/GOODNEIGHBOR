@@ -70,7 +70,7 @@
               </div>
               <div style="margin-top:10px; margin-left:25px; align-items: center; justify-content: center;" class="row">
                 <div class="col-sm-8">
-                  <button class="btn btn-primary btn-sm"> Send Message </button>
+                  <button class="btn btn-primary btn-sm" onclick="window.location.href='/goodneighbor'"> Send Message </button>
                 </div>
               </div>
             </div>

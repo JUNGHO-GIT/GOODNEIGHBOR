@@ -2,58 +2,73 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
-<c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}" />
+<c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-	<head>
-    <jsp:include page="/WEB-INF/views/common/head.jsp"/>
-  </head>
+<head>
+  <jsp:include page="/WEB-INF/views/common/head.jsp" />
+</head>
 
-  <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
+<body>
+  <jsp:include page="/WEB-INF/views/common/header.jsp" />
+  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-    <main class="main container-fluid w-50 mx-auto">
+  <main class="main container-fluid w-50 mx-auto">
 
+    <div class="container mt-5">
       <div class="text-center my-4">
         <h1>공지사항</h1>
       </div>
 
-      <table class="table table-bordered">
-        <tr>
-          <td colspan="7" class="fw-bold" style="background-color: #C8E6C9;">${dto.notice_title}</td>
-        </tr>
-        <tr>
-          <td class="text-center" width="150">작성자</td>
-          <td colspan="2" width="700">${dto.notice_writer}</td>
-          <td colspan="3" class="text-end" width="150">조회수</td>
-          <td width="200">${dto.notice_readcount}</td>
-        </tr>
-        <tr>
-          <td colspan="7" class="pre-wrap">${dto.notice_content}</td>
-        </tr>
-      </table>
-
-      <div class="d-flex justify-content-end">
-        <c:if test="${admin_id  != null}">
-          <a class="btn btn-primary me-1" href="${ctxPath}/notice/editForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
-          <c:if test="${dto.notice_fix==false}">
-            <a class="btn btn-danger me-1" href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>
-          </c:if>
-          <c:if test="${dto.notice_fix==true}">
-            <a class="btn btn-danger me-1" href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}">글삭제</a>
-          </c:if>
-          <a class="btn btn-primary me-1" href="${ctxPath}/notice/insertForm.do">글쓰기</a>
-        </c:if>
-        <a class="btn btn-primary" href="${ctxPath}/notice/list.do">리스트</a>
+      <div class="card">
+        <div class="card-header text-center">
+          ${dto.notice_title}
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <th scope="row">작성자</th>
+                <td>${dto.notice_writer}</td>
+              </tr>
+              <tr>
+                <th scope="row">조회수</th>
+                <td>${dto.notice_readcount}</td>
+              </tr>
+              <tr>
+                <th scope="row">내용</th>
+                <td class="pre-wrap">${dto.notice_content}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div><br /><br />
 
-    </main><br/><br/>
+    <div class="d-flex justify-content-center mt-5">
+      <c:if test="${admin_id  != null}">
+        <a class="btn btn-primary btn-sm me-2"
+          href="${ctxPath}/notice/editForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
+        <c:if test="${dto.notice_fix==false}">
+          <a class="btn btn-danger me-1"
+            href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>
+        </c:if>
+        <c:if test="${dto.notice_fix==true}">
+          <a class="btn btn-danger me-1"
+            href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}">글삭제</a>
+        </c:if>
+        <a class="btn btn-primary btn-sm me-2" href="${ctxPath}/notice/insertForm.do">글쓰기</a>
+      </c:if>
+      <a class="btn btn-primary btn-sm" href="${ctxPath}/notice/list.do">리스트</a>
+    </div>
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  </main><br /><br />
 
-  </body>
+  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+</body>
+
 </html>

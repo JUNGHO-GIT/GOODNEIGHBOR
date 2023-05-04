@@ -30,8 +30,8 @@
           <input type="password" name="admin_pw" id="admin_pw" class="form-control" placeholder="비밀번호 입력"/>
         </div>
         <div class="text-center mb-3">
-          <input type="submit" id="submit_button" value="로그인" class="btn btn-primary"/>
-          <input type="button" value="회원가입" class="btn btn-primary" onclick="location='${ctxPath}/admin/insertForm.do'"/>
+          <input type="submit" id="submit_button" value="로그인" class="btn btn-primary btn-sm"/>
+          <input type="button" value="회원가입" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/admin/insertForm.do'"/>
         </div>
       </form>
 

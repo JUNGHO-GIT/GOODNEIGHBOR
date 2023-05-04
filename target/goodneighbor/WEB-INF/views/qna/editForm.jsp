@@ -53,7 +53,7 @@
           <tr>
             <td colspan="2" align="center">
               <input type="submit" value="글수정" onclick="return qnaPwCheck()"/>
-              <input type="button" value="취소" onclick="location='${ctxPath}/qna/list.do'"/>
+              <input type="button" value="취소" onclick="window.location.href='${ctxPath}/qna/list.do'"/>
             </td>
           </tr>
         </table>

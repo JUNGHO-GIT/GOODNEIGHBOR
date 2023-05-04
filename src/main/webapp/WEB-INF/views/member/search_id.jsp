@@ -49,7 +49,7 @@
         </div>
 
         <div class="text-center">
-          <input type="submit" name="search" value="아이디 찾기" class="btn btn-primary" />
+          <input type="submit" name="search" value="아이디 찾기" class="btn btn-primary btn-sm" />
         </div>
 
       </form>

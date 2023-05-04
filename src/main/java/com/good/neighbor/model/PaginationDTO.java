@@ -3,30 +3,30 @@ package com.good.neighbor.model;
 public class PaginationDTO {
 
   // fields --------------------------------------------------------------------------------------->
-  private int totalPage;
-	private int currentPage;
-	private int maxPerPage;
-	private int startPage = 1;
-	private int endPage = 10;
+  private Integer totalPage;
+	private Integer currentPage;
+	private Integer maxPerPage;
+	private Integer startPage = 1;
+	private Integer endPage = 10;
 	private boolean preButtonPage = false;
 	private boolean nextButtonPage;
-	private int currentBlockPage;
-	private int totalBlockPage;
+	private Integer currentBlockPage;
+	private Integer totalBlockPage;
 
 	// getters -------------------------------------------------------------------------------------->
-  public int getTotalPage() {
+  public Integer getTotalPage() {
     return totalPage;
   }
-  public int getCurrentPage() {
+  public Integer getCurrentPage() {
     return currentPage;
   }
-  public int getMaxPerPage() {
+  public Integer getMaxPerPage() {
     return maxPerPage;
   }
-  public int getStartPage() {
+  public Integer getStartPage() {
     return startPage;
   }
-  public int getEndPage() {
+  public Integer getEndPage() {
     return endPage;
   }
   public boolean isPreButtonPage() {
@@ -35,27 +35,27 @@ public class PaginationDTO {
   public boolean isNextButtonPage() {
     return nextButtonPage;
   }
-  public int getCurrentBlockPage() {
+  public Integer getCurrentBlockPage() {
     return currentBlockPage;
   }
-  public int getTotalBlockPage() {
+  public Integer getTotalBlockPage() {
     return totalBlockPage;
   }
 
   // setters -------------------------------------------------------------------------------------->
-  public void setTotalPage(int totalPage) {
+  public void setTotalPage(Integer totalPage) {
     this.totalPage = totalPage;
   }
-  public void setCurrentPage(int currentPage) {
+  public void setCurrentPage(Integer currentPage) {
     this.currentPage = currentPage;
   }
-  public void setMaxPerPage(int maxPerPage) {
+  public void setMaxPerPage(Integer maxPerPage) {
     this.maxPerPage = maxPerPage;
   }
-  public void setStartPage(int startPage) {
+  public void setStartPage(Integer startPage) {
     this.startPage = startPage;
   }
-  public void setEndPage(int endPage) {
+  public void setEndPage(Integer endPage) {
     this.endPage = endPage;
   }
   public void setPreButtonPage(boolean preButtonPage) {
@@ -64,15 +64,15 @@ public class PaginationDTO {
   public void setNextButtonPage(boolean nextButtonPage) {
     this.nextButtonPage = nextButtonPage;
   }
-  public void setCurrentBlockPage(int currentBlockPage) {
+  public void setCurrentBlockPage(Integer currentBlockPage) {
     this.currentBlockPage = currentBlockPage;
   }
-  public void setTotalBlockPage(int totalBlockPage) {
+  public void setTotalBlockPage(Integer totalBlockPage) {
     this.totalBlockPage = totalBlockPage;
   }
 
   // constructors --------------------------------------------------------------------------------->
-	public PaginationDTO(int totalPage, int currentPage, int maxPerPage, int currentBlockPage) {
+	public PaginationDTO(Integer totalPage, Integer currentPage, Integer maxPerPage, Integer currentBlockPage) {
 		super();
 		this.totalPage = totalPage;
 		this.currentPage = currentPage;

@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
-<% @include file="../module/pathVariable.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -21,7 +20,7 @@
     <main class="main container-fluid w-50 mx-auto">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8">
-          <h2 class="text-center">게시물 비밀번호를 입력해주세요</h2>
+          <h2 class="text-center">비밀번호를 입력해주세요</h2>
           <form method="POST" action="${ctxPath}/qna/content.do" onsubmit="return qnaPwCheck();">
             <div class="mb-3">
               <label for="pw" class="form-label">비밀번호</label>
@@ -31,8 +30,8 @@
               <input type="hidden" name="pageNum" value="${pageNum}"/>
             </div>
             <div class="text-center">
-              <input type="submit" value="입력" class="btn btn-primary"/>
-              <input type="button" value="취소" onclick="location='${ctxPath}/qna/list.do?pageNum=${pageNum}'" class="btn btn-primary"/>
+              <input type="submit" value="입력" class="btn btn-primary btn-sm"/>
+              <input type="button" value="취소" onclick="window.location.href='${ctxPath}/qna/list.do?pageNum=${pageNum}'" class="btn btn-primary btn-sm"/>
             </div>
           </form>
         </div>

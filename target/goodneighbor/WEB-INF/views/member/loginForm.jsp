@@ -32,10 +32,10 @@
           <label class="form-check-label" for="rememberId">아이디 저장</label>
         </div>
         <div class="mb-3">
-          <input type="button" onclick="location='${ctxPath}/member/search_id.do'" value="아이디 찾기" class="btn btn-primary" />
+          <input type="button" onclick="window.location.href='${ctxPath}/member/search_id.do'" value="아이디 찾기" class="btn btn-primary btn-sm" />
           &nbsp;&nbsp;
-          <input type="button" onclick="location='${ctxPath}/member/search_pwd.do'" value="비밀번호 찾기" class="btn btn-primary" />
-          <input type="submit" id="submit_button" class="btn btn-primary" value="로그인"/>
+          <input type="button" onclick="window.location.href='${ctxPath}/member/search_pwd.do'" value="비밀번호 찾기" class="btn btn-primary btn-sm" />
+          <input type="submit" id="submit_button" class="btn btn-primary btn-sm" value="로그인"/>
         </div>
       </form>
 

@@ -29,9 +29,9 @@
         </c:choose>
       </div>
       <div class="d-flex justify-content-center mb-10">
-        <input type="button" class="btn btn-primary me-2" value="로그인" onclick="location='${ctxPath}/member/loginForm.do'" />
+        <input type="button" class="btn btn-primary btn-sm me-2" value="로그인" onclick="window.location.href='${ctxPath}/member/loginForm.do'" />
         &nbsp;&nbsp;
-        <input type="button" class="btn btn-primary" value="메인화면으로" onclick="location='${ctxPath}'" />
+        <input type="button" class="btn btn-primary btn-sm" value="메인화면으로" onclick="window.location.href='${ctxPath}'" />
       </div>
 
     </main><br/><br/><br/><br/>

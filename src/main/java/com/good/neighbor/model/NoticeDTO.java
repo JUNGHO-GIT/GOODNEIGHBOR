@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 public class NoticeDTO {
 
   // fields --------------------------------------------------------------------------------------->
-  private int notice_number;
-  private int notice_readcount;
+  private Integer notice_number;
+  private Integer notice_readcount;
   private String notice_writer;
   private String notice_title;
   private String notice_content;
@@ -14,10 +14,10 @@ public class NoticeDTO {
   private boolean notice_fix;
 
   // getters -------------------------------------------------------------------------------------->
-  public int getNotice_number() {
+  public Integer getNotice_number() {
     return notice_number;
   }
-  public int getNotice_readcount() {
+  public Integer getNotice_readcount() {
     return notice_readcount;
   }
   public String getNotice_writer() {
@@ -37,10 +37,10 @@ public class NoticeDTO {
   }
 
   // setters -------------------------------------------------------------------------------------->
-  public void setNotice_number(int notice_number) {
+  public void setNotice_number(Integer notice_number) {
     this.notice_number = notice_number;
   }
-  public void setNotice_readcount(int notice_readcount) {
+  public void setNotice_readcount(Integer notice_readcount) {
     this.notice_readcount = notice_readcount;
   }
   public void setNotice_writer(String notice_writer) {
