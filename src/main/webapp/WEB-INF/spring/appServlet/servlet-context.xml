@@ -5,26 +5,26 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:beans="http://www.springframework.org/schema/beans"
 xmlns:context="http://www.springframework.org/schema/context"
 xsi:schemaLocation="http://www.springframework.org/schema/mvc
-https://www.springframework.org/schema/mvc/spring-mvc.xsd
+https://www.springframework.org/schema/mvc/spring - mvc.xsd
 http://www.springframework.org/schema/beans
-https://www.springframework.org/schema/beans/spring-beans.xsd
+https://www.springframework.org/schema/beans/spring - beans.xsd
 http://www.springframework.org/schema/context
 https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- Spring MVC @Controller -->
-	<annotation-driven />
+  
+  <annotation-driven />
 
-	<!-- resources -->
-	<resources mapping="/resources/**" location="/resources/"/>
+  
+  <resources mapping="/resources/**" location="/resources/"/>
 
-  <!-- Component scan -->
-	<context:component-scan base-package="com.good.neighbor"/>
+  
+  <context:component-scan base-package="com.good.neighbor"/>
 
-  <!-- WEB-INF -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/"/>
-		<beans:property name="suffix" value=".jsp"/>
-		<beans:property name="order" value="2"/>
-	</beans:bean>
+  
+  <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <beans:property name="prefix" value="/WEB-INF/views/"/>
+  <beans:property name="suffix" value=".jsp"/>
+  <beans:property name="order" value="2"/>
+  </beans:bean>
 
 </beans:beans>
