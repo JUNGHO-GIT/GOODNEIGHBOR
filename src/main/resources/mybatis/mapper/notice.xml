@@ -83,7 +83,7 @@
 	</select>
 
 	<!-- 8. 게시물 수정 -->
-	<update id="getModify" parameterType="noticeDTO">
+	<update id="getUpdate" parameterType="noticeDTO">
 		update notice
     set notice_writer = #{notice_writer}, notice_title = #{notice_title}, notice_content = #{notice_content}
     where notice_number = #{notice_number} and notice_pw = #{notice_pw}

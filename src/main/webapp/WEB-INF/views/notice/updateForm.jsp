@@ -20,7 +20,7 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h2 class="text-center my-4">공지사항 수정</h2>
-      <form name="editForm" method="POST" action="${ctxPath}/notice/editPro.do" onsubmit="return noticeCheck()">
+      <form name="getUpdate" method="POST" action="${ctxPath}/notice/updatePro.do" onsubmit="return noticeCheck()">
         <table class="table table-bordered">
           <tr>
             <td class="text-center" width="150">글제목</td>

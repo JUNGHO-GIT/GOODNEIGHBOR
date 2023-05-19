@@ -29,22 +29,22 @@
             <table class="table table-sm">
               <tbody>
                 <tr>
-                  <th scope="row">작성일</th>
+                  <td style="width:100px;">작성일</td>
                   <td>
                     <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy-MM-dd" />
                     <input type="hidden" id="board_number" value="${dto.board_number}" />
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">작성자</th>
+                  <td style="width:100px;">작성자</td>
                   <td>${dto.board_writer}</td>
                 </tr>
                 <tr>
-                  <th scope="row">조회수</th>
+                  <td style="width:100px;">조회수</td>
                   <td>${dto.board_readcount}</td>
                 </tr>
                 <tr>
-                  <th scope="row">내용</th>
+                  <td style="width:100px;">내용</td>
                   <td class="pre-wrap">${dto.board_content}</td>
                 </tr>
               </tbody>
@@ -54,8 +54,8 @@
       </div>
 
       <div class="d-flex justify-content-center mt-5">
-        <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/editForm.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글수정</button>
-        <button class="btn btn btn-primary btn-sm me-2" onclick="return deleteCheck();">글삭제</button>
+        <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/getUpdate.do?board_number=${dto.board_number}&pageNum=${pageNum}'">글수정</button>
+        <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteCheck();">글삭제</button>
         <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/insertForm.do'">새글쓰기</button>
         <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/insertForm.do?board_number=${dto.board_number}&board_group=${dto.board_group}&board_step=${dto.board_step}&board_level=${dto.board_level}'">답글쓰기</button>
         <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/list.do?pageNum=${pageNum}'">리스트</button>

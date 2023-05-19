@@ -176,9 +176,9 @@ public class QnaController {
     return "qna/content";
   }
 
-  // 4-1. editForm() ------------------------------------------------------------------------------>
-  @RequestMapping("editForm.do")
-  public String editForm(HttpServletRequest request, Model model) {
+  // 4-1. getUpdate() ----------------------------------------------------------------------------->
+  @RequestMapping("getUpdate.do")
+  public String getUpdate(HttpServletRequest request, Model model) {
 
     String pageNum = request.getParameter("pageNum");
     int num = Integer.parseInt(request.getParameter("qna_number"));
@@ -187,16 +187,16 @@ public class QnaController {
     model.addAttribute("dto", dto);
     model.addAttribute("pageNum", pageNum);
 
-    return "qna/editForm";
+    return "qna/updateForm";
   }
 
-  // 4-2. editPro() ------------------------------------------------------------------------------->
-  @RequestMapping(value = "editPro.do", method = RequestMethod.POST)
-  public String editPro(HttpServletRequest request, QnaDTO qnaDTO, Model model) {
+  // 4-2. updatePro() ----------------------------------------------------------------------------->
+  @RequestMapping(value = "updatePro.do", method = RequestMethod.POST)
+  public String updatePro(HttpServletRequest request, QnaDTO qnaDTO, Model model) {
 
     String pw = request.getParameter("qna_pw");
 
-    sqlSession.update("qna.getModify", qnaDTO);
+    sqlSession.update("qna.getUpdate", qnaDTO);
 
     model.addAttribute("qna_pw", pw);
     model.addAttribute("qnaDTO", qnaDTO);

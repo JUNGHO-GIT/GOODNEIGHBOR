@@ -1,7 +1,6 @@
 # IDE
 .idea/
 .vscode/
-.settings/
 
 # Compiled output
 /target/
@@ -12,16 +11,8 @@
 # node
 node_modules/
 
-# Log files
-/logs/
-*.log
-
 # Maven specific
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
 release.properties
 
 # Gradle specific

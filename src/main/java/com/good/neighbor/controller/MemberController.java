@@ -40,10 +40,10 @@ public class MemberController {
   }
 
   // 1-3. popup2() -------------------------------------------------------------------------------->
-  @RequestMapping(value = "/agree_Privacy_popup.do", method = RequestMethod.GET)
+  @RequestMapping(value = "/agreePopup.do", method = RequestMethod.GET)
   public String popup2(HttpSession session) {
 
-    return "/popup/agree_Privacy_popup";
+    return "/popup/agreePopup";
   }
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->
@@ -65,11 +65,10 @@ public class MemberController {
     }
   }
 
-
   // 1-5. insertPro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/insertPro.do", method = RequestMethod.POST)
   public String insertPro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
-      HttpServletRequest request) throws Exception {
+  HttpServletRequest request) throws Exception {
 
     sqlSession.insert("member.getInsert", memberDTO);
 
@@ -78,17 +77,14 @@ public class MemberController {
 
   // 2-1. loginForm() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
-  public String loginForm(
-      @CookieValue(value = "rememberMemberId", required = false) String checkbox, Model model)
-      throws Exception {
+  public String loginForm( @CookieValue(value = "rememberMemberId", required = false) String checkbox, Model model, HttpSession session) throws Exception {
 
     return "member/loginForm";
   }
 
   // 2-2. loginPro() ------------------------------------------------------------------------------>
   @RequestMapping(value = "/loginPro.do", method = RequestMethod.POST)
-  public String loginPro(HttpServletRequest request, HttpServletResponse response, Model model)
-      throws Exception {
+  public String loginPro(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
     String member_id = request.getParameter("member_id");
     String member_pw = request.getParameter("member_pw");
@@ -99,26 +95,25 @@ public class MemberController {
     map.put("member_pw", member_pw);
 
     MemberDTO dto = sqlSession.selectOne("member.getLogin", map);
-    Cookie cookie = new Cookie("member_id", member_id);
-
-    System.out.println("checkbox");
-    if (checkbox != null) {
-      response.addCookie(cookie);
-    } else {
-      cookie.setMaxAge(0);
-      response.addCookie(cookie);
-    }
 
     if (dto == null) {
-
-      System.out.println("존재하지 않는 계정입니다.");
-
       return "member/loginForm";
+    } else {
+      HttpSession session = request.getSession();
+      session.setAttribute("member_id", member_id);
     }
+
+    if (checkbox != null) {
+      Cookie cookie = new Cookie("member_id", member_id);
+      cookie.setMaxAge(60 * 60 * 24 * 7);  // 7 days
+      response.addCookie(cookie);
+    }
+
     model.addAttribute("dto", dto);
 
     return "member/loginSuccess";
   }
+
 
   // 2-3. logOut() -------------------------------------------------------------------------------->
   @RequestMapping(value = "/logOut.do", method = RequestMethod.GET)
@@ -127,30 +122,38 @@ public class MemberController {
     return "member/logOut";
   }
 
-  // 3-1. getUpdate() ----------------------------------------------------------------------------->
+  // 3-1. getUpdate() ---------------------------------------------------------------------------->
   @RequestMapping(value = "/getUpdate.do", method = RequestMethod.POST)
   public String getUpdate(HttpServletRequest request, Model model) {
 
-    String member_id = request.getParameter("member_id");
+    // 세션에서 아이디값 받아오기
+    HttpSession session = request.getSession();
+    String member_id = (String) session.getAttribute("member_id");
+
+    if (member_id == null) {
+      return "member/loginForm";
+    }
+
     MemberDTO dto = sqlSession.selectOne("member.getDetails", member_id);
 
     model.addAttribute("dto", dto);
 
-    return "member/getUpdate";
+    return "member/updateForm";
   }
 
-  // 3-2. editPro() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "/editPro.do", method = RequestMethod.POST)
-  public String editPro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
-      HttpServletRequest request, Model model) throws Exception {
 
-    sqlSession.update("member.getModify", memberDTO);
+  // 3-2. updatePro() ----------------------------------------------------------------------------->
+  @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
+  public String updatePro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
+  HttpServletRequest request, Model model) throws Exception {
+
+    sqlSession.update("member.getUpdate", memberDTO);
 
     return "member/updateSuccess";
   }
 
-  // 4-1. deleteForm() -------------------------------------------------------------------------->
-  @RequestMapping(value = "/deleteForm.do", method = RequestMethod.POST)
+  // 4-1. deleteForm() ---------------------------------------------------------------------------->
+  @RequestMapping(value = "/deleteForm.do", method = RequestMethod.GET)
   public String deleteForm(Model model, HttpServletRequest request) {
 
     String member_id = request.getParameter("member_id");

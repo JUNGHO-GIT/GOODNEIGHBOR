@@ -86,7 +86,7 @@
   </select>
 
   <!-- 8. 게시물 수정 -->
-  <update id="getModify" parameterType="qnaDTO">
+  <update id="getUpdate" parameterType="qnaDTO">
     update qna
     set qna_writer = #{qna_writer}, qna_title = #{qna_title}, qna_content = #{qna_content}
     where qna_number = #{qna_number} and qna_pw = #{qna_pw}

@@ -20,7 +20,7 @@
     <main class="main container-fluid w-50 mx-auto">
 
       <h2>Q&A 게시글 수정</h2>
-      <form name="writeFrom" method="POST" action="${ctxPath}/qna/editPro.do" onsubmit="return qnaCheck()">
+      <form name="writeFrom" method="POST" action="${ctxPath}/qna/updatePro.do" onsubmit="return qnaCheck()">
         <table border="1">
           <tr>
             <td>글쓴이</td>

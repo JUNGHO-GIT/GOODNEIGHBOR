@@ -85,7 +85,7 @@
   </select>
 
   <!-- 8. 게시물 수정 -->
-  <update id="getModify" parameterType="boardDTO">
+  <update id="getUpdate" parameterType="boardDTO">
     update board
     set board_writer = #{board_writer}, board_title = #{board_title}, board_content = #{board_content}
     where board_number = #{board_number} and board_pw = #{board_pw}

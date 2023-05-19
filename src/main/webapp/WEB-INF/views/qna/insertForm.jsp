@@ -30,25 +30,25 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <th>글쓴이</th>
+              <td>글쓴이</td>
               <td>
                 <input type="text" class="form-control" name="qna_writer" id="writer" size="30" />
               </td>
             </tr>
             <tr>
-              <th>글제목</th>
+              <td>글제목</td>
               <td>
                 <input type="text" class="form-control" name="qna_title" id="title" size="50" />
               </td>
             </tr>
             <tr>
-              <th>글내용</th>
+              <td>글내용</td>
               <td>
                 <textarea class="form-control" name="qna_content" id="content" rows="10"></textarea>
               </td>
             </tr>
             <tr>
-              <th>암호</th>
+              <td>암호</td>
               <td>
                 <input type="password" class="form-control" name="qna_pw" id="pw" size="20" />
               </td>

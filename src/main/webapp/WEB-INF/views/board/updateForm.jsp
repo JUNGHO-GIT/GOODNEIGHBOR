@@ -19,7 +19,7 @@
 
     <main class="main container-fluid w-50 mx-auto">
       <h2 class="mb-4">글 수정 폼</h2>
-      <form name="editForm" method="POST" action="${ctxPath}/board/editPro.do" onsubmit="return boardWriteSave();">
+      <form name="getUpdate" method="POST" action="${ctxPath}/board/updatePro.do" onsubmit="return boardWriteSave();">
         <input type="hidden" name="board_pw1" id="board_pw1" value="${dto.board_pw}" />
         <div class="row mb-3">
           <label for="board_writer" class="col-sm-2 col-form-label">글쓴이</label>

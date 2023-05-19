@@ -18,19 +18,10 @@
 
     <main class="main container-fluid w-50 mx-auto">
 
+      <h1 class="text-center my-4">회원 탈퇴</h1>
       <p class="mb-4">
         회원 탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요. 탈퇴 후 회원정보 및 개인형 서비스 이용 기록은 모두 삭제됩니다. 회원정보 및 여러 개인형 서비스 이용기록이 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다. 삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업해주세요.
       </p>
-
-      <div class="row mb-4">
-        <div class="col-md-2">
-          <h2>비밀번호 확인</h2>
-        </div>
-        <div class="col-md-10">
-          <p>안전한 이웃사촌 탈퇴를 위해 비밀번호를 입력해 주세요.</p>
-        </div>
-      </div>
-
       <form name="delForm" method="POST" action="${ctxPath}/member/deletePro.do" onsubmit="return memberPwCheck()">
         <div class="mb-3">
           <label for="member_pw" class="form-label">비밀번호 입력</label>
@@ -45,6 +36,8 @@
           <input type="submit" value="회원탈퇴" class="btn btn-danger"/>
         </div>
       </form>
+
+    </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

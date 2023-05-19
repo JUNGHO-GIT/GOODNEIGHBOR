@@ -21,7 +21,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8">
           <h2 class="text-center">비밀번호를 입력해주세요</h2>
-          <form method="POST" action="${ctxPath}/qna/content.do" onsubmit="return qnaPwCheck();">
+          <form method="GET" action="${ctxPath}/qna/content.do" onsubmit="return qnaPwCheck();">
             <div class="mb-3">
               <label for="pw" class="form-label">비밀번호</label>
               <input type="password" name="qna_pw" id="pw" class="form-control" size="30"/>

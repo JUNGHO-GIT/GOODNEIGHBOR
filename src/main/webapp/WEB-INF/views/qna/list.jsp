@@ -52,11 +52,11 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th scope="col">글번호</th>
-              <th scope="col">글제목</th>
-              <th scope="col">작성자</th>
-              <th scope="col">작성일</th>
-              <th scope="col">조회수</th>
+              <td style="width: 100px">번호</td>
+              <td style="width: auto">글제목</td>
+              <td style="width: 100px">작성자</td>
+              <td style="width: 100px">작성일</td>
+              <td style="width: 100px">조회수</td>
             </tr>
           </thead>
           <tbody>
@@ -77,10 +77,9 @@
                     <a href="${ctxPath}/qna/content.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none linkHover">${dto.qna_title}</a>
                   </c:if>
                   <c:if test="${admin_id == null}">
-                    <a href="${ctxPath}/qna/secretForm.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}"
-                      class="text-decoration-none linkHover">
+                    <a href="${ctxPath}/qna/secretForm.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none linkHover">
                       <img src="${ctxPath}/resources/imgs/etc/lock.png" width="25" height="25" />
-                      비밀글입니다
+                      비밀글입니다.<br/>${dto.qna_title}
                       <input type="hidden" name="qna_title" value="${dto.qna_title}" />
                     </a>
                   </c:if>
@@ -115,15 +114,15 @@
           <ul class="pagination">
             <c:if test="${pt.startPage>10}">
               <li class="page-item"><a class="page-link"
-                  href="${ctxPath}/qna/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+                href="${ctxPath}/qna/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
             </c:if>
             <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
               <li class="page-item"><a class="page-link"
-                  href="${ctxPath}/qna/list.do?pageNum=${i}">${i}</a></li>
+                href="${ctxPath}/qna/list.do?pageNum=${i}">${i}</a></li>
             </c:forEach>
             <c:if test="${pt.endPage<pt.pageCnt}">
               <li class="page-item"><a class="page-link"
-                  href="${ctxPath}/qna/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+                href="${ctxPath}/qna/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
             </c:if>
           </ul>
         </nav>

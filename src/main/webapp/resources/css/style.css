@@ -8,6 +8,11 @@
   list-style: none;
 }
 
+/** important **/
+.tdtd {
+  width: 100px !important;
+}
+
 img {
   max-width: 100%;
 }

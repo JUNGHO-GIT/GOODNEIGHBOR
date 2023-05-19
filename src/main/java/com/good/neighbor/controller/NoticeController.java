@@ -1,4 +1,5 @@
 package com.good.neighbor.controller;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,25 +55,23 @@ public class NoticeController {
 
     String keyWord = "";
     String keyField = "";
+    int cnt = 0;
 
-    if(request.getParameter("keyWord") != null) {
+    if (request.getParameter("keyWord") != null) {
       keyWord = request.getParameter("keyWord");
       keyField = request.getParameter("keyField");
     } else {
       keyWord = "";
       keyField = "";
     }
-
-    if(pageNum == null) {
+    if (pageNum == null) {
       pageNum = "1";
     }
-
-    int cnt = 0;
     Map<String, Object> map = new HashMap<>();
     Map<String, Object> map2 = new HashMap<>();
     Map<String, Object> map3 = new HashMap<>();
 
-    if(keyWord == null || keyWord.length()<1 || keyWord.equals("")) {
+    if (keyWord == null || keyWord.length() < 1 || keyWord == "") {
       cnt = sqlSession.selectOne("notice.getCount");
     }
     else {
@@ -87,13 +86,13 @@ public class NoticeController {
 
     List<NoticeDTO> list = null;
 
-    if(keyWord == null || keyWord.length() < 1 || keyWord.equals("")) {
+    if (keyWord == null || keyWord.length() < 1 || keyWord == "") {
       map.put("start", new Integer(startPos));
       map.put("count", new Integer(pt.getPageSize()));
 
       list = sqlSession.selectList("notice.getList", map);
     }
-    else if(keyWord != null && keyWord.length() > 1) {
+    else if (keyWord != null || keyWord.length() > 1) {
       map2.put("columnParam", keyField);
       map2.put("keyWord", keyWord);
       map2.put("start", new Integer(startPos));
@@ -102,7 +101,7 @@ public class NoticeController {
       list = sqlSession.selectList("notice.getSearch", map2);
     }
 
-    if(pt.getEndPage() > pt.getPageCnt()) {
+    if (pt.getEndPage() > pt.getPageCnt()) {
       pt.setEndPage(pt.getPageCnt());
     }
 
@@ -138,9 +137,9 @@ public class NoticeController {
 		return "notice/content";
 	}
 
-  // 5-1. editForm() ------------------------------------------------------------------------------>
-	@RequestMapping(value="/editForm.do", method=RequestMethod.GET)
-	public String editForm(HttpServletRequest request,Model model) {
+  // 5-1. getUpdate() ----------------------------------------------------------------------------->
+	@RequestMapping(value="/getUpdate.do", method=RequestMethod.GET)
+	public String getUpdate(HttpServletRequest request,Model model) {
 
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("notice_number"));
@@ -149,18 +148,18 @@ public class NoticeController {
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("dto", dto);
 
-		return "notice/editForm";
+		return "notice/updateForm";
 	}
 
-  // 5-2. editPro() ------------------------------------------------------------------------------->
-	@RequestMapping(value="/editPro.do", method=RequestMethod.POST)
-	public String editPro(NoticeDTO noticeDTO,HttpServletRequest request,Model model) {
+  // 5-2. updatePro() ----------------------------------------------------------------------------->
+	@RequestMapping(value="/updatePro.do", method=RequestMethod.POST)
+	public String updatePro(NoticeDTO noticeDTO,HttpServletRequest request,Model model) {
 
 		String pageNum = request.getParameter("pageNum");
 		String fixed=request.getParameter("fixed");
 
 		if(fixed == null) {
-		  sqlSession.update("notice.getModify", noticeDTO);
+		  sqlSession.update("notice.getUpdate", noticeDTO);
 		}
     else {
 		  sqlSession.update("notice.getFixModify", noticeDTO);

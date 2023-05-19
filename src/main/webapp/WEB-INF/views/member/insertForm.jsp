@@ -76,13 +76,13 @@
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input normal" id="agree_TermsofUse">
           <label class="form-check-label" for="agree_TermsofUse">[필수] 웹사이트 이용약관 동의</label>
-          <a href="agree_TemsofUse.do" onclick="viewTerms(event)">보기</a>
+          <a href="termsPopup.do" onclick="viewTerms(event)">보기</a>
         </div>
 
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input normal" id="agree_Privacy">
           <label class="form-check-label" for="agree_Privacy">[필수] 개인정보 수집 ∙ 이용 동의</label>
-          <a href="agree_Privacy_popup.do" onclick="viewTerms(event)">보기</a>
+          <a href="agreePopup.do" onclick="viewTerms(event)">보기</a>
         </div>
 
         <div class="text-center mb-3" style="color: red">

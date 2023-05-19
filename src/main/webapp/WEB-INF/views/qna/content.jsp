@@ -31,21 +31,21 @@
           <table class="table table-sm">
             <tbody>
               <tr>
-                <th scope="row">작성자</th>
+                <td style="width:100px;">작성자</td>
                 <td>${dto.qna_writer}</td>
               </tr>
               <tr>
-                <th scope="row">조회수</th>
+                <td style="width:100px;">조회수</td>
                 <td>${dto.qna_readcount}</td>
               </tr>
               <tr>
-                <th scope="row">작성일</th>
+                <td style="width:100px;">작성일</td>
                 <td>
                   <fmt:formatDate value="${dto.qna_regdate}" pattern="yyyy-MM-dd" />
                 </td>
               </tr>
               <tr>
-                <th scope="row">내용</th>
+                <td style="width:100px;">내용</td>
                 <td>${dto.qna_content}</td>
               </tr>
             </tbody>
@@ -57,7 +57,7 @@
     <div class="d-flex justify-content-center mt-5">
       <c:if test="${member_id  != null}">
         <input type="button" class="btn btn-primary btn-sm me-2" value="글수정"
-          onclick="window.location.href='${ctxPath}/qna/editForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
+          onclick="window.location.href='${ctxPath}/qna/getUpdate.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
         <input type="button" class="btn btn-danger btn-sm me-2" value="글삭제"
           onclick="window.location.href='${ctxPath}/qna/deleteForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
       </c:if>

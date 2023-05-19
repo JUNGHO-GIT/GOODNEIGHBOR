@@ -53,11 +53,11 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th scope="col">글번호</th>
-                  <th scope="col">글제목</th>
-                  <th scope="col">작성자</th>
-                  <th scope="col">작성일</th>
-                  <th scope="col">조회수</th>
+                  <td style="width: 100px">번호</td>
+                  <td style="width: auto">글제목</td>
+                  <td style="width: 100px">작성자</td>
+                  <td style="width: 100px">작성일</td>
+                  <td style="width: 100px">조회수</td>
                 </tr>
               </thead>
               <tbody>
@@ -104,9 +104,6 @@
             <button class="btn btn-primary btn-sm" type="submit"
               onclick="return searchBoardCheck();">검색</button>
           </div>
-
-          <input type="hidden" name="reload" value="true" />
-          <input type="hidden" name="nowBlock" value="0" />
         </form>
 
         <div class="d-flex justify-content-center">
@@ -114,16 +111,13 @@
             <nav aria-label="Page navigation">
               <ul class="pagination">
                 <c:if test="${pt.startPage>10}">
-                  <li class="page-item"><a class="page-link"
-                      href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
                 </c:if>
                 <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-                  <li class="page-item"><a class="page-link"
-                      href="${ctxPath}/board/list.do?pageNum=${i}">${i}</a></li>
+                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${i}">${i}</a></li>
                 </c:forEach>
                 <c:if test="${pt.endPage<pt.pageCnt}">
-                  <li class="page-item"><a class="page-link"
-                      href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
                 </c:if>
               </ul>
             </nav>

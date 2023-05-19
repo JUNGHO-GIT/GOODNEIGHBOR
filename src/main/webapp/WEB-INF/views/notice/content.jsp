@@ -31,15 +31,15 @@
           <table class="table table-sm">
             <tbody>
               <tr>
-                <th scope="row">작성자</th>
+                <td style="width:100px;">작성자</td>
                 <td>${dto.notice_writer}</td>
               </tr>
               <tr>
-                <th scope="row">조회수</th>
+                <td style="width:100px;">조회수</td>
                 <td>${dto.notice_readcount}</td>
               </tr>
               <tr>
-                <th scope="row">내용</th>
+                <td style="width:100px;">내용</td>
                 <td class="pre-wrap">${dto.notice_content}</td>
               </tr>
             </tbody>
@@ -51,7 +51,7 @@
     <div class="d-flex justify-content-center mt-5">
       <c:if test="${admin_id  != null}">
         <a class="btn btn-primary btn-sm me-2"
-          href="${ctxPath}/notice/editForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
+          href="${ctxPath}/notice/getUpdate.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
         <c:if test="${dto.notice_fix==false}">
           <a class="btn btn-danger me-1"
             href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>

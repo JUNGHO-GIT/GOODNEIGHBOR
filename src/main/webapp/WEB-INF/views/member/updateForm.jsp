@@ -19,15 +19,10 @@
 
     <main class="main container-fluid w-50 mx-auto">
 
-      <form action="${ctxPath}/member/editPro.do" method="POST" onsubmit="return memberCheck();">
-        <div class="mb-3">
-          <label for="member_id" class="form-label">ID</label>
-          ${dto.member_id}
-          <input type="hidden" name="member_id" value="${dto.member_id}"/>
-        </div>
+      <form action="${ctxPath}/member/updatePro.do" method="POST" onsubmit="return memberCheck();">
         <div class="mb-3">
           <label for="member_name" class="form-label">이름</label>
-          <input type="text" name="member_name" id="member_name" class="form-control" value="${dto.member_name}" size="30"/>
+          <input type="text" name="member_name" id="member_name" class="form-control" value="${dto.member_name}" size="30" readonly />
         </div>
         <div class="mb-3">
           <label for="member_tel" class="form-label">전화번호</label>

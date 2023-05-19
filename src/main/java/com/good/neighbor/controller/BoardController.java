@@ -52,7 +52,7 @@ public class BoardController {
   // 1-2. insertPro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/insertPro.do", method = RequestMethod.POST)
   public String insertPro(@ModelAttribute("boardDTO") BoardDTO boardDTO, HttpServletRequest request)
-      throws Exception {
+  throws Exception {
 
     int maxNum = 0;
 
@@ -86,18 +86,15 @@ public class BoardController {
     return "redirect:/board/list.do";
   }
 
-
-
   // 2-1. listBoard() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/list.do", method = RequestMethod.GET)
   public String listBoard(@ModelAttribute("boardDTO") BoardDTO boardDTO,
-      @RequestParam(value = "pageNum", required = false) String pageNum, Model model,
-      HttpServletRequest request) throws Exception {
+  @RequestParam(value = "pageNum", required = false) String pageNum, Model model,
+  HttpServletRequest request) throws Exception {
 
     String keyWord = "";
     String keyField = "";
     int cnt = 0;
-
 
     if (request.getParameter("keyWord") != null) {
       keyWord = request.getParameter("keyWord");
@@ -109,14 +106,14 @@ public class BoardController {
     if (pageNum == null) {
       pageNum = "1";
     }
-
     Map<String, Object> map = new HashMap<>();
     Map<String, Object> map2 = new HashMap<>();
     Map<String, Object> map3 = new HashMap<>();
 
     if (keyWord == null || keyWord.length() < 1 || keyWord == "") {
       cnt = sqlSession.selectOne("board.getCount");
-    } else {
+    }
+    else {
       map3.put("columnParam", keyField);
       map3.put("keyWord", keyWord);
       cnt = sqlSession.selectOne("board.getSearchCount", map3);
@@ -133,7 +130,8 @@ public class BoardController {
       map.put("count", new Integer(pt.getPageSize()));
 
       list = sqlSession.selectList("board.getList", map);
-    } else if (keyWord != null || keyWord.length() > 1) {
+    }
+    else if (keyWord != null || keyWord.length() > 1) {
       map2.put("columnParam", keyField);
       map2.put("keyWord", keyWord);
       map2.put("start", new Integer(startPos));
@@ -145,6 +143,7 @@ public class BoardController {
     if (pt.getEndPage() > pt.getPageCnt()) {
       pt.setEndPage(pt.getPageCnt());
     }
+
     int number = cnt - (curPage - 1) * pt.getPageSize();
 
     model.addAttribute("number", number);
@@ -175,9 +174,9 @@ public class BoardController {
     return "board/content";
   }
 
-  // 4-1. editForm() ---------------------------------------------------------------------------->
-  @RequestMapping("/editForm.do")
-  public ModelAndView editForm(HttpServletRequest request) {
+  // 4-1. getUpdate() ---------------------------------------------------------------------------->
+  @RequestMapping("/getUpdate.do")
+  public ModelAndView getUpdate(HttpServletRequest request) {
 
     String pageNum = request.getParameter("pageNum");
     int board_number = Integer.parseInt(request.getParameter("board_number"));
@@ -188,17 +187,17 @@ public class BoardController {
     mv.addObject("pageNum", pageNum);
     mv.addObject("dto", dto);
 
-    mv.setViewName("board/editForm");
+    mv.setViewName("board/updateForm");
     return mv;
   }
 
-  // 4-2. editPro() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "/editPro.do", method = RequestMethod.POST)
-  public ModelAndView editPro(@ModelAttribute("boardDTO") BoardDTO boardDTO,
+  // 4-2. updatePro() ----------------------------------------------------------------------------->
+  @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
+  public ModelAndView updatePro(@ModelAttribute("boardDTO") BoardDTO boardDTO,
       HttpServletRequest request) throws Exception {
 
     String pageNum = request.getParameter("pageNum");
-    sqlSession.update("board.getModify", boardDTO);
+    sqlSession.update("board.getUpdate", boardDTO);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("pageNum", pageNum);

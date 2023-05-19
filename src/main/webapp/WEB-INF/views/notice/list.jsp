@@ -52,11 +52,11 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th scope="col">글번호</th>
-              <th scope="col">글제목</th>
-              <th scope="col">작성자</th>
-              <th scope="col">작성일</th>
-              <th scope="col">조회수</th>
+              <td style="width: 100px">번호</td>
+              <td style="width: auto">글제목</td>
+              <td style="width: 100px">작성자</td>
+              <td style="width: 100px">작성일</td>
+              <td style="width: 100px">조회수</td>
             </tr>
           </thead>
           <tbody>
@@ -109,8 +109,7 @@
         </select>
         <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요" />
         <input type="hidden" name="pageNum" value="1" />
-        <button type="button" class="btn btn-primary btn-sm"
-          onclick="return noticeSearchCheck()">검색</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="return noticeSearchCheck();">검색</button>
       </div>
     </form>
     <div class="d-flex justify-content-center">
