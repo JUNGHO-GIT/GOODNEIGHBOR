@@ -22,3 +22,5 @@ release.properties
 
 # Spring Boot specific
 /maven-wrapper/
+
+*.pdf

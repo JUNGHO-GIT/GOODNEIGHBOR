@@ -30,12 +30,12 @@
               </p>
             </div>
             <div class="col-md-6 mv-img">
-              <img src="${srcPath}/imgs/etc/misin.jpg">
+              <img src="${srcPath}/imgs/etc/misin.png">
             </div>
           </div>
           <div class="row vision">
             <div class="col-md-6 mv-img">
-              <img src="${srcPath}/imgs/etc/vision.jpg">
+              <img src="${srcPath}/imgs/etc/vision.png">
             </div>
             <div class="col-md-6 mv-det">
               <h1>Our Vision</h1>
@@ -57,7 +57,7 @@
           <div class="event-ro row">
             <div class="col-md-4 col-sm-6">
               <div class="event-box">
-                <img src="${srcPath}/imgs/events/1.jpg">
+                <img src="${srcPath}/imgs/events/1.png">
                 <h4>아이들을 위한 교육 지원</h4>
                 <p class="raises">
                   <span>
@@ -71,7 +71,7 @@
             </div>
             <div class="col-md-4 col-sm-6">
               <div class="event-box">
-                <img src="${srcPath}/imgs/events/2.jpg">
+                <img src="${srcPath}/imgs/events/2.png">
                 <h4>환경 보호와 지구를 위한 노력</h4>
                 <p class="raises">
                   <span>Raised : <i class="fas fa-won-sign"></i> 52,425</span> / <i class="fas fa-won-sign"></i> 1,000,000
@@ -83,7 +83,7 @@
             </div>
             <div class="col-md-4 col-sm-6">
               <div class="event-box">
-                <img src="${srcPath}/imgs/events/3.jpg">
+                <img src="${srcPath}/imgs/events/3.png">
                 <h4>건강한 삶을 지원하는 의료 발전</h4>
                 <p class="raises">
                   <span>Raised : <i class="fas fa-won-sign"></i> 2,425</span> / <i class="fas fa-won-sign"></i> 50,000
