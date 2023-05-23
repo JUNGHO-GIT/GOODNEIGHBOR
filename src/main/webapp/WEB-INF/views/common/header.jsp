@@ -14,7 +14,7 @@
         <div class="col-lg-6 d-none d-lg-block">
           <ul class="ulleft">
             <li>
-              <i class="far fa-envelope"></i> www.goodneighbor.com <span>|</span>
+              <i class="far fa-envelope"></i> www.GOODNEIGHBOR.com <span>|</span>
             </li>
             <li>
               <i class="fas fa-phone-volume"></i> 010-1234-5678

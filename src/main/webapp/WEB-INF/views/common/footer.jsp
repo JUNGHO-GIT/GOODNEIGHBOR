@@ -9,7 +9,7 @@
 <footer class="footer">
   <div class="copy">
     <div class="container">
-      2023 &copy; All Rights Reserved | Designed and Developed by goodneighbor.
+      2023 &copy; All Rights Reserved | Designed and Developed by GOODNEIGHBOR.
       <span>
         <a>
           <i class="fab fa-facebook-square" onclick="location.href='https://ko-kr.facebook.com'" style="cursor: pointer;"></i>

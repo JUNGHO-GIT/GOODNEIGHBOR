@@ -35,7 +35,7 @@ public class AdminController {
 	}
 
   // 2-1. idCheck() ------------------------------------------------------------------------------->
-	@RequestMapping(value="/goodneighbor/member/admin/idCheck.do", method=RequestMethod.POST)
+	@RequestMapping(value="/GOODNEIGHBOR/member/admin/idCheck.do", method=RequestMethod.POST)
 	public String idCheck(HttpServletRequest request, Model model) {
 
 		int check = - 1;

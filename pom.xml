@@ -8,7 +8,7 @@ https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.good</groupId>
 	<artifactId>neighbor</artifactId>
-	<name>goodneighbor</name>
+	<name>GOODNEIGHBOR</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
@@ -231,7 +231,7 @@ https://maven.apache.org/maven-v4_0_0.xsd">
 				<version>3.3.2</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<warName>goodneighbor</warName>
+					<warName>GOODNEIGHBOR</warName>
 				</configuration>
 			</plugin>
 
@@ -259,7 +259,7 @@ https://maven.apache.org/maven-v4_0_0.xsd">
 				</executions>
 			</plugin>
 		</plugins>
-    <finalName>goodneighbor</finalName>
+    <finalName>GOODNEIGHBOR</finalName>
 	</build>
 
 </project>
