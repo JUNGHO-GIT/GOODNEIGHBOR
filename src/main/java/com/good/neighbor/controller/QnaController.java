@@ -118,7 +118,8 @@ public class QnaController {
 
     if (keyWord == null || keyWord.length() < 1 || keyWord == "") {
       cnt = sqlSession.selectOne("qna.getCount");
-    } else {
+    }
+    else {
       map3.put("columnParam", keyField);
       map3.put("keyWord", keyWord);
       cnt = sqlSession.selectOne("qna.getSearchCount", map3);
@@ -135,7 +136,8 @@ public class QnaController {
       map.put("count", new Integer(pt.getPageSize()));
 
       list = sqlSession.selectList("qna.getList", map);
-    } else if (keyWord != null || keyWord.length() > 1) {
+    }
+    else if (keyWord != null || keyWord.length() > 1) {
       map2.put("columnParam", keyField);
       map2.put("keyWord", keyWord);
       map2.put("start", new Integer(startPos));
@@ -147,10 +149,11 @@ public class QnaController {
     if (pt.getEndPage() > pt.getPageCnt()) {
       pt.setEndPage(pt.getPageCnt());
     }
+
     int number = cnt - (curPage - 1) * pt.getPageSize();
 
-    model.addAttribute("number", number);
     model.addAttribute("pageNum", pageNum);
+    model.addAttribute("number", number);
     model.addAttribute("keyField", keyField);
     model.addAttribute("keyWord", keyWord);
     model.addAttribute("pt", pt);
@@ -177,7 +180,7 @@ public class QnaController {
   }
 
   // 4-1. getUpdate() ----------------------------------------------------------------------------->
-  @RequestMapping("getUpdate.do")
+  @RequestMapping(value = "/getUpdate.do", method = RequestMethod.GET)
   public String getUpdate(HttpServletRequest request, Model model) {
 
     String pageNum = request.getParameter("pageNum");
@@ -191,7 +194,7 @@ public class QnaController {
   }
 
   // 4-2. updatePro() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "updatePro.do", method = RequestMethod.POST)
+  @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
   public String updatePro(HttpServletRequest request, QnaDTO qnaDTO, Model model) {
 
     String pw = request.getParameter("qna_pw");
@@ -205,7 +208,7 @@ public class QnaController {
   }
 
   // 5-1. deleteForm() ---------------------------------------------------------------------------->
-  @RequestMapping("deleteForm.do")
+  @RequestMapping(value = "/deleteForm.do", method = RequestMethod.GET)
   public String deleteForm(HttpServletRequest request, Model model) {
 
     String pageNum = request.getParameter("pageNum");
@@ -219,7 +222,7 @@ public class QnaController {
   }
 
   // 5-2. deletePro() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "deletePro.do", method = RequestMethod.POST)
+  @RequestMapping(value = "/deletePro.do", method = RequestMethod.POST)
   public String deletePro(HttpServletRequest request, Model model) {
 
     int num = Integer.parseInt(request.getParameter("qna_number"));
@@ -235,7 +238,7 @@ public class QnaController {
   }
 
   // 6-1. secretForm() ---------------------------------------------------------------------------->
-  @RequestMapping(value = "secretForm.do", method = RequestMethod.GET)
+  @RequestMapping(value = "/secretForm.do", method = RequestMethod.GET)
   public String secretForm(HttpServletRequest request, Model model) {
 
     int num = Integer.parseInt(request.getParameter("qna_number"));
