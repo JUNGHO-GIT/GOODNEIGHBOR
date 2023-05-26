@@ -1,0 +1,120 @@
+/** 1. (1201 ~ 10000)******************************************************************************/
+@media only screen and (min-width: 1201px) and (max-width: 10000px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 18px;
+    line-height: 60px;
+  }
+
+  table th {
+    font-size: 14px;
+  }
+
+  table td {
+    font-size: 18px;
+  }
+
+}
+
+/** 2. (992 ~ 1200) *******************************************************************************/
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 18px;
+    line-height: 55px;
+  }
+
+  table th {
+    font-size: 13px;
+  }
+
+  table td {
+    font-size: 18px;
+  }
+}
+
+/** 3. (768 ~ 991) ********************************************************************************/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 16px;
+    line-height: 50px;
+  }
+
+  table th {
+    font-size: 12px;
+  }
+
+  table td {
+    font-size: 16px;
+  }
+}
+
+/** 4. (576 ~ 767) ********************************************************************************/
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 14px;
+    line-height: 40px;
+  }
+
+  table th {
+    font-size: 11px;
+  }
+
+  table td {
+    font-size: 14px;
+  }
+}
+
+/** 5. (375 ~ 575) ********************************************************************************/
+@media only screen and (min-width: 375px) and (max-width: 575px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 12px;
+    line-height: 30px;
+  }
+
+  table th {
+    font-size: 10px;
+  }
+
+  table td {
+    font-size: 12px;
+  }
+}
+
+/** 6. (0~374)*************************************************************************************/
+@media only screen and (min-width: 0px) and (max-width: 374px) {
+
+  /** non display **/
+
+  /** display **/
+  .footer {
+    font-size: 10px;
+    line-height: 30px;
+  }
+
+  table th {
+    font-size: 8px;
+  }
+
+  table td {
+    font-size: 10px;
+  }
+}

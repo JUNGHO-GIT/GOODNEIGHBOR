@@ -36,14 +36,14 @@ public class MemberController {
   @RequestMapping(value = "/agree_TermsOfUse.do", method = RequestMethod.GET)
   public String popup1(HttpSession session) {
 
-    return "/popup/agree_TermsOfUse";
+    return "/member/agree_TermsOfUse";
   }
 
   // 1-3. popup2() -------------------------------------------------------------------------------->
   @RequestMapping(value = "/agreePopup.do", method = RequestMethod.GET)
   public String popup2(HttpSession session) {
 
-    return "/popup/agreePopup";
+    return "/member/agreePopup";
   }
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->

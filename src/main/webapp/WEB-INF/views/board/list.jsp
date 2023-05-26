@@ -33,11 +33,9 @@
   <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
   <main class="main container-fluid">
-    <div class="row">
-      <div class="col-12 col-md-8 col-lg-6 mx-auto">
-        <div class="text-center my-4">
-          <h1>게시판</h1>
-        </div>
+
+    <div class="row d-flex justify-content-center text-center align-items-center">
+      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
         <c:if test="${member_id != null || admin_id != null}">
           <div class="d-flex justify-content-end mb-3">
             <a href="${ctxPath}/board/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
@@ -49,49 +47,55 @@
           </div>
         </c:if>
         <c:if test="${pt.cnt > 0}">
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped">
+          <div class="table-responsive mt-4">
+            <table class="table table-hover table-bordered">
               <thead>
-                <tr>
-                  <td style="width: 100px">번호</td>
-                  <td style="width: auto">글제목</td>
-                  <td style="width: 100px">작성자</td>
-                  <td style="width: 100px">작성일</td>
-                  <td style="width: 100px">조회수</td>
-                </tr>
+                <h1 class="p">자유 게시판</h1>
               </thead>
+              <br/><br/>
               <tbody>
                 <c:forEach var="dto" items="${list}">
-                  <tr>
-                    <td>${number}
+                  <tr style="border-top: 2px solid #ddd;">
+                    <td width="10%" align="left">
+                      ${number}
                       <c:set var="number" value="${number-1}" />
                     </td>
-                    <td>
-                      <c:if test="${dto.board_level>0}">
-                        <img src="${ctxPath}/resources/imgs/etc/level.gif" height="50" width="70"
-                          class="mb-2">
+                    <td width="60%" align="left">
+                      <c:if test="${dto.board_level > 0}">
+                        <i class="fas fa-reply fa-rotate-180" style="color: #FF0000;"></i>
                         <b>[답글]</b>
                       </c:if>
-                      <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}"
-                        height="16" id="none_color" class="text-decoration-none linkHover">
+                      <c:if test="${dto.board_readcount>=10}">
+                        <i class="fas fa-star" style="color: #FFD700;"></i>
+                      </c:if>
+                      <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none linkHover p">
                         ${dto.board_title}
                       </a>
-                      <c:if test="${dto.board_readcount>=10}">
-                        <img src="${ctxPath}/resources/imgs/etc/hot.gif" class="ms-2" />
-                      </c:if>
+                      <br/><br/>
+                      <i class="fas fa-user"></i>
+                      &nbsp;&nbsp;
+                      <c:out value="${dto.board_writer}" />
                     </td>
-                    <td>${dto.board_writer}</td>
-                    <td>
-                      <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy/MM/dd" />
+                    <td width="30%" align="left">
+                      <i class="far fa-clock"></i>
+                      &nbsp;&nbsp;
+                      <fmt:formatDate value="${dto.board_regdate}" pattern="MM-dd" />
+                      <br/><br/>
+                      <i class="fas fa-eye"></i>
+                      &nbsp;&nbsp;
+                      <c:out value="${dto.board_readcount}" />
                     </td>
-                    <td>${dto.board_readcount}</td>
                   </tr>
                 </c:forEach>
               </tbody>
             </table>
           </div>
         </c:if>
+      </div>
+    </div>
 
+    <div class="row d-flex justify-content-center text-center align-items-center mt-5">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 col-6">
         <form name="searchForm" method="GET" action="${ctxPath}/board/list.do" class="mb-4">
           <div class="input-group">
             <select class="form-select" name="keyField" id="select_option">
@@ -105,25 +109,34 @@
               onclick="return searchBoardCheck();">검색</button>
           </div>
         </form>
+      </div>
+    </div>
 
+    <div class="row d-flex justify-content-center text-center align-items-center">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
         <div class="d-flex justify-content-center">
           <c:if test="${pt.cnt > 0}">
             <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul class="pagination justify-content-center">
                 <c:if test="${pt.startPage>10}">
-                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a></li>
+                  <li>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/board/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
+                  </li>
                 </c:if>
                 <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
-                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${i}">${i}</a></li>
+                  <li>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/board/list.do?pageNum=${i}">${i}</a>
+                  </li>
                 </c:forEach>
                 <c:if test="${pt.endPage<pt.pageCnt}">
-                  <li class="page-item"><a class="page-link" href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a></li>
+                  <li>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/board/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
+                  </li>
                 </c:if>
               </ul>
             </nav>
           </c:if>
         </div>
-
       </div>
     </div>
 

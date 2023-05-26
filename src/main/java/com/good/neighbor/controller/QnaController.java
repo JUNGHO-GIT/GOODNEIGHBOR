@@ -24,7 +24,7 @@ public class QnaController {
   private SqlSession sqlSession;
 
   // 1-1. insertForm() ---------------------------------------------------------------------------->
-  @RequestMapping("/insertForm.do")
+  @RequestMapping(value = "/insertForm.do", method = RequestMethod.GET)
   public String insertForm(Model model, HttpServletRequest request) {
     String qna_number = request.getParameter("qna_number");
     String qna_group = request.getParameter("qna_group");

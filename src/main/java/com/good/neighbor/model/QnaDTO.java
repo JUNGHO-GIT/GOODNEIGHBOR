@@ -6,14 +6,14 @@ public class QnaDTO {
 
   // fields --------------------------------------------------------------------------------------->
   private Integer qna_number;
-  private Integer qna_readcount;
-  private Integer qna_group;
-  private Integer qna_step;
-  private Integer qna_level;
   private String qna_writer;
   private String qna_pw;
   private String qna_title;
   private String qna_content;
+  private Integer qna_readcount;
+  private Integer qna_group;
+  private Integer qna_step;
+  private Integer qna_level;
   private Timestamp qna_regdate;
 
   // getters -------------------------------------------------------------------------------------->

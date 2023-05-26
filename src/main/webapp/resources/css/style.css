@@ -1,6 +1,6 @@
-/* ===================================== Basic CSS ==================================== */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700);
-@import url(https://fonts.googleapis.com/css?family=Arimo:300,400,400italic,700,700italic);
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
 
 * {
   margin: 0px;
@@ -8,7 +8,28 @@
   list-style: none;
 }
 
-/** important **/
+.table {
+  border-collapse: collapse;
+}
+
+.table td,
+.table th {
+  padding: 10px;
+  border-top: #ffffff !important;
+}
+
+.table th {
+  background-color: #eeeeee;
+}
+
+.table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
 .tdtd {
   width: 100px !important;
 }
@@ -194,6 +215,9 @@ body {
   margin: auto;
 }
 
+.page-item {
+}
+
 @media screen and (max-width: 992px) {
   .page-nav {
     background-size: auto;
@@ -339,7 +363,6 @@ body {
   }
 }
 
-/* =================== Header Style Starts Here =================== */
 header {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   background-color: #ffffff;
@@ -354,30 +377,31 @@ header .logo {
 header .header-top {
   background-color: #ffffff;
   border-bottom: 1px solid #d3d7cea6;
+  margin: 0;
   padding: 7px;
 }
 
-header .header-top .col-det .ulleft li {
+header .header-top .ulleft li {
   float: left;
   padding: 12px;
   color: #686968;
   font-size: 0.9rem;
 }
 
-header .header-top .col-det .ulleft li i {
+header .header-top .ulleft li i {
   margin-right: 5px;
   color: #bfbfbf;
 }
 
-header .header-top .col-det .ulleft li span {
+header .header-top .ulleft li span {
   margin-left: 15px;
 }
 
-header .header-top .col-det .ulright {
+header .header-top .ulright {
   float: right;
 }
 
-header .header-top .col-det .ulright li {
+header .header-top .ulright li {
   float: left;
   padding: 10px;
   color: #d3d7ce;
@@ -385,17 +409,17 @@ header .header-top .col-det .ulright li {
   font-weight: 600;
 }
 
-header .header-top .col-det .ulright li i {
+header .header-top .ulright li i {
   margin-right: 5px;
   color: #8c8a8a;
 }
 
-header .header-top .col-det .ulright li small {
+header .header-top .ulright li small {
   color: #8c8a8a;
   font-weight: 600;
 }
 
-header .header-top .col-det .ulright li span {
+header .header-top .ulright li span {
   margin-left: 15px;
 }
 
@@ -512,7 +536,6 @@ header .small-menu {
   padding: 5px !important;
 }
 
-/* =================== Slider Style Starts Here =================== */
 .slider {
   position: relative;
 }
@@ -647,7 +670,6 @@ header .small-menu {
 .slider .owl-controls.clickable .owl-page:hover span {
   background-color: #ffffff;
   filter: Alpha(Opacity=100);
-  /*IE7 fix*/
   opacity: 1;
 }
 
@@ -656,7 +678,6 @@ header .small-menu {
   margin: auto;
 }
 
-/* ===================================== About CSS ================================== */
 .about-us {
   background-color: #edf1f5;
   padding: 50px;
@@ -719,16 +740,9 @@ header .small-menu {
   color: #21d7d9;
 }
 
-/* ===================================== Events Home CSS ================================== */
 .events {
   background-color: #efefef2e;
-  padding: 50px;
-}
-
-@media screen and (max-width: 940px) {
-  .events {
-    padding: 30px 10px;
-  }
+  padding: 50px 50px 25px 50px;
 }
 
 .events .event-ro .event-box {
@@ -757,7 +771,6 @@ header .small-menu {
   margin-bottom: 15px;
 }
 
-/* ===================================== Mission Vision CSS ================================== */
 .mission-vision {
   background-color: #ffffff;
 }
@@ -786,7 +799,6 @@ header .small-menu {
   margin: auto;
 }
 
-/* ===================================== Charity Number CSS ================================== */
 .doctor-message {
   background-image: url("../images/slider/slider-2.png");
   background-attachment: fixed;
@@ -822,7 +834,6 @@ header .small-menu {
   color: #ffffff;
 }
 
-/* ===================================== Our Blog CSS ================================== */
 .our-blog {
   background-color: #fdfdfd;
   padding: 10px;
@@ -866,7 +877,6 @@ header .small-menu {
   color: #3bb44b;
 }
 
-/* make mouser hover on link */
 .our-blog .single-blog .link a:hover {
   font-size: 15px;
   color: #555555;
@@ -878,71 +888,6 @@ header .small-menu {
   padding-top: 6px;
   margin-left: 5px;
   color: #ffffff;
-}
-
-/** footer ****************************************************************************************/
-.footer {
-  width: 100%;
-  height: 80px;
-  background: #333;
-  text-align: center;
-  line-height: 60px;
-  position: initial;
-  bottom: 0;
-  margin-top: 10px;
-  padding: 5px;
-  padding-bottom: 5px;
-  background-color: #1e2436;
-  color: #ffffff;
-}
-
-@media screen and (max-width: 940px) {
-  .footer {
-    padding: 10px 10px;
-  }
-}
-
-.footer h2 {
-  font-size: 26px;
-  margin-top: 10px;
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-.footer p {
-  text-align: justify;
-  text-indent: 20px;
-  font-size: 0.9rem;
-}
-
-.footer .link-list li {
-  padding: 10px;
-  border-bottom: 1px solid #6c6c6c;
-  font-size: 0.9rem;
-}
-
-.footer .link-list li a {
-  color: #ffffff;
-}
-
-.footer .link-list li i {
-  float: right;
-}
-
-.footer .map-img {
-  font-weight: 600;
-  font-size: 17px;
-  padding-left: 30px;
-}
-
-.footer address {
-  font-weight: 300;
-}
-
-.footer address a {
-  color: #ffffff;
-  font-size: 1rem;
-  font-family: "mouse-300", Arial, Helvetica, sans-serif;
 }
 
 .copy {
@@ -982,7 +927,6 @@ header .small-menu {
   box-shadow: 0 2px 3px 0 rgba(218, 218, 253, 0.35), 0 0px 3px 0 rgba(206, 206, 238, 0.35);
 }
 
-/* ===================================== Our Team Starts Here ===================================== */
 .our-team {
   padding: 50px;
   background-color: #cccccc1c;
@@ -1045,7 +989,6 @@ header .small-menu {
   border-radius: 50px;
 }
 
-/* ===================================== Gallery Style  ================================== */
 .gallery-filter {
   width: 100%;
   text-align: center;
@@ -1134,7 +1077,6 @@ header .small-menu {
   max-block-size: fit-content;
 }
 
-/**************************************************************************************************/
 .figure {
   padding: 15px;
   max-width: 300px;
@@ -1244,4 +1186,18 @@ header .small-menu {
   cursor: pointer;
   color: #3cc88f;
   font-weight: 800;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: #333;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #1e2436;
+  color: #ffffff;
 }

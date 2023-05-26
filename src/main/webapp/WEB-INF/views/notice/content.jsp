@@ -62,7 +62,7 @@
         </c:if>
         <a class="btn btn-primary btn-sm me-2" href="${ctxPath}/notice/insertForm.do">글쓰기</a>
       </c:if>
-      <a class="btn btn-primary btn-sm" href="${ctxPath}/notice/list.do">리스트</a>
+      <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/notice/list.do">리스트</a>
     </div>
 
   </main><br /><br />

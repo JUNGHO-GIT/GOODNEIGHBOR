@@ -7,21 +7,23 @@
 
 <!-- meta -->
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<!-- link -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap">
+<!-- link 1 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+<!-- link 2 -->
 <link rel="shortcut icon" href="${srcPath}/imgs/etc/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="${srcPath}/css/style.css"/>
 <link rel="stylesheet" href="${srcPath}/css/jungho.css"/>
+<link rel="stylesheet" href="${srcPath}/css/media.css"/>
 
-<!-- script -->
+<!-- script 1 -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js">
@@ -32,12 +34,16 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
 </script>
 <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- script 2 -->
 <script defer src="${srcPath}/js/admin.js"></script>
 <script defer src="${srcPath}/js/main.js"></script>
 <script defer src="${srcPath}/js/qna.js"></script>
 <script defer src="${srcPath}/js/notice.js"></script>
 <script defer src="${srcPath}/js/member.js"></script>
 <script defer src="${srcPath}/js/board.js"></script>
+
+<!-- script 3 -->
 <script>
   function hoverIn(event) {
     event.target.style.color = "#3cc88f";
@@ -58,6 +64,5 @@
       elements[i].addEventListener("mouseout", hoverOut);
     }
   }
-
   document.addEventListener("DOMContentLoaded", applyHoverEffect);
 </script>

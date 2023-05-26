@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+  <!-- 1. 전체 게시글 수 -->
+  <select id="getCount" resultType="Integer">
+    select count(*)
+    from product
+  </select>
+
+  <!-- 2. 최대 글번호 얻기 -->
+  <select id="getMax" resultType="Integer">
+    select NVL (
+      max(product_number
+    ), 0)
+    from product
+  </select>
+
+  <!-- 3. 글쓰기 -->
+  <insert id="getInsert" parameterType="productDTO">
+    insert into product (
+      product_number, product_name, product_detail, product_price, product_stock, product_company, product_image, product_regdate
+    )
+    values (
+      #{product_number}, #{product_name}, #{product_detail}, #{product_price}, #{product_stock}, #{product_company}, #{product_image}, SYSDATE
+    )
+  </insert>
+
+  <!-- 4. 글번호 업데이트 -->
+  <update id="getUpdateStep" parameterType="productDTO">
+    update product
+    set product_step = product_step + 1
+    where product_group = #{product_group} and product_step <![CDATA[>]]> #{product_step}
+  </update>
+
+  <!-- 5. 전체 게시글 목록 -->
+  <select id="getList" parameterType="java.util.Map" resultType="productDTO">
+    select *
+    from (
+      select b.*, ROWNUM rnum
+      from (
+        select *
+        from product
+        order by product_group desc, product_step asc
+      ) b where ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    )
+    where rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 5-1. 검색 게시글 수 -->
+  <select id="getSearchCount" parameterType="java.util.Map" resultType="Integer">
+    SELECT COUNT(*) FROM product
+    WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+  </select>
+
+  <!-- 5-2. 검색 게시글 목록 -->
+  <select id="getSearch" parameterType="java.util.Map" resultType="productDTO">
+    SELECT *
+    FROM (
+      SELECT b.*, ROWNUM rnum
+      FROM (
+        SELECT *
+        FROM product
+        WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
+        ORDER BY product_group DESC, product_step ASC
+      ) b WHERE ROWNUM <![CDATA[<=]]> #{start} + #{count}
+    ) WHERE rnum <![CDATA[>]]> #{start}
+  </select>
+
+  <!-- 6. 글 상세보기 -->
+  <select id="getDetails" parameterType="Integer" resultType="productDTO">
+    select *
+    from product
+    where product_number = #{product_number}
+  </select>
+
+  <!-- 7. 글 수정 -->
+  <update id="getUpdate" parameterType="productDTO">
+    update product
+    set product_name = #{product_name}, product_detail = #{product_detail}, product_price = #{product_price}, product_stock = #{product_stock}, product_company = #{product_company}, product_image = #{product_image}
+    where product_number = #{product_number}
+  </update>
+
+  <!-- 8. 글 삭제 -->
+  <delete id="getDelete" parameterType="Integer">
+    delete from product
+    where product_number = #{product_number}
+  </delete>
+
+</mapper>

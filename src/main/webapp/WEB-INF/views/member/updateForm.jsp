@@ -49,7 +49,7 @@
         </div>
         <div class="text-center">
           <input type="submit" value="내 정보 수정" class="btn btn-primary btn-sm"/>
-          <input type="button" value="회원탈퇴" onclick="location.href='${ctxPath}/member/deleteForm.do'" class="btn btn-danger"/>
+          <input type="button" value="회원탈퇴" onclick="window.location.href='${ctxPath}/member/deleteForm.do'" class="btn btn-danger"/>
           <input type="button" onclick="window.location.href='${ctxPath}'" value="메인으로" class="btn btn btn-primary btn-sm"/>
         </div>
       </form>
