@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <h2 class="mb-4">글 수정 폼</h2>
       <form name="getUpdate" method="POST" action="${ctxPath}/board/updatePro.do" onsubmit="return boardWriteSave();">
         <input type="hidden" name="board_pw1" id="board_pw1" value="${dto.board_pw}" />

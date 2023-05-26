@@ -77,11 +77,11 @@ public class AdminController {
 		return "admin/loginSuccess";
 	}
 
-  // 4-1. logOut() -------------------------------------------------------------------------------->
-	@RequestMapping("/logOut.do")
-	public String logOut() {
+  // 4-1. logout() -------------------------------------------------------------------------------->
+	@RequestMapping("/logout.do")
+	public String logout() {
 
-		return "admin/logOut";
+		return "admin/logout";
 	}
 
 }

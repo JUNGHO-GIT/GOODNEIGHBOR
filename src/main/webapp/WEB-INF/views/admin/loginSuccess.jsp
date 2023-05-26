@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <c:set var="admin_id" value="${dto.admin_id}" scope="session"/>
       <c:set var="admin_name" value="${dto.admin_name}" scope="session"/>
       <meta http-equiv="Refresh" content="0;url=${ctxPath}"/>

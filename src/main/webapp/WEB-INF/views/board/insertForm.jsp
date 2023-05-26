@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <c:if test="${board_number==0}">
         <h2 class="mb-4">글쓰기</h2>
       </c:if>

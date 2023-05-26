@@ -4,6 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:remove var="member_id" scope="session"/>
+<c:remove var="member_name" scope="session"/>
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -16,22 +18,30 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
-
-      <c:remove var="member_id" scope="session"/>
-      <c:remove var="member_name" scope="session"/>
-
-      <h1 class="text-center admin">관리자 로그인</h1>
-      <form action="${ctxPath}/admin/loginPro.do" method="POST" name="adminlogin" onsubmit="return adminIdPwCheck()">
-        <div class="mb-3">
-          <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디 입력"/>
+    <main class="main container-fluid">
+      <form action="${ctxPath}/admin/loginPro.do" method="POST" name="adminlogin">
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <h1 class="text-center my-4 p">관리자 로그인</h1>
+          </div>
         </div>
-        <div class="mb-3">
-          <input type="password" name="admin_pw" id="admin_pw" class="form-control" placeholder="비밀번호 입력"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3">
+              <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디 입력"/>
+            </div>
+            <div class="mb-3">
+              <input type="password" name="admin_pw" id="admin_pw" class="form-control" placeholder="비밀번호 입력"/>
+            </div>
+          </div>
         </div>
-        <div class="text-center mb-3">
-          <input type="submit" id="submit_button" value="로그인" class="btn btn-primary btn-sm"/>
-          <input type="button" value="회원가입" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/admin/insertForm.do'"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3">
+              <button type="submit" id="submit_button" class="btn btn-primary btn-sm"  onclick="return adminIdPwCheck()">로그인</button>
+              <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/admin/insertForm.do'">회원가입</button>
+            </div>
+          </div>
         </div>
       </form>
 

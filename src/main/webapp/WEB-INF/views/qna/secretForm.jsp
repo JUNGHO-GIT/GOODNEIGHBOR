@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8">
           <h2 class="text-center">비밀번호를 입력해주세요</h2>

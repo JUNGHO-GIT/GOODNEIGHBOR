@@ -40,10 +40,10 @@ public class MemberController {
   }
 
   // 1-3. popup2() -------------------------------------------------------------------------------->
-  @RequestMapping(value = "/agreePopup.do", method = RequestMethod.GET)
+  @RequestMapping(value = "/popupAgree.do", method = RequestMethod.GET)
   public String popup2(HttpSession session) {
 
-    return "/member/agreePopup";
+    return "/member/popupAgree";
   }
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->
@@ -115,11 +115,11 @@ public class MemberController {
   }
 
 
-  // 2-3. logOut() -------------------------------------------------------------------------------->
-  @RequestMapping(value = "/logOut.do", method = RequestMethod.GET)
-  public String logOut() {
+  // 2-3. logout() -------------------------------------------------------------------------------->
+  @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+  public String logout() {
 
-    return "member/logOut";
+    return "member/logout";
   }
 
   // 3-1. getUpdate() ---------------------------------------------------------------------------->
@@ -179,7 +179,7 @@ public class MemberController {
 
     sqlSession.delete("member.getDelete", map);
 
-    return "member/logOut";
+    return "member/logout";
   }
 
   // 5-1. search_main() --------------------------------------------------------------------------->

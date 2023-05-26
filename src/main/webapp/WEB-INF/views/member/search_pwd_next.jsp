@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <form name="search_pwd_next" action="search_pwd_next" method="POST" onsubmit="return findPwCheck()" class="row g-3">
         <h1 class="text-center">비밀번호 찾기</h1>
 

@@ -224,10 +224,10 @@ function memberIdPwCheck() {
   }
   if (confirm("아이디를 찾으시겠습니까?")) {
     $("#id_search").submit();
-
     return false;
   }
 }
+
 
 // 8. memberPwCheck() ----------------------------------------------------------------------------->
 function memberPwCheck() {

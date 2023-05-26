@@ -77,11 +77,6 @@ textarea {
   cursor: pointer;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 p {
   margin-bottom: 0px;
   width: 100%;
@@ -1197,7 +1192,6 @@ header .small-menu {
   position: relative;
   bottom: 0;
   margin-top: 10px;
-  margin-bottom: 20px;
   background-color: #1e2436;
   color: #ffffff;
 }

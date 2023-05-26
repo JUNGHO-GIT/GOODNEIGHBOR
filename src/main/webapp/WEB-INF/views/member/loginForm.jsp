@@ -17,26 +17,37 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
-
-      <h1 class="text-center my-4">로그인</h1>
-      <form name="loginForm" method="POST" action="${ctxPath}/member/loginPro.do" onsubmit="return memberIdPwCheck()">
-        <div class="mb-3">
-          <input type="text" id="member_id" name="member_id" class="form-control" size="30" value="<%=cookie%>" placeholder="아이디"/>
+    <main class="main container-fluid">
+      <form name="loginForm" method="POST" action="${ctxPath}/member/loginPro.do">
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <h1 class="text-center my-4 p">로그인</h1>
+          </div>
         </div>
-        <div class="mb-3">
-          <input type="password" id="member_pw" name="member_pw" class="form-control" size="30" placeholder="비밀번호"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3">
+              <input type="text" id="member_id" name="member_id" class="form-control" size="30" value="<%=cookie%>" placeholder="아이디"/>
+            </div>
+            <div class="mb-3">
+              <input type="password" id="member_pw" name="member_pw" class="form-control" size="30" placeholder="비밀번호"/>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" name="rememberId" value="true" class="form-check-input"/>
+              <label class="form-check-label" for="rememberId">아이디 저장</label>
+            </div>
+          </div>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" name="rememberId" value="true" class="form-check-input"/>
-          <label class="form-check-label" for="rememberId">아이디 저장</label>
-        </div>
-        <div class="mb-3">
-          <input type="button" onclick="window.location.href='${ctxPath}/member/search_id.do'" value="아이디 찾기" class="btn btn-primary btn-sm" />
-          &nbsp;&nbsp;
-          <input type="button" onclick="window.location.href='${ctxPath}/member/search_pwd.do'" value="비밀번호 찾기" class="btn btn-primary btn-sm" />
-          &nbsp;&nbsp;
-          <input type="submit" id="submit_button" class="btn btn-primary btn-sm" value="로그인"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3">
+              <button type="submit" id="submit_button" class="btn btn-primary btn-sm" onclick="return memberIdPwCheck()">로그인</button>
+              &nbsp;&nbsp;
+              <button type="button" onclick="window.location.href='${ctxPath}/member/search_id.do'" class="btn btn-primary btn-sm">아이디 찾기</button>
+              &nbsp;&nbsp;
+              <button type="button" onclick="window.location.href='${ctxPath}/member/search_pwd.do'" class="btn btn-primary btn-sm">비밀번호 찾기</button>
+            </div>
+          </div>
         </div>
       </form>
 

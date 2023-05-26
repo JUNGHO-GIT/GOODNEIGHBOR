@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <form name="id_search" id="id_search" action="${ctxPath}/member/search_id_pro" method="POST" onsubmit="return memberIdPwCheck()">
 
         <h1 class="text-center mb-4">아이디 찾기</h1>

@@ -16,7 +16,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
 
       <h2 class="text-center my-4">공지사항</h2>
       <form name="insertForm" method="POST" action="${ctxPath}/notice/insertPro.do" onsubmit="return noticeCheck()">

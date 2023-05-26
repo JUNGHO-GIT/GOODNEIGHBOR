@@ -16,7 +16,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
 
       <h1 class="text-center my-4">회원 탈퇴</h1>
       <p class="mb-4">

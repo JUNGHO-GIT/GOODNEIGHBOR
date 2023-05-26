@@ -16,7 +16,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <div class="container mt-5">
         <div class="text-center mb-4">
           <h1>자유게시판</h1>

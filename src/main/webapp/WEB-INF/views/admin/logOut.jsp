@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid w-50 mx-auto">
+    <main class="main container-fluid">
       <c:remove var="admin_id" scope="session"/>
       <c:remove var="admin_name" scope="session"/>
       <meta http-equiv="Refresh" content="0;url=${ctxPath}"/>

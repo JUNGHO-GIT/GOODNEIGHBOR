@@ -28,19 +28,15 @@
           <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/insertForm.do'">회원가입</button>
           <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/loginForm.do'">관리자</button>
         </c:if>
-      </div>
-      <div class="col-xl-6 col-lg-6 d-lg-block d-none">
         <c:if test="${member_id != null}">
           <form method="POST" action="${ctxPath}/member/getUpdate.do">
             <input type="hidden" name="member_name" value="${member_name}" />
-            <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/logOut.do'" type="button">로그아웃</button>
+            <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/logout.do'" type="button">로그아웃</button>
             <button class="btn btn-sm btn-default" type="submit">내정보 변경</button>
           </form>
         </c:if>
-      </div>
-      <div class="col-xl-6 col-lg-6 d-lg-block d-none">
         <c:if test="${admin_id != null}">
-          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/logOut.do'">로그아웃</button>
+          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/logout.do'">로그아웃</button>
           <button class="btn btn-sm btn-default" onclick="window.location.href='${ctxPath}/product/listProduct'">상품관리</button>
         </c:if>
       </div>
