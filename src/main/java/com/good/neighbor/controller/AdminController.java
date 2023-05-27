@@ -31,7 +31,7 @@ public class AdminController {
 
 		sqlSession.insert("admin.getInsert", adminDTO);
 
-		return "common/home";
+		return "admin/loginForm";
 	}
 
   // 2-1. idCheck() ------------------------------------------------------------------------------->
@@ -74,7 +74,7 @@ public class AdminController {
 
 		model.addAttribute("dto", dto);
 
-		return "admin/loginSuccess";
+		return "admin/loginPro";
 	}
 
   // 4-1. logout() -------------------------------------------------------------------------------->

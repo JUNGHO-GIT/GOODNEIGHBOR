@@ -5,24 +5,29 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
-
 <!DOCTYPE html>
 <html lang="en, ko">
 
-  <head>
+	<head>
     <jsp:include page="/WEB-INF/views/common/head.jsp"/>
-  </head>
+	</head>
 
-  <body>
-
+	<body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid">
+    <main class="main container">
+
       <c:set var="admin_id" value="${dto.admin_id}" scope="session"/>
       <c:set var="admin_name" value="${dto.admin_name}" scope="session"/>
+      <script>
+        alert("${member_name}님 환영합니다.");
+      </script>
       <meta http-equiv="Refresh" content="0;url=${ctxPath}"/>
-    </main>
+
+    </main><br/><br/>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
   </body>
 </html>
