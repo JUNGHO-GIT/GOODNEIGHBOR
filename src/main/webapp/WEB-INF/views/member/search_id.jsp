@@ -2,24 +2,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
-<c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}" />
+<c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-	<head>
-		<jsp:include page="/WEB-INF/views/common/head.jsp"/>
-	</head>
+  <!----------------------------------------------------------------------------------------------->
+  <head>
+    <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  </head>
 
-	<body>
+  <!----------------------------------------------------------------------------------------------->
+  <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
-
+    <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
-      <form name="id_search" id="id_search" action="${ctxPath}/member/search_id_pro" method="POST" onsubmit="return memberIdPwCheck()">
 
+      <!------------------------------------------------------------------------------------------->
+      <form name="id_search" id="id_search" action="${ctxPath}/member/search_id_pro" method="POST" onsubmit="return memberIdPwCheck ()">
         <h1 class="text-center mb-4">아이디 찾기</h1>
 
         <div class="form-check form-check-inline mb-3">
@@ -27,9 +30,7 @@
           <label for="search_tel" class="form-check-label">회원정보에 등록한 휴대전화 번호로 찾기</label>
         </div>
 
-        <p class="mb-3">
-          회원 정보에 등록한 휴대전화 번호와 입력하신 휴대전화 번호가 같아야 아이디를 찾을 수 있습니다.
-        </p>
+        <p class="mb-3">회원 정보에 등록한 휴대전화 번호와 입력하신 휴대전화 번호가 같아야 아이디를 찾을 수 있습니다.</p>
 
         <div class="mb-3">
           <label for="search_tel_name" class="form-label">이름</label>
@@ -51,12 +52,11 @@
         <div class="text-center">
           <input type="submit" name="search" value="아이디 찾기" class="btn btn-primary btn-sm" />
         </div>
-
       </form>
+    </main>
+    <br /><br />
 
-    </main><br/><br/>
-
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
   </body>
 </html>

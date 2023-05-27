@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="member_id" value="${sessionScope.member_id}"/>
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -17,27 +18,36 @@
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
     <main class="main container-fluid">
-
-      <h1 class="text-center my-4">회원 탈퇴</h1>
-      <p class="mb-4">
-        회원 탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요. 탈퇴 후 회원정보 및 개인형 서비스 이용 기록은 모두 삭제됩니다. 회원정보 및 여러 개인형 서비스 이용기록이 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다. 삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업해주세요.
-      </p>
       <form name="delForm" method="POST" action="${ctxPath}/member/deletePro.do" onsubmit="return memberPwCheck()">
-        <div class="mb-3">
-          <label for="member_pw" class="form-label">비밀번호 입력</label>
-          <input type="password" name="member_pw" id="member_pw" class="form-control" size="30" placeholder="암호를 입력해 주세요."/>
-          <input type="hidden" name="member_id" id="member_id" value="${member_id}"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <h1 class="text-center my-4 p">회원 탈퇴</h1>
+            <h5 class="text-center my-4 p">회원 탈퇴를 신청하시면 회원님의 모든 정보가 삭제되며, 삭제된 정보는 복구되지 않습니다.</h5>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="member_pw2" class="form-label">비밀번호 확인</label>
-          <input type="password" name="member_pw2" id="member_pw2" class="form-control" size="30" placeholder="암호를 다시 한번 입력해 주세요."/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-left">
+              <label for="member_pw" class="form-label">비밀번호 입력</label>
+              <input type="password" name="member_pw" id="member_pw" class="form-control" size="30" placeholder="암호를 입력해 주세요."/>
+              <input type="hidden" name="member_id" id="member_id" value="${member_id}"/>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="member_pw2" class="form-label">비밀번호 확인</label>
+              <input type="password" name="member_pw2" id="member_pw2" class="form-control" size="30" placeholder="암호를 다시 한번 입력해 주세요."/>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-          <input type="submit" value="회원탈퇴" class="btn btn-danger"/>
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="text-center">
+              <input type="submit" value="회원탈퇴" class="btn btn-danger"/>
+            </div>
+          </div>
         </div>
       </form>
 
-    </main>
+    </main><br/><br/>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

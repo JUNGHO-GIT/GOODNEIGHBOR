@@ -16,7 +16,7 @@
   <!-- 3-1. 아이디 중복체크 -->
   <select id="getCheckId" parameterType="String" resultType="int">
     select count(*) from member
-    where member_id=#{member_id}
+    where member_id=#{member_id, jdbcType=VARCHAR}
   </select>
 
   <!-- 4. 회원 상세정보 -->
@@ -30,20 +30,21 @@
 	<select id="getLogin" parameterType="java.util.Map" resultType="memberDTO">
 		select *
     from member
-    where member_id=#{member_id} and member_pw=#{member_pw}
+    where member_id=#{member_id, jdbcType=VARCHAR} and member_pw=#{member_pw}
 	</select>
 
 	<!-- 6. 회원정보 수정 -->
 	<update id="getUpdate" parameterType="memberDTO">
 		update member set
-		member_name=#{member_name}, member_email=#{member_email}, member_tel=#{member_tel}, member_zipcode=#{member_zipcode}, member_addr=#{member_addr}, member_addr2=#{member_addr2}
-    where member_id=#{member_id}
+    member_id=#{member_id}, member_pw=#{member_pw}, member_name=#{member_name},
+		member_email=#{member_email}, member_tel=#{member_tel}, member_zipcode=#{member_zipcode}, member_addr=#{member_addr}, member_addr2=#{member_addr2}
+    where member_id=#{member_id, jdbcType=VARCHAR}
 	</update>
 
 	<!-- 7. 회원탈퇴 -->
-	<delete id="getDelete" parameterType="Map">
+	<delete id="getDelete" parameterType="java.util.Map">
 		delete from member
-    where member_id=#{member_id} and member_pw=#{member_pw}
+    where member_id=#{member_id, jdbcType=VARCHAR} and member_pw=#{member_pw}
 	</delete>
 
 	<!-- 8. 아이디 찾기 -->

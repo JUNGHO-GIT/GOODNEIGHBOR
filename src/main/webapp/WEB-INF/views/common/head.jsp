@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="member_id" value="${sessionScope.member_id}"/>
 
 <!-- meta -->
 <meta charset="UTF-8"/>

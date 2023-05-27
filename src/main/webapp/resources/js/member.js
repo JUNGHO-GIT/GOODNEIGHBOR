@@ -17,6 +17,7 @@ $(document).ready(function () {
   });
 });
 
+// ----------------------------------------------------------------------------------------------->
 function memberCheck() {
   if ($("#member_id").val() == "") {
     alert("아이디를 입력하시오.");
@@ -65,6 +66,34 @@ function memberCheck() {
 
   return true;
 }
+
+// 1. updateCheck ------------------------------------------------------------------------------->
+function updateCheck() {
+  if ($("#member_name").val() == "") {
+    alert("성함을 입력하시오.");
+    return false;
+  }
+  if ($("#member_email").val() == "") {
+    alert("이메일을 입력하시오.");
+    return false;
+  }
+  if ($("#member_tel").val() == "") {
+    alert("전화번호를 입력하시오.");
+    return false;
+  }
+  if ($("#member_addr").val() == "") {
+    alert("우편번호와 주소를 입력하시오.");
+    $("#member_zipcode").focus();
+    return false;
+  }
+  if ($("#member_addr2").val() == "") {
+    alert("상세 주소를 입력하시오.");
+    $("#member_addr2").focus();
+    return false;
+  }
+  return true;
+}
+
 
 // 2. confirmIdCheck() ---------------------------------------------------------------------------->
 function confirmIdCheck() {
@@ -198,6 +227,20 @@ function agree_check() {
   }
   $("#agreeMessage").text("");
   return true;
+}
+
+// 7. loginCheck() ------------------------------------------------------------------------------->
+function loginCheck() {
+  if (document.loginForm.member_id.value == "") {
+    alert("아이디를 입력하세요.");
+    document.loginForm.member_id.focus();
+    return false;
+  }
+  if (document.loginForm.member_pw.value == "") {
+    alert("비밀번호를 입력하세요.");
+    document.loginForm.member_pw.focus();
+    return false;
+  }
 }
 
 // 7. memberIdPwCheck() --------------------------------------------------------------------------->

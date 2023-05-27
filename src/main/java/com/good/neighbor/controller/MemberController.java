@@ -48,7 +48,7 @@ public class MemberController {
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->
   @ResponseBody
-  @PostMapping("/idCheck.do")
+  @PostMapping(value = "/idCheck.do", produces = "application/text; charset=utf8")
   public Integer idCheck(HttpServletRequest request) throws Exception {
 
     String member_id = request.getParameter("member_id");
@@ -111,7 +111,7 @@ public class MemberController {
 
     model.addAttribute("dto", dto);
 
-    return "member/loginSuccess";
+    return "member/loginPro";
   }
 
 
@@ -149,7 +149,7 @@ public class MemberController {
 
     sqlSession.update("member.getUpdate", memberDTO);
 
-    return "member/updateSuccess";
+    return "member/updatePro";
   }
 
   // 4-1. deleteForm() ---------------------------------------------------------------------------->
@@ -179,7 +179,7 @@ public class MemberController {
 
     sqlSession.delete("member.getDelete", map);
 
-    return "member/logout";
+    return "member/deletePro";
   }
 
   // 5-1. search_main() --------------------------------------------------------------------------->
@@ -236,7 +236,7 @@ public class MemberController {
   }
 
   // 5-6. search_pwd_next() ----------------------------------------------------------------------->
-  @RequestMapping("/search_pwd_next")
+  @RequestMapping(value = "/search_pwd_next.do", method = RequestMethod.POST)
   public String search_pwd_nextForm(HttpServletRequest request, Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");

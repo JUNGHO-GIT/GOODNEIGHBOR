@@ -36,11 +36,6 @@
 
     <div class="row d-flex justify-content-center text-center align-items-center">
       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-        <c:if test="${member_id != null || admin_id != null}">
-          <div class="d-flex justify-content-end mb-3">
-            <a href="${ctxPath}/board/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
-          </div>
-        </c:if>
         <c:if test="${pt.cnt == 0}">
           <div class="alert alert-danger text-center" role="alert" id="no_search">
             게시된 글이 없습니다.
@@ -113,6 +108,14 @@
     </div>
 
     <div class="row d-flex justify-content-center text-center align-items-center">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+        <c:if test="${member_id != null || admin_id != null}">
+          <a href="${ctxPath}/board/write.do?pageNum=${pageNum}" class="btn btn-primary btn-sm">글쓰기</a>
+        </c:if>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center text-center align-items-center mt-5">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
         <div class="d-flex justify-content-center">
           <c:if test="${pt.cnt > 0}">

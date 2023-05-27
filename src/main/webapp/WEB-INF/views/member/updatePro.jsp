@@ -5,24 +5,29 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
-
 <!DOCTYPE html>
 <html lang="en, ko">
 
-  <head>
+	<head>
     <jsp:include page="/WEB-INF/views/common/head.jsp"/>
-  </head>
+	</head>
 
-  <body>
-
+	<body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
 
-    <main class="main container-fluid">
-      <c:remove var="admin_id" scope="session"/>
-      <c:remove var="admin_name" scope="session"/>
+    <main class="main container">
+
+      <c:set var="member_id" value="${dto.member_id}" scope="session"/>
+      <c:set var="member_name" value="${dto.member_name}" scope="session"/>
+      <script>
+        alert("회원정보가 수정되었습니다.");
+      </script>
       <meta http-equiv="Refresh" content="0;url=${ctxPath}"/>
-    </main>
+
+    </main><br/><br/>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
   </body>
 </html>

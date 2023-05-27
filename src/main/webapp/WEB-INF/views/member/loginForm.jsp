@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="member_id" value="${sessionScope.member_id}"/>
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -41,7 +42,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <div class="mb-3">
-              <button type="submit" id="submit_button" class="btn btn-primary btn-sm" onclick="return memberIdPwCheck()">로그인</button>
+              <button type="submit" id="submit_button" class="btn btn-primary btn-sm" onclick="return loginCheck()">로그인</button>
               &nbsp;&nbsp;
               <button type="button" onclick="window.location.href='${ctxPath}/member/search_id.do'" class="btn btn-primary btn-sm">아이디 찾기</button>
               &nbsp;&nbsp;
