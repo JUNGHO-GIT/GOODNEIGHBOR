@@ -179,9 +179,9 @@ public class QnaController {
     return "qna/content";
   }
 
-  // 4-1. getUpdate() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "/getUpdate.do", method = RequestMethod.GET)
-  public String getUpdate(HttpServletRequest request, Model model) {
+  // 4-1. updateForm() ----------------------------------------------------------------------------->
+  @RequestMapping(value = "/updateForm.do", method = RequestMethod.GET)
+  public String updateForm(HttpServletRequest request, Model model) {
 
     String pageNum = request.getParameter("pageNum");
     int num = Integer.parseInt(request.getParameter("qna_number"));
@@ -199,7 +199,7 @@ public class QnaController {
 
     String pw = request.getParameter("qna_pw");
 
-    sqlSession.update("qna.getUpdate", qnaDTO);
+    sqlSession.update("qna.updateForm", qnaDTO);
 
     model.addAttribute("qna_pw", pw);
     model.addAttribute("qnaDTO", qnaDTO);

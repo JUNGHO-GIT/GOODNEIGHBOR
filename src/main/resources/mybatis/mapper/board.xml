@@ -3,6 +3,8 @@
 
 <mapper namespace="board">
 
+  <!-- jdbcType mapping (board_writer = VARCHAR) -->
+
   <!-- 1. 전체 게시글 수 -->
   <select id="getCount" resultType="Integer">
     select count(*)
@@ -23,7 +25,7 @@
       board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_group, board_step, board_level
     )
     values (
-      #{board_number}, #{board_writer}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
+      #{board_number}, #{board_writer, jdbcType=VARCHAR}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
     )
   </insert>
 
@@ -84,21 +86,28 @@
     where board_number = #{board_number}
   </select>
 
-  <!-- 8. 게시물 수정 -->
+  <!-- 8-1. 게시물 수정을 위한 아이디 확인 -->
+  <select id="getUpdateCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from board
+    where board_number = #{board_number} and board_writer = #{board_writer, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 8-2. 게시물 수정 -->
   <update id="getUpdate" parameterType="boardDTO">
     update board
-    set board_writer = #{board_writer}, board_title = #{board_title}, board_content = #{board_content}
+    set board_writer = #{board_writer, jdbcType=VARCHAR}, board_title = #{board_title}, board_content = #{board_content}
     where board_number = #{board_number} and board_pw = #{board_pw}
   </update>
 
-  <!-- 9. 게시물 비밀번호 확인 -->
+  <!-- 9-1. 게시물 비밀번호 확인 -->
   <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
     select count(*)
     from board
     where board_number = #{board_number} and board_pw = #{board_pw}
   </select>
 
-  <!-- 9. 게시물 삭제 -->
+  <!-- 9-2. 게시물 삭제 -->
   <delete id="getDelete" parameterType="int">
     delete from board
     where board_number = #{board_number}

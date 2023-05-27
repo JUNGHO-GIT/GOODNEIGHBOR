@@ -76,7 +76,7 @@
   </select>
 
   <!-- 7. 글 수정 -->
-  <update id="getUpdate" parameterType="productDTO">
+  <update id="updateForm" parameterType="productDTO">
     update product
     set product_name = #{product_name}, product_detail = #{product_detail}, product_price = #{product_price}, product_stock = #{product_stock}, product_company = #{product_company}, product_image = #{product_image}
     where product_number = #{product_number}

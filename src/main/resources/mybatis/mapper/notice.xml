@@ -23,7 +23,7 @@
       notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_group, notice_step,notice_level
     )
     values (
-      #{notice_number}, #{notice_writer}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
+      #{notice_number}, #{notice_writer, jdbcType=VARCHAR}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
     )
 	</insert>
 
@@ -85,7 +85,7 @@
 	<!-- 8. 게시물 수정 -->
 	<update id="getUpdate" parameterType="noticeDTO">
 		update notice
-    set notice_writer = #{notice_writer}, notice_title = #{notice_title}, notice_content = #{notice_content}
+    set notice_writer = #{notice_writer, jdbcType=VARCHAR}, notice_title = #{notice_title}, notice_content = #{notice_content}
     where notice_number = #{notice_number} and notice_pw = #{notice_pw}
 	</update>
 
@@ -101,7 +101,7 @@
       notice_number, notice_writer, notice_title, notice_content, notice_regdate, notice_fix
     )
     values (
-      0, #{notice_writer}, #{notice_title}, #{notice_content}, SYSDATE, 1
+      0, #{notice_writer, jdbcType=VARCHAR}, #{notice_title}, #{notice_content}, SYSDATE, 1
     )
 	</insert>
 

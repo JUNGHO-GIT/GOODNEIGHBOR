@@ -4,6 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
+<c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -51,7 +56,7 @@
     <div class="d-flex justify-content-center mt-5">
       <c:if test="${admin_id  != null}">
         <a class="btn btn-primary btn-sm me-2"
-          href="${ctxPath}/notice/getUpdate.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
+          href="${ctxPath}/notice/updateForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
         <c:if test="${dto.notice_fix==false}">
           <a class="btn btn-danger me-1"
             href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>

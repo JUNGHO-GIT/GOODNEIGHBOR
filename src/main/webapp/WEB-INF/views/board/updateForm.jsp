@@ -5,6 +5,10 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -20,7 +24,7 @@
 
     <main class="main container-fluid">
       <h2 class="mb-4">글 수정 폼</h2>
-      <form name="getUpdate" method="POST" action="${ctxPath}/board/updatePro.do" onsubmit="return boardWriteSave();">
+      <form name="updateForm" method="POST" action="${ctxPath}/board/updatePro.do" onsubmit="return boardWriteSave();">
         <input type="hidden" name="board_pw1" id="board_pw1" value="${dto.board_pw}" />
         <div class="row mb-3">
           <label for="board_writer" class="col-sm-2 col-form-label">글쓴이</label>

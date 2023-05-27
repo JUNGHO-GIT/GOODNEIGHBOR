@@ -4,6 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
+<c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -110,7 +115,7 @@
     <div class="row d-flex justify-content-center text-center align-items-center">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
         <c:if test="${member_id != null || admin_id != null}">
-          <a href="${ctxPath}/board/write.do?pageNum=${pageNum}" class="btn btn-primary btn-sm">글쓰기</a>
+          <a href="${ctxPath}/board/insertForm.do?pageNum=${pageNum}" class="btn btn-primary btn-sm">글쓰기</a>
         </c:if>
       </div>
     </div>

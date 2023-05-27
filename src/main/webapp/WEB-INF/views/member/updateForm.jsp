@@ -5,6 +5,10 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -65,7 +69,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <div class="text-center mb-3">
-              <button type="submit" class="btn btn-primary btn-sm" onclick="return updateCheck();">수정하기</button>
+              <button type="submit" class="btn btn-primary btn-sm" onclick="return updateMemberCheck();">수정하기</button>
               &nbsp;&nbsp;
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}'">메인으로</button>
               &nbsp;&nbsp;

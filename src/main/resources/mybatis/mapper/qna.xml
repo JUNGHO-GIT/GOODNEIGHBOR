@@ -23,7 +23,7 @@
       qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_group, qna_step,qna_level
     )
     values (
-      #{qna_number}, #{qna_writer}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
+      #{qna_number}, #{qna_writer, jdbcType=VARCHAR}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
       #{qna_step}, #{qna_level}
     )
   </insert>
@@ -88,7 +88,7 @@
   <!-- 8. 게시물 수정 -->
   <update id="getUpdate" parameterType="qnaDTO">
     update qna
-    set qna_writer = #{qna_writer}, qna_title = #{qna_title}, qna_content = #{qna_content}
+    set qna_writer = #{qna_writer, jdbcType=VARCHAR}, qna_title = #{qna_title}, qna_content = #{qna_content}
     where qna_number = #{qna_number} and qna_pw = #{qna_pw}
   </update>
 

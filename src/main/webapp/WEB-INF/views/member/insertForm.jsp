@@ -4,6 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
+<c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -20,17 +25,13 @@
 
     <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
-
-      <!------------------------------------------------------------------------------------------->
       <form action="${ctxPath}/member/insertPro.do" method="POST">
-
-        <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4">회원가입</h1>
+            <h1 class="text-center my-4 p">회원가입</h1>
           </div>
         </div>
-
+        <hr />
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
@@ -100,7 +101,12 @@
             <div class="text-center mb-3" style="color: red">
               <span id="agreeMessage"></span>
             </div>
-            <div class="text-center">
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return memberCheck();">회원가입</button>
             </div>
           </div>

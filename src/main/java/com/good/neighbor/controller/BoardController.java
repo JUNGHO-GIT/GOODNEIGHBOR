@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -174,9 +175,9 @@ public class BoardController {
     return "board/content";
   }
 
-  // 4-1. getUpdate() ---------------------------------------------------------------------------->
-  @RequestMapping("/getUpdate.do")
-  public ModelAndView getUpdate(HttpServletRequest request) {
+  // 4-1. updateForm() ---------------------------------------------------------------------------->
+  @RequestMapping("/updateForm.do")
+  public ModelAndView updateForm(HttpServletRequest request) {
 
     String pageNum = request.getParameter("pageNum");
     int board_number = Integer.parseInt(request.getParameter("board_number"));
@@ -191,13 +192,36 @@ public class BoardController {
     return mv;
   }
 
-  // 4-2. updatePro() ----------------------------------------------------------------------------->
+  // 4-1. updateCheck() --------------------------------------------------------------------------->
+  @ResponseBody
+  @RequestMapping(value = "/updateCheck.do", method = RequestMethod.POST)
+  public Integer updateCheck(HttpServletRequest request, HttpSession session) throws Exception {
+
+    String board_number = request.getParameter("board_number");
+    String member_id = (String) session.getAttribute("member_id");
+
+    Map<String, String> map = new HashMap<>();
+
+    map.put("board_number", board_number);
+    map.put("member_id", member_id);
+
+    Integer count = sqlSession.selectOne("board.getUpdateCheck", map);
+
+    // 1이면 일치, -1이면 불일치
+    if (count == 1) {
+      return 1;
+    }
+    else {
+      return -1;
+    }
+  }
+
+  // 4-3. updatePro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
-  public ModelAndView updatePro(@ModelAttribute("boardDTO") BoardDTO boardDTO,
-      HttpServletRequest request) throws Exception {
+  public ModelAndView updatePro(@ModelAttribute("boardDTO") BoardDTO boardDTO, HttpServletRequest request) throws Exception {
 
     String pageNum = request.getParameter("pageNum");
-    sqlSession.update("board.getUpdate", boardDTO);
+    sqlSession.update("board.updateForm", boardDTO);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("pageNum", pageNum);
@@ -224,7 +248,8 @@ public class BoardController {
     // 1이면 일치, -1이면 불일치
     if (count == 1) {
       return 1;
-    } else {
+    }
+    else {
       return -1;
     }
   }

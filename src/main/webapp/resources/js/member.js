@@ -67,8 +67,8 @@ function memberCheck() {
   return true;
 }
 
-// 1. updateCheck ------------------------------------------------------------------------------->
-function updateCheck() {
+// 1. updateMemberCheck --------------------------------------------------------------------------->
+function updateMemberCheck() {
   if ($("#member_name").val() == "") {
     alert("성함을 입력하시오.");
     return false;
@@ -243,34 +243,107 @@ function loginCheck() {
   }
 }
 
-// 7. memberIdPwCheck() --------------------------------------------------------------------------->
-function memberIdPwCheck() {
-  if (document.loginForm.member_id.value == "") {
-    alert("아이디를 입력하세요.");
-    document.loginForm.member_id.focus();
+// 8. searchIdCheck() ---------------------------------------------------------------------------->
+function searchIdCheck(operation) {
+
+  const searchTel = document.getElementById("search_tel");
+  const searchTelName = document.getElementById("search_tel_name");
+  const searchTelNumber = document.getElementById("search_tel_number");
+
+  const searchEmail = document.getElementById("search_email");
+  const searchEmailName = document.getElementById("search_email_name");
+  const searchEmailDomain = document.getElementById("search_email_domain");
+
+  if (!searchTel.checked && !searchEmail.checked) {
+    alert("검색 조건을 선택하세요.");
     return false;
   }
-  if (document.loginForm.member_pw.value == "") {
-    alert("비밀번호를 입력하세요.");
-    document.loginForm.member_pw.focus();
-    return false;
+
+  if (searchTel.checked && operation === 'check') {
+    if (searchTelName.value == "") {
+      alert("이름을 입력하세요.");
+      searchTelName.focus();
+      return false;
+    }
+    if (searchTelNumber.value == "") {
+      alert("전화번호를 입력하세요.");
+      searchTelNumber.focus();
+      return false;
+    }
   }
-  if (document.id_search.search_tel_name.value == "") {
-    alert("이름을 입력해 주세요.");
-    document.id_search.search_tel_name.focus();
-    return false;
+  else if (searchTel.checked && operation === 'reset') {
+    searchEmailName.value = "";
+    searchEmailDomain.value = "";
   }
-  if (document.id_search.search_tel_number.value == "") {
-    alert("전화번호를 입력해 주세요.");
-    document.id_search.search_tel_number.focus();
-    return false;
+
+  if (searchEmail.checked && operation === 'check') {
+    if (searchEmailName.value == "") {
+      alert("이름을 입력하세요.");
+      searchEmailName.focus();
+      return false;
+    }
+    if (searchEmailDomain.value == "") {
+      alert("이메일을 입력하세요.");
+      searchEmailDomain.focus();
+      return false;
+    }
   }
-  if (confirm("아이디를 찾으시겠습니까?")) {
-    $("#id_search").submit();
-    return false;
+  else if (searchEmail.checked && operation === 'reset') {
+    searchTelName.value = "";
+    searchTelNumber.value = "";
   }
 }
 
+// 9. searchPwCheck() ---------------------------------------------------------------------------->
+function searchPwCheck(operation) {
+
+  const searchTel = document.getElementById("search_tel");
+  const searchTelName = document.getElementById("search_tel_name");
+  const searchTelNumber = document.getElementById("search_tel_number");
+
+  const searchEmail = document.getElementById("search_email");
+  const searchEmailName = document.getElementById("search_email_name");
+  const searchEmailDomain = document.getElementById("search_email_domain");
+
+  if (!searchTel.checked && !searchEmail.checked) {
+    alert("검색 조건을 선택하세요.");
+    return false;
+  }
+
+  if (searchTel.checked && operation === 'check') {
+    if (searchTelName.value == "") {
+      alert("이름을 입력하세요.");
+      searchTelName.focus();
+      return false;
+    }
+    if (searchTelNumber.value == "") {
+      alert("전화번호를 입력하세요.");
+      searchTelNumber.focus();
+      return false;
+    }
+  }
+  else if (searchTel.checked && operation === 'reset') {
+    searchEmailName.value = "";
+    searchEmailDomain.value = "";
+  }
+
+  if (searchEmail.checked && operation === 'check') {
+    if (searchEmailName.value == "") {
+      alert("이름을 입력하세요.");
+      searchEmailName.focus();
+      return false;
+    }
+    if (searchEmailDomain.value == "") {
+      alert("이메일을 입력하세요.");
+      searchEmailDomain.focus();
+      return false;
+    }
+  }
+  else if (searchEmail.checked && operation === 'reset') {
+    searchTelName.value = "";
+    searchTelNumber.value = "";
+  }
+}
 
 // 8. memberPwCheck() ----------------------------------------------------------------------------->
 function memberPwCheck() {
@@ -291,18 +364,18 @@ function memberPwCheck() {
 
 // 9. findPwCheck() ------------------------------------------------------------------------------>
 function findPwCheck() {
-  if (document.search_pwd_next.search_tel_name.value == "") {
+  if (document.searchPw2Form.search_tel_name.value == "") {
     alert("이름을 입력해 주세요.");
-    document.pw_search.writeID_search_pw.focus();
+    document.searchPw.searchPw1Form_id.focus();
     return false;
   }
-  if (document.search_pwd_next.search_tel_number.value == "") {
+  if (document.searchPw2Form.search_tel_number.value == "") {
     alert("전화번호를 입력해 주세요.");
-    document.pw_search.search_tel_number.focus();
+    document.searchPw.search_tel_number.focus();
     return false;
   }
   if (confirm("비밀번호를 찾으시겠습니까?")) {
-    $("#search_pwd_next").submit();
+    $("#searchPw2Form").submit();
 
     return false;
   }

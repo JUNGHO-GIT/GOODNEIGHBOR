@@ -4,6 +4,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
+<c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
+
 
 <!------------------------------------------------------------------------------------------------->
 <header class="container-fluid">
@@ -17,7 +23,7 @@
           <li><i class="fas fa-phone-volume"></i> 010-1234-5678</li>
         </ul>
         <ul class="ulleft">
-          <form name="getUpdate" method="POST">
+          <form name="updateForm" method="POST">
             <input type="hidden" name="member_id" value="${member_id}" />
           </form>
         </ul>
@@ -29,7 +35,7 @@
           <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/loginForm.do'">관리자</button>
         </c:if>
         <c:if test="${member_id != null}">
-          <form method="POST" action="${ctxPath}/member/getUpdate.do">
+          <form method="POST" action="${ctxPath}/member/updateForm.do">
             <input type="hidden" name="member_name" value="${member_name}" />
             <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/logout.do'" type="button">로그아웃</button>
             <button class="btn btn-sm btn-default" type="submit">내정보 변경</button>

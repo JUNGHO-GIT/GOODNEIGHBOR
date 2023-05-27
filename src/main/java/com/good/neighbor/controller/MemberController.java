@@ -122,9 +122,9 @@ public class MemberController {
     return "member/logout";
   }
 
-  // 3-1. getUpdate() ---------------------------------------------------------------------------->
-  @RequestMapping(value = "/getUpdate.do", method = RequestMethod.POST)
-  public String getUpdate(HttpServletRequest request, Model model) {
+  // 3-1. updateForm() ---------------------------------------------------------------------------->
+  @RequestMapping(value = "/updateForm.do", method = RequestMethod.POST)
+  public String updateForm(HttpServletRequest request, Model model) {
 
     // 세션에서 아이디값 받아오기
     HttpSession session = request.getSession();
@@ -147,7 +147,7 @@ public class MemberController {
   public String updatePro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
   HttpServletRequest request, Model model) throws Exception {
 
-    sqlSession.update("member.getUpdate", memberDTO);
+    sqlSession.update("member.updateForm", memberDTO);
 
     return "member/updatePro";
   }
@@ -189,15 +189,15 @@ public class MemberController {
     return "member/search_main";
   }
 
-  // 5-2. search_id() ----------------------------------------------------------------------------->
-  @RequestMapping(value = "/search_id", method = RequestMethod.GET)
-  public String search_id() {
+  // 5-2. searchIdForm() ----------------------------------------------------------------------------->
+  @RequestMapping(value = "/searchIdForm", method = RequestMethod.GET)
+  public String searchIdForm() {
 
-    return "member/search_id";
+    return "member/searchIdForm";
   }
 
-  // 5-3. search_id_pro() ------------------------------------------------------------------------->
-  @RequestMapping(value = "/search_id_pro", method = RequestMethod.POST)
+  // 5-3. searchIdPro() ------------------------------------------------------------------------->
+  @RequestMapping(value = "/searchIdPro", method = RequestMethod.POST)
   public String searchIdPro(HttpServletRequest request, Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");
@@ -213,31 +213,31 @@ public class MemberController {
 
     model.addAttribute("dto", dto);
 
-    return "member/search_result_id";
+    return "member/searchIdPro";
   }
 
-  // 5-4. search_pwd() ---------------------------------------------------------------------------->
-  @RequestMapping(value = "/search_pwd", method = RequestMethod.GET)
-  public String search_pwdForm() {
+  // 5-4. searchPw1Form() ---------------------------------------------------------------------------->
+  @RequestMapping(value = "/searchPw1Form", method = RequestMethod.GET)
+  public String searchPw1FormForm() {
 
-    return "member/search_pwd";
+    return "member/searchPw1Form";
   }
 
-  // 5-5. search_pwd_pro() ------------------------------------------------------------------------>
-  @RequestMapping(value = "/search_pwd.do", method = RequestMethod.POST)
-  public String search_pwdPro(HttpServletRequest request, Model model) {
+  // 5-5. searchPw1Pro() ------------------------------------------------------------------------>
+  @RequestMapping(value = "/searchPw1Form.do", method = RequestMethod.POST)
+  public String searchPw1FormPro(HttpServletRequest request, Model model) {
 
-    String writeID_search_pw = request.getParameter("writeID_search_pw");
-    MemberDTO dto = sqlSession.selectOne("member.getDetails", writeID_search_pw);
+    String searchPw1Form_id = request.getParameter("searchPw1Form_id");
+    MemberDTO dto = sqlSession.selectOne("member.getDetails", searchPw1Form_id);
 
     model.addAttribute("dto", dto);
 
-    return "member/search_pwd_next";
+    return "member/searchPw2Form";
   }
 
-  // 5-6. search_pwd_next() ----------------------------------------------------------------------->
-  @RequestMapping(value = "/search_pwd_next.do", method = RequestMethod.POST)
-  public String search_pwd_nextForm(HttpServletRequest request, Model model) {
+  // 5-6. searchPw2Form() ----------------------------------------------------------------------->
+  @RequestMapping(value = "/searchPw2Form.do", method = RequestMethod.POST)
+  public String searchPw2FormForm(HttpServletRequest request, Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");
     String search_tel_number = request.getParameter("search_tel_number");
@@ -251,7 +251,7 @@ public class MemberController {
 
     model.addAttribute("dto", dto);
 
-    return "member/search_result_pwd";
+    return "member/searchPwPro";
   }
 
 }

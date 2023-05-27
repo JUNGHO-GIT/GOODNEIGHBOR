@@ -5,6 +5,10 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -20,7 +24,7 @@
 
     <main class="main container-fluid">
 
-      <h1 class="text-center my-4">비밀번호 확인</h1>
+      <h1 class="text-center my-4 p">비밀번호 확인</h1>
       <form name="delForm" method="POST" action="${ctxPath}/qna/deletePro.do" onsubmit="return qnaPwCheck()">
          <div class="mb-3">
           <input type="password" class="form-control" name="qna_pw" id="pw" size="30"/>

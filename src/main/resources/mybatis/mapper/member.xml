@@ -9,7 +9,7 @@
       member_id, member_pw, member_name, member_email, member_tel, member_zipcode, member_addr,member_addr2, member_regdate
     )
     values (
-      #{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_tel}, #{member_zipcode},#{member_addr}, #{member_addr2}, SYSDATE
+      #{member_id, jdbcType=VARCHAR}, #{member_pw}, #{member_name}, #{member_email}, #{member_tel}, #{member_zipcode},#{member_addr}, #{member_addr2}, SYSDATE
     )
 	</insert>
 
@@ -36,7 +36,7 @@
 	<!-- 6. 회원정보 수정 -->
 	<update id="getUpdate" parameterType="memberDTO">
 		update member set
-    member_id=#{member_id}, member_pw=#{member_pw}, member_name=#{member_name},
+    member_id=#{member_id, jdbcType=VARCHAR}, member_pw=#{member_pw}, member_name=#{member_name},
 		member_email=#{member_email}, member_tel=#{member_tel}, member_zipcode=#{member_zipcode}, member_addr=#{member_addr}, member_addr2=#{member_addr2}
     where member_id=#{member_id, jdbcType=VARCHAR}
 	</update>
@@ -57,7 +57,7 @@
 	<!-- 9. 비밀번호 찾기 -->
 	<select id="getSearchPw" parameterType="java.util.Map" resultType="memberDTO">
 		select * from member
-    where member_id = #{member_id}
+    where member_id = #{member_id, jdbcType=VARCHAR}
     and member_tel = #{member_tel} and member_name = #{member_name}
 	</select>
 

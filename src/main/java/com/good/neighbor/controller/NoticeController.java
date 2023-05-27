@@ -137,9 +137,9 @@ public class NoticeController {
 		return "notice/content";
 	}
 
-  // 5-1. getUpdate() ----------------------------------------------------------------------------->
-	@RequestMapping(value="/getUpdate.do", method=RequestMethod.GET)
-	public String getUpdate(HttpServletRequest request,Model model) {
+  // 5-1. updateForm() ----------------------------------------------------------------------------->
+	@RequestMapping(value="/updateForm.do", method=RequestMethod.GET)
+	public String updateForm(HttpServletRequest request,Model model) {
 
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("notice_number"));
@@ -159,7 +159,7 @@ public class NoticeController {
 		String fixed=request.getParameter("fixed");
 
 		if(fixed == null) {
-		  sqlSession.update("notice.getUpdate", noticeDTO);
+		  sqlSession.update("notice.updateForm", noticeDTO);
 		}
     else {
 		  sqlSession.update("notice.getFixModify", noticeDTO);

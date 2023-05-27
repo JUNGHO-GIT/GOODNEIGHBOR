@@ -5,6 +5,10 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -41,12 +45,12 @@
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <div class="mb-3">
+            <div class="mb-3 text-center">
               <button type="submit" id="submit_button" class="btn btn-primary btn-sm" onclick="return loginCheck()">로그인</button>
               &nbsp;&nbsp;
-              <button type="button" onclick="window.location.href='${ctxPath}/member/search_id.do'" class="btn btn-primary btn-sm">아이디 찾기</button>
+              <button type="button" onclick="window.location.href='${ctxPath}/member/searchIdForm.do'" class="btn btn-primary btn-sm">아이디 찾기</button>
               &nbsp;&nbsp;
-              <button type="button" onclick="window.location.href='${ctxPath}/member/search_pwd.do'" class="btn btn-primary btn-sm">비밀번호 찾기</button>
+              <button type="button" onclick="window.location.href='${ctxPath}/member/searchPw1Form.do'" class="btn btn-primary btn-sm">비밀번호 찾기</button>
             </div>
           </div>
         </div>

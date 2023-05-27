@@ -5,6 +5,10 @@
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -21,7 +25,7 @@
     <main class="main container-fluid">
 
       <h2 class="text-center my-4">공지사항 수정</h2>
-      <form name="getUpdate" method="POST" action="${ctxPath}/notice/updatePro.do" onsubmit="return noticeCheck()">
+      <form name="updateForm" method="POST" action="${ctxPath}/notice/updatePro.do" onsubmit="return noticeCheck()">
         <table class="table table-bordered">
           <tr>
             <td class="text-center" width="150">글제목</td>

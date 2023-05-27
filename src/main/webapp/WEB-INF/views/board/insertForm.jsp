@@ -2,79 +2,88 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
-<c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}" />
+<c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-	<head>
-    <jsp:include page="/WEB-INF/views/common/head.jsp"/>
+  <!----------------------------------------------------------------------------------------------->
+  <head>
+    <jsp:include page="/WEB-INF/views/common/head.jsp" />
   </head>
 
+  <!----------------------------------------------------------------------------------------------->
   <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <jsp:include page="/WEB-INF/views/common/slider.jsp"/>
-
+    <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
-      <c:if test="${board_number==0}">
-        <h2 class="mb-4">글쓰기</h2>
-      </c:if>
-      <c:if test="${board_number!=0}">
-        <h2 class="mb-4">답글쓰기</h2>
-      </c:if>
-
       <form method="POST" name="insertForm" action="${ctxPath}/board/insertPro.do">
+
+        <!----------------------------------------------------------------------------------------->
         <input type="hidden" name="board_number" value="${board_number}" />
         <input type="hidden" name="board_group" value="${board_group}" />
         <input type="hidden" name="board_step" value="${board_step}" />
         <input type="hidden" name="board_level" value="${board_level}" />
         <input type="hidden" name="pageNum" value="${pageNum}" />
 
-        <div class="row mb-3">
-          <label for="board_writer" class="col-sm-2 col-form-label">글쓴이</label>
-          <div class="col-sm-10">
-            <input type="text" name="board_writer" id="board_writer" size="30" class="form-control" />
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label for="board_title" class="col-sm-2 col-form-label">글제목</label>
-          <div class="col-sm-10">
-            <!-- 원글 -->
+        <!---------------------------------------------------------------------------------------->
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <c:if test="${board_number==0}">
-              <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
+              <h1 class="text-center my-4 p">글쓰기</h1>
             </c:if>
-            <!--  답글 -->
             <c:if test="${board_number!=0}">
-              <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
+              <h1 class="text-center my-4 p">답글쓰기</h1>
             </c:if>
           </div>
         </div>
+        <hr />
 
-        <div class="row mb-3">
-          <label for="board_content" class="col-sm-2 col-form-label">글내용</label>
-          <div class="col-sm-10">
-            <textarea name="board_content" id="board_content" rows="10" cols="40" class="form-control"></textarea>
+        <!----------------------------------------------------------------------------------------->
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-left">
+              <label for="board_writer" class="form-label">글쓴이</label>
+              <input type="text" name="board_writer" id="board_writer" size="30" class="form-control" value="${member_id}" readonly="readonly" />
+            </div>
+            <div class="mb-3 text-left">
+              <label for="board_title" class="form-label">글제목</label>
+              <!-- 원글 -->
+              <c:if test="${board_number==0}">
+                <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
+              </c:if>
+              <!--  답글 -->
+              <c:if test="${board_number!=0}">
+                <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
+              </c:if>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="board_content"  class="form-label">글내용</label>
+              <textarea name="board_content" id="board_content" rows="10" cols="40" class="form-control"></textarea>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="board_pw" class="form-label">암호</label>
+              <input type="password" name="board_pw" id="board_pw" size="20" class="form-control" />
+              <span class="text-danger">*암호는 필수 입력</span>
+            </div>
           </div>
         </div>
+        <br/><br/>
 
-        <div class="row mb-3">
-          <label for="board_pw" class="col-sm-2 col-form-label">암호</label>
-          <div class="col-sm-10">
-            <input type="password" name="board_pw" id="board_pw" size="20" class="form-control" />
-            <span class="text-danger">*암호는 필수 입력</span>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <div class="col-sm-10 offset-sm-2">
-            <input type="submit" value="글쓰기" class="btn btn-primary btn-sm" onclick="return boardCheck();" />
-            <input type="button" value="글목록"
-              onclick="window.location.href='${ctxPath}/board/list.do'"
-              class="btn btn-primary btn-sm" />
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-center">
+              <button type="submit" value="글쓰기" class="btn btn-primary btn-sm" onclick="return boardCheck();">글쓰기</button>
+              <button type="button" value="글목록" onclick="window.location.href='${ctxPath}/board/list.do'" class="btn btn-primary btn-sm">글목록</button>
+            </div>
           </div>
         </div>
       </form>

@@ -4,6 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
+<c:set var="member_id" value="${sessionScope.member_id}"/>
+<c:set var="admin_id" value="${sessionScope.admin_id}"/>
+<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -57,7 +62,7 @@
     <div class="d-flex justify-content-center mt-5">
       <c:if test="${member_id  != null}">
         <input type="button" class="btn btn-primary btn-sm me-2" value="글수정"
-          onclick="window.location.href='${ctxPath}/qna/getUpdate.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
+          onclick="window.location.href='${ctxPath}/qna/updateForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
         <input type="button" class="btn btn-danger btn-sm me-2" value="글삭제"
           onclick="window.location.href='${ctxPath}/qna/deleteForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
       </c:if>
