@@ -23,7 +23,7 @@
       qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_group, qna_step,qna_level
     )
     values (
-      #{qna_number}, #{qna_writer, jdbcType=VARCHAR}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
+      #{qna_number, jdbcType=INTEGER}, #{qna_writer, jdbcType=VARCHAR}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
       #{qna_step}, #{qna_level}
     )
   </insert>
@@ -75,27 +75,27 @@
   <update id="getUpdateCount" parameterType="int">
     update qna
     set qna_readcount = qna_readcount + 1
-    where qna_number = #{qna_number}
+    where qna_number = #{qna_number, jdbcType=INTEGER}
   </update>
 
   <!-- 7. 글번호에 해당하는 게시글 정보 -->
   <select id="getDetails" parameterType="int" resultType="qnaDTO">
     select *
     from qna
-    where qna_number = #{qna_number}
+    where qna_number = #{qna_number, jdbcType=INTEGER}
   </select>
 
   <!-- 8. 게시물 수정 -->
   <update id="getUpdate" parameterType="qnaDTO">
     update qna
     set qna_writer = #{qna_writer, jdbcType=VARCHAR}, qna_title = #{qna_title}, qna_content = #{qna_content}
-    where qna_number = #{qna_number} and qna_pw = #{qna_pw}
+    where qna_number = #{qna_number, jdbcType=INTEGER} and qna_pw = #{qna_pw}
   </update>
 
   <!-- 9. 게시물 삭제 -->
   <delete id="getDelete" parameterType="int">
     delete from qna
-    where qna_number = #{qna_number}
+    where qna_number = #{qna_number, jdbcType=INTEGER}
   </delete>
 
 </mapper>

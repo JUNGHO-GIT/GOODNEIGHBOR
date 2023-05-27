@@ -25,7 +25,7 @@
       board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_group, board_step, board_level
     )
     values (
-      #{board_number}, #{board_writer, jdbcType=VARCHAR}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
+      #{board_number, jdbcType=INTEGER}, #{board_writer, jdbcType=VARCHAR}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
     )
   </insert>
 
@@ -76,41 +76,41 @@
   <update id="getUpdateCount" parameterType="int">
     update board
     set board_readcount = board_readcount + 1
-    where board_number = #{board_number}
+    where board_number = #{board_number, jdbcType=INTEGER}
   </update>
 
   <!-- 7. 글번호에 해당하는 게시글 정보 -->
   <select id="getDetails" parameterType="int" resultType="boardDTO">
     select *
     from board
-    where board_number = #{board_number}
+    where board_number = #{board_number, jdbcType=INTEGER}
   </select>
 
   <!-- 8-1. 게시물 수정을 위한 아이디 확인 -->
   <select id="getUpdateCheck" parameterType="java.util.HashMap" resultType="Integer">
     select count(*)
     from board
-    where board_number = #{board_number} and board_writer = #{board_writer, jdbcType=VARCHAR}
+    where board_number = #{board_number, jdbcType=INTEGER} and board_writer = #{board_writer, jdbcType=VARCHAR}
   </select>
 
   <!-- 8-2. 게시물 수정 -->
   <update id="getUpdate" parameterType="boardDTO">
     update board
     set board_writer = #{board_writer, jdbcType=VARCHAR}, board_title = #{board_title}, board_content = #{board_content}
-    where board_number = #{board_number} and board_pw = #{board_pw}
+    where board_number = #{board_number, jdbcType=INTEGER} and board_pw = #{board_pw}
   </update>
 
   <!-- 9-1. 게시물 비밀번호 확인 -->
   <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
     select count(*)
     from board
-    where board_number = #{board_number} and board_pw = #{board_pw}
+    where board_number = #{board_number, jdbcType=INTEGER} and board_pw = #{board_pw}
   </select>
 
   <!-- 9-2. 게시물 삭제 -->
   <delete id="getDelete" parameterType="int">
     delete from board
-    where board_number = #{board_number}
+    where board_number = #{board_number, jdbcType=INTEGER}
   </delete>
 
 </mapper>

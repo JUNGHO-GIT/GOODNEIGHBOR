@@ -30,13 +30,13 @@ public class BoardController {
   @RequestMapping("/insertForm.do")
   public String insertForm(Model model, HttpServletRequest request) {
 
-    String board_number_param = request.getParameter("board_number");
+    Integer board_number_param = Integer.parseInt(request.getParameter("board_number"));
     String board_group_param = request.getParameter("board_group");
     String board_step_param = request.getParameter("board_step");
     String board_level_param = request.getParameter("board_level");
     String pageNum = request.getParameter("pageNum");
 
-    Integer board_number = (board_number_param != null) ? Integer.parseInt(board_number_param) : 0;
+    Integer board_number = (board_number_param != null) ? board_number_param : 0;
     Integer board_group = (board_group_param != null) ? Integer.parseInt(board_group_param) : 1;
     Integer board_step = (board_step_param != null) ? Integer.parseInt(board_step_param) : 0;
     Integer board_level = (board_level_param != null) ? Integer.parseInt(board_level_param) : 0;
@@ -197,31 +197,36 @@ public class BoardController {
   @RequestMapping(value = "/updateCheck.do", method = RequestMethod.POST)
   public Integer updateCheck(HttpServletRequest request, HttpSession session) throws Exception {
 
-    String board_number = request.getParameter("board_number");
+    Integer board_number = Integer.parseInt(request.getParameter("board_number"));
     String member_id = (String) session.getAttribute("member_id");
+    String pageNum = request.getParameter("pageNum");
 
-    Map<String, String> map = new HashMap<>();
+    BoardDTO dto = sqlSession.selectOne("board.getDetails", board_number);
 
+    Map<String, Object> map = new HashMap<>();
     map.put("board_number", board_number);
-    map.put("member_id", member_id);
-
+    map.put("board_writer", member_id);
     Integer count = sqlSession.selectOne("board.getUpdateCheck", map);
 
-    // 1이면 일치, -1이면 불일치
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("board_number", board_number);
+    mv.addObject("pageNum", pageNum);
+    mv.addObject("dto", dto);
+
     if (count == 1) {
       return 1;
-    }
-    else {
+    } else {
       return -1;
     }
   }
+
 
   // 4-3. updatePro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
   public ModelAndView updatePro(@ModelAttribute("boardDTO") BoardDTO boardDTO, HttpServletRequest request) throws Exception {
 
     String pageNum = request.getParameter("pageNum");
-    sqlSession.update("board.updateForm", boardDTO);
+    sqlSession.update("board.getUpdate", boardDTO);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("pageNum", pageNum);
@@ -235,17 +240,15 @@ public class BoardController {
   @RequestMapping(value = "/deleteCheck.do", method = RequestMethod.POST)
   public Integer deleteCheck(HttpServletRequest request) {
 
+    Integer board_number = Integer.parseInt(request.getParameter("board_number"));
     String board_pw = request.getParameter("board_pw");
-    String board_number = request.getParameter("board_number");
 
-    Map<String, String> map = new HashMap<>();
-
-    map.put("board_pw", board_pw);
+    Map<String, Object> map = new HashMap<>();
     map.put("board_number", board_number);
+    map.put("board_pw", board_pw);
 
     int count = sqlSession.selectOne("board.getDeleteCheck", map);
 
-    // 1이면 일치, -1이면 불일치
     if (count == 1) {
       return 1;
     }
@@ -258,10 +261,9 @@ public class BoardController {
   @RequestMapping(value = "/deletePro.do", method = RequestMethod.GET)
   public String deletePro(HttpServletRequest request) {
 
-    String board_number_str = request.getParameter("board_number");
+    Integer board_number = Integer.parseInt(request.getParameter("board_number"));
     String board_pw = request.getParameter("board_pw");
 
-    Integer board_number = Integer.parseInt(board_number_str);
 
     Map<String, Object> map = new HashMap<>();
 

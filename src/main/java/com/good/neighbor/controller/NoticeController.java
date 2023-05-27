@@ -159,7 +159,7 @@ public class NoticeController {
 		String fixed=request.getParameter("fixed");
 
 		if(fixed == null) {
-		  sqlSession.update("notice.updateForm", noticeDTO);
+		  sqlSession.update("notice.getUpdate", noticeDTO);
 		}
     else {
 		  sqlSession.update("notice.getFixModify", noticeDTO);

@@ -38,7 +38,7 @@
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header p">
               ${dto.board_title}
             </div>
             <div class="card-body">
@@ -71,7 +71,7 @@
       </div>
       <br/><br/>
 
-      <!------------------------------------------------------------------------------------------->
+      <!----------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
           <button class="btn btn btn-primary btn-sm me-2" onclick="return updateCheck();">글수정</button>

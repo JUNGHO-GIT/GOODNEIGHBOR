@@ -90,7 +90,7 @@ public class MemberController {
     String member_pw = request.getParameter("member_pw");
     String checkbox = request.getParameter("rememberId");
 
-    HashMap<String, String> map = new HashMap<>();
+    HashMap<String, Object> map = new HashMap<>();
     map.put("member_id", member_id);
     map.put("member_pw", member_pw);
 
@@ -147,7 +147,7 @@ public class MemberController {
   public String updatePro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
   HttpServletRequest request, Model model) throws Exception {
 
-    sqlSession.update("member.updateForm", memberDTO);
+    sqlSession.update("member.getUpdate", memberDTO);
 
     return "member/updatePro";
   }
@@ -173,7 +173,7 @@ public class MemberController {
     System.out.println("member_id :" + member_id);
     System.out.println("member_pw :" + member_pw);
 
-    Map<String, String> map = new HashMap<>();
+    Map<String, Object> map = new HashMap<>();
     map.put("member_id", member_id);
     map.put("member_pw", member_pw);
 
@@ -206,7 +206,7 @@ public class MemberController {
     System.out.println("member_name : " + search_tel_name);
     System.out.println("member_tel : " + search_tel_number);
 
-    HashMap<String, String> map = new HashMap<>();
+    HashMap<String, Object> map = new HashMap<>();
     map.put("member_name", search_tel_name);
     map.put("member_tel", search_tel_number);
     MemberDTO dto = sqlSession.selectOne("member.getSearchId", map);
@@ -243,7 +243,7 @@ public class MemberController {
     String search_tel_number = request.getParameter("search_tel_number");
     String search_tel_id = request.getParameter("search_tel_id");
 
-    HashMap<String, String> map = new HashMap<>();
+    HashMap<String, Object> map = new HashMap<>();
     map.put("member_id", search_tel_id);
     map.put("member_name", search_tel_name);
     map.put("member_tel", search_tel_number);

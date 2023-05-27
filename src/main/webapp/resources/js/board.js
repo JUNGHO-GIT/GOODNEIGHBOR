@@ -77,7 +77,7 @@ const updateCheck = async () => {
     return false;
   }
   else {
-    const response = await fetch('updateCheck.do', {
+    const response = await fetch(`/${ctxPath}/board/updateCheck.do`, {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: `board_number=${board_number}&board_writer=${board_writer}`
@@ -91,7 +91,7 @@ const updateCheck = async () => {
         return false;
       }
       else if (text == 1) {
-        window.location.href = `updateForm.do?board_number=${board_number}&pageNum=${pageNum}`;
+        window.location.href = `/${ctxPath}/board/updateForm.do?board_number=${board_number}&pageNum=${pageNum}`;
         return true;
       }
       else {

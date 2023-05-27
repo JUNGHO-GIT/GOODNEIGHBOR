@@ -23,7 +23,7 @@
       notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_group, notice_step,notice_level
     )
     values (
-      #{notice_number}, #{notice_writer, jdbcType=VARCHAR}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
+      #{notice_number, jdbcType=INTEGER}, #{notice_writer, jdbcType=VARCHAR}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
     )
 	</insert>
 
@@ -72,27 +72,27 @@
 	<update id="getUpdateCount" parameterType="int">
 		update notice
     set notice_readcount = notice_readcount + 1
-    where notice_number = #{notice_number}
+    where notice_number = #{notice_number, jdbcType=INTEGER}
 	</update>
 
 	<!-- 7. 글번호에 해당하는 게시글 정보 -->
 	<select id="getDetails" parameterType="int" resultType="noticeDTO">
 		select *
     from notice
-    where notice_number = #{notice_number}
+    where notice_number = #{notice_number, jdbcType=INTEGER}
 	</select>
 
 	<!-- 8. 게시물 수정 -->
 	<update id="getUpdate" parameterType="noticeDTO">
 		update notice
     set notice_writer = #{notice_writer, jdbcType=VARCHAR}, notice_title = #{notice_title}, notice_content = #{notice_content}
-    where notice_number = #{notice_number} and notice_pw = #{notice_pw}
+    where notice_number = #{notice_number, jdbcType=INTEGER} and notice_pw = #{notice_pw}
 	</update>
 
 	<!-- 9. 게시물 삭제 -->
 	<delete id="getDelete" parameterType="int">
 		delete from notice
-    where notice_number = #{notice_number}
+    where notice_number = #{notice_number, jdbcType=INTEGER}
 	</delete>
 
   <!-- 10. 공지사항 고정 -->
@@ -120,7 +120,7 @@
 		update notice set
     notice_title=#{notice_title},notice_content=#{notice_content}, notice_fix=1
     where
-    notice_number=#{notice_number}
+    notice_number=#{notice_number, jdbcType=INTEGER}
 	</update>
 
 </mapper>

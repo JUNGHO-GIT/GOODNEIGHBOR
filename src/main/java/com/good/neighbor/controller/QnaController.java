@@ -26,19 +26,12 @@ public class QnaController {
   // 1-1. insertForm() ---------------------------------------------------------------------------->
   @RequestMapping(value = "/insertForm.do", method = RequestMethod.GET)
   public String insertForm(Model model, HttpServletRequest request) {
-    String qna_number = request.getParameter("qna_number");
+    Integer qna_number = Integer.parseInt(request.getParameter("qna_number"));
     String qna_group = request.getParameter("qna_group");
     String qna_step = request.getParameter("qna_step");
     String qna_level = request.getParameter("qna_level");
     String pageNum = request.getParameter("pageNum");
     String qna_pw = request.getParameter("qna_pw");
-
-    if (qna_number == null) {
-      qna_number = "0";
-      qna_group = "1";
-      qna_step = "0";
-      qna_level = "0";
-    }
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("qna_number", qna_number);
@@ -199,7 +192,7 @@ public class QnaController {
 
     String pw = request.getParameter("qna_pw");
 
-    sqlSession.update("qna.updateForm", qnaDTO);
+    sqlSession.update("qna.getUpdate", qnaDTO);
 
     model.addAttribute("qna_pw", pw);
     model.addAttribute("qnaDTO", qnaDTO);
