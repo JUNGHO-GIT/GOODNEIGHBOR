@@ -6,8 +6,8 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!-- Html ----------------------------------------------------------------------------------------->

@@ -10,15 +10,11 @@ public class BoardDTO {
 	private String board_title;
 	private String board_content;
 	private String board_pw;
-	private Timestamp board_regdate;
 	private Integer board_readcount;
 	private Integer board_group;
 	private Integer board_step;
 	private Integer board_level;
-	private String board_ip;
-  private int next_step;
-  private int next_level;
-
+	private Timestamp board_regdate;
 
   // getters -------------------------------------------------------------------------------------->
   public Integer getBoard_number() {
@@ -51,15 +47,6 @@ public class BoardDTO {
   public Integer getBoard_level() {
     return board_level;
   }
-  public String getBoard_ip() {
-    return board_ip;
-  }
-  public int getNext_step() {
-    return next_step;
-  }
-  public int getNext_level() {
-    return next_level;
-  }
 
   // setters -------------------------------------------------------------------------------------->
   public void setBoard_number(Integer board_number) {
@@ -91,15 +78,6 @@ public class BoardDTO {
   }
   public void setBoard_level(Integer board_level) {
     this.board_level = board_level;
-  }
-  public void setBoard_ip(String board_ip) {
-    this.board_ip = board_ip;
-  }
-  public void setNext_step(int next_step) {
-    this.next_step = next_step;
-  }
-  public void setNext_level(int next_level) {
-    this.next_level = next_level;
   }
 
 }

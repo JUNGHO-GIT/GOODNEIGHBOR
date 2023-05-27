@@ -4,11 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
-<c:set var="member_id" value="${sessionScope.member_id}"/>
-<c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
-<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -39,7 +34,7 @@
               <label for="member_id" class="form-label">아이디</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="member_id" id="member_id" placeholder="6-12자의 영문 대소문자, 숫자" />
-                <button type="button" class="btn btn-primary btn-sm" id="dupcheck" onclick="confirmIdCheck ()">ID중복 체크</button>
+                <button type="button" class="btn btn-primary btn-sm" id="dupcheck" onclick="return confirmIdCheck();">ID중복 체크</button>
               </div>
             </div>
             <div class="mb-3 text-left">

@@ -6,8 +6,8 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
@@ -28,11 +28,11 @@
       <form method="POST" name="insertForm" action="${ctxPath}/board/insertPro.do">
 
         <!----------------------------------------------------------------------------------------->
-        <input type="hidden" name="board_number" value="${board_number}" />
-        <input type="hidden" name="board_group" value="${board_group}" />
-        <input type="hidden" name="board_step" value="${board_step}" />
-        <input type="hidden" name="board_level" value="${board_level}" />
-        <input type="hidden" name="pageNum" value="${pageNum}" />
+        <input type="hidden" name="board_number" id="board_number" value="${board_number}" />
+        <input type="hidden" name="board_group" id="board_group" value="${board_group}" />
+        <input type="hidden" name="board_step" id="board_step" value="${board_step}" />
+        <input type="hidden" name="board_level" id="board_level" value="${board_level}" />
+        <input type="hidden" name="pageNum" id="pageNum" value="${pageNum}" />
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
@@ -51,10 +51,6 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
-              <label for="board_writer" class="form-label">글쓴이</label>
-              <input type="text" name="board_writer" id="board_writer" size="30" class="form-control" value="${member_id}" readonly="readonly" />
-            </div>
-            <div class="mb-3 text-left">
               <label for="board_title" class="form-label">글제목</label>
               <!-- 원글 -->
               <c:if test="${board_number==0}">
@@ -64,6 +60,10 @@
               <c:if test="${board_number!=0}">
                 <input type="text" name="board_title" id="board_title" size="40" class="form-control" />
               </c:if>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="board_writer" class="form-label">글쓴이</label>
+              <input type="text" name="board_writer" id="board_writer" size="30" class="form-control" value="${member_id}" readonly/>
             </div>
             <div class="mb-3 text-left">
               <label for="board_content"  class="form-label">글내용</label>

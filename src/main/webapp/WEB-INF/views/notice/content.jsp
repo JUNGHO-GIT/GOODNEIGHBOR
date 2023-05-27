@@ -6,74 +6,89 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-<head>
-  <jsp:include page="/WEB-INF/views/common/head.jsp" />
-</head>
+  <!----------------------------------------------------------------------------------------------->
+  <head>
+    <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  </head>
 
-<body>
-  <jsp:include page="/WEB-INF/views/common/header.jsp" />
-  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
+  <!----------------------------------------------------------------------------------------------->
+  <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-  <main class="main container-fluid">
+    <!--------------------------------------------------------------------------------------------->
+    <main class="main container-fluid">
 
-    <div class="container mt-5">
-      <div class="text-center my-4">
-        <h1>공지사항</h1>
-      </div>
-
-      <div class="card">
-        <div class="card-header text-center">
-          ${dto.notice_title}
-        </div>
-        <div class="card-body">
-          <table class="table table-sm">
-            <tbody>
-              <tr>
-                <td style="width:100px;">작성자</td>
-                <td>${dto.notice_writer}</td>
-              </tr>
-              <tr>
-                <td style="width:100px;">조회수</td>
-                <td>${dto.notice_readcount}</td>
-              </tr>
-              <tr>
-                <td style="width:100px;">내용</td>
-                <td class="pre-wrap">${dto.notice_content}</td>
-              </tr>
-            </tbody>
-          </table>
+      <!---------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <h1 class="text-center my-4 p">공지사항</h1>
         </div>
       </div>
-    </div><br /><br />
+      <hr class="mb-3" />
 
-    <div class="d-flex justify-content-center mt-5">
-      <c:if test="${admin_id  != null}">
-        <a class="btn btn-primary btn-sm me-2"
-          href="${ctxPath}/notice/updateForm.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글수정</a>
-        <c:if test="${dto.notice_fix==false}">
-          <a class="btn btn-danger me-1"
-            href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}&pageNum=${pageNum}">글삭제</a>
-        </c:if>
-        <c:if test="${dto.notice_fix==true}">
-          <a class="btn btn-danger me-1"
-            href="${ctxPath}/notice/deletePro.do?notice_number=${dto.notice_number}">글삭제</a>
-        </c:if>
-        <a class="btn btn-primary btn-sm me-2" href="${ctxPath}/notice/insertForm.do">글쓰기</a>
-      </c:if>
-      <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/notice/list.do">리스트</a>
-    </div>
+      <!----------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="card">
+            <div class="card-header p">
+              <c:out value="${dto.notice_title}" />
+            </div>
+            <div class="card-body">
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <td style="width:100px;">작성일</td>
+                    <td>
+                      <fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd" />
+                      <input type="hidden" id="notice_number" name="notice_number" value="${dto.notice_number}" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">작성자</td>
+                    <td><c:out value="${dto.notice_writer}" /></td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">조회수</td>
+                    <td><c:out value="${dto.notice_readcount}" /></td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">내용</td>
+                    <td><c:out value="${dto.notice_content}" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
 
-  </main><br /><br />
+      <!----------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+          <c:if test="${admin_id != null}">
+            <button class="btn btn btn-primary btn-sm me-2" onclick="return insertNoticeCheck();">
+            글쓰기</button>
+            <button class="btn btn btn-primary btn-sm me-2" onclick="return updateNoticeCheck();">
+            글수정</button>
+            <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteNoticeCheck();">
+            글삭제</button>
+          </c:if>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/notice/list.do?pageNum=${pageNum}'">리스트</button>
+        </div>
+      </div>
 
-  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    </main><br /><br />
 
-</body>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+  </body>
 </html>

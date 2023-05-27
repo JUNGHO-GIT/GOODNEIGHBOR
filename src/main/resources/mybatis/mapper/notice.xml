@@ -20,10 +20,10 @@
 	<!-- 3. 글쓰기 -->
 	<insert id="getInsert" parameterType="noticeDTO">
 		insert into notice (
-      notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_group, notice_step,notice_level
+      notice_number, notice_writer, notice_pw, notice_title, notice_content, notice_regdate, notice_group, notice_step, notice_level
     )
     values (
-      #{notice_number, jdbcType=INTEGER}, #{notice_writer, jdbcType=VARCHAR}, #{notice_pw}, #{notice_title}, #{notice_content}, SYSDATE, #{notice_group}, #{notice_step}, #{notice_level}
+      #{notice_number, jdbcType=INTEGER}, #{notice_writer, jdbcType=VARCHAR}, #{notice_pw, jdbcType=VARCHAR}, #{notice_title, jdbcType=VARCHAR}, #{notice_content, jdbcType=VARCHAR}, SYSDATE, #{notice_group, jdbcType=INTEGER}, #{notice_step, jdbcType=INTEGER}, #{notice_level, jdbcType=INTEGER}
     )
 	</insert>
 
@@ -31,7 +31,7 @@
 	<update id="getUpdateStep" parameterType="noticeDTO">
 		update notice
     set notice_step = notice_step + 1
-    where notice_group = #{notice_group} and notice_step <![CDATA[>]]> #{notice_step}
+    where notice_group = #{notice_group, jdbcType=INTEGER} and notice_step <![CDATA[>]]> #{notice_step, jdbcType=INTEGER}
 	</update>
 
 	<!-- 5. 전체 게시글 목록 -->
@@ -60,7 +60,7 @@
       FROM (
         SELECT *
         FROM notice
-        WHERE notice_fix = 0 AND ${columnParam} LIKE '%' || #{keyWord} || '%'
+        WHERE ${columnParam} LIKE '%' || #{keyWord} || '%'
         ORDER BY notice_number DESC
       ) notice
       WHERE ROWNUM <![CDATA[<=]]> #{start} + #{count}
@@ -82,45 +82,31 @@
     where notice_number = #{notice_number, jdbcType=INTEGER}
 	</select>
 
-	<!-- 8. 게시물 수정 -->
-	<update id="getUpdate" parameterType="noticeDTO">
-		update notice
-    set notice_writer = #{notice_writer, jdbcType=VARCHAR}, notice_title = #{notice_title}, notice_content = #{notice_content}
-    where notice_number = #{notice_number, jdbcType=INTEGER} and notice_pw = #{notice_pw}
-	</update>
-
-	<!-- 9. 게시물 삭제 -->
-	<delete id="getDelete" parameterType="int">
-		delete from notice
-    where notice_number = #{notice_number, jdbcType=INTEGER}
-	</delete>
-
-  <!-- 10. 공지사항 고정 -->
-	<insert id="getFixTop" parameterType="noticeDTO">
-		insert into notice (
-      notice_number, notice_writer, notice_title, notice_content, notice_regdate, notice_fix
-    )
-    values (
-      0, #{notice_writer, jdbcType=VARCHAR}, #{notice_title}, #{notice_content}, SYSDATE, 1
-    )
-	</insert>
-
-  <!-- 11. 공지사항 고정 글번호 얻기 -->
-	<select id="getFixNumber" resultType="noticeDTO">
-    select * from (
-      select notice.*, rownum rnum from (
-        select * from notice
-        where notice_fix = 1 order by notice_regdate desc
-      ) notice where rownum <![CDATA[<=]]> 3
-    ) where rnum <![CDATA[>]]> 0
+  <!-- 8-1. 게시물 수정을 위한 아이디 확인 -->
+  <select id="getUpdateCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from notice
+    where notice_number = #{notice_number, jdbcType=INTEGER} and notice_writer = #{notice_writer, jdbcType=VARCHAR}
   </select>
 
-  <!-- 12. 공지사항 고정 글번호 조회수 증가 -->
-	<update id="getFixModify" parameterType="Integer">
-		update notice set
-    notice_title=#{notice_title},notice_content=#{notice_content}, notice_fix=1
-    where
-    notice_number=#{notice_number, jdbcType=INTEGER}
-	</update>
+  <!-- 8-2. 게시물 수정 -->
+  <update id="getUpdate" parameterType="noticeDTO">
+    update notice
+    set notice_writer = #{notice_writer, jdbcType=VARCHAR}, notice_title = #{notice_title, jdbcType=VARCHAR}, notice_content = #{notice_content, jdbcType=VARCHAR}
+    where notice_number = #{notice_number, jdbcType=INTEGER}
+  </update>
+
+  <!-- 9-1. 게시물 비밀번호 확인 -->
+  <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from notice
+    where notice_number = #{notice_number, jdbcType=INTEGER} and notice_pw = #{notice_pw, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 9-2. 게시물 삭제 -->
+  <delete id="getDelete" parameterType="int">
+    delete from notice
+    where notice_number = #{notice_number, jdbcType=INTEGER}
+  </delete>
 
 </mapper>

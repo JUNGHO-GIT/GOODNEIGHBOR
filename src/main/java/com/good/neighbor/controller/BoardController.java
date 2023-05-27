@@ -27,28 +27,32 @@ public class BoardController {
   private SqlSession sqlSession;
 
   // 1-1. insertForm() --------------------------------------------------------------------------->
-  @RequestMapping("/insertForm.do")
+  @RequestMapping(value = "/insertForm.do", method = RequestMethod.GET)
   public String insertForm(Model model, HttpServletRequest request) {
 
-    Integer board_number_param = Integer.parseInt(request.getParameter("board_number"));
+    String board_number_param = request.getParameter("board_number");
     String board_group_param = request.getParameter("board_group");
     String board_step_param = request.getParameter("board_step");
     String board_level_param = request.getParameter("board_level");
+    String board_pw_param = request.getParameter("board_pw");
     String pageNum = request.getParameter("pageNum");
 
-    Integer board_number = (board_number_param != null) ? board_number_param : 0;
-    Integer board_group = (board_group_param != null) ? Integer.parseInt(board_group_param) : 1;
-    Integer board_step = (board_step_param != null) ? Integer.parseInt(board_step_param) : 0;
-    Integer board_level = (board_level_param != null) ? Integer.parseInt(board_level_param) : 0;
+    Integer board_number = (board_number_param != null && !board_number_param.isEmpty()) ? Integer.parseInt(board_number_param) : 0;
+    Integer board_group = (board_group_param != null && !board_group_param.isEmpty()) ? Integer.parseInt(board_group_param) : 1;
+    Integer board_step = (board_step_param != null && !board_step_param.isEmpty()) ? Integer.parseInt(board_step_param) : 0;
+    Integer board_level = (board_level_param != null && !board_level_param.isEmpty()) ? Integer.parseInt(board_level_param) : 0;
+    Integer board_pw = (board_pw_param != null && !board_pw_param.isEmpty()) ? Integer.parseInt(board_pw_param) : 0;
 
     model.addAttribute("pageNum", pageNum);
     model.addAttribute("board_number", board_number);
     model.addAttribute("board_group", board_group);
-    model.addAttribute("board_re_step", board_step);
-    model.addAttribute("board_re_level", board_level);
+    model.addAttribute("board_step", board_step);
+    model.addAttribute("board_level", board_level);
+    model.addAttribute("board_pw", board_pw);
 
     return "board/insertForm";
   }
+
 
   // 1-2. insertPro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/insertPro.do", method = RequestMethod.POST)
@@ -66,19 +70,14 @@ public class BoardController {
       maxNum = 1;
     }
 
-    String ip = request.getRemoteAddr();
-    boardDTO.setBoard_ip(ip);
-
-    if (boardDTO.getBoard_number() != 0 && boardDTO.getBoard_number() != null) {
-      BoardDTO originalPost = sqlSession.selectOne("board.getDetails", boardDTO.getBoard_number());
-      sqlSession.update("board.getUpdateStep", originalPost);
-
-      boardDTO.setBoard_number(maxNum);
-      boardDTO.setBoard_group(originalPost.getBoard_group());
-      boardDTO.setBoard_step(originalPost.getBoard_step() + 1);
-      boardDTO.setBoard_level(originalPost.getBoard_level() + 1);
-    } else {
+    if (boardDTO.getBoard_number() != 0 || boardDTO.getBoard_number() != null) {
+      sqlSession.update("board.getUpdateStep", boardDTO);
+      boardDTO.setBoard_step(boardDTO.getBoard_step() + 1);
+      boardDTO.setBoard_level(boardDTO.getBoard_level() + 1);
+    }
+    else {
       boardDTO.setBoard_group(maxNum);
+      boardDTO.setBoard_number(maxNum);
       boardDTO.setBoard_step(0);
       boardDTO.setBoard_level(0);
     }
@@ -220,7 +219,6 @@ public class BoardController {
     }
   }
 
-
   // 4-3. updatePro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
   public ModelAndView updatePro(@ModelAttribute("boardDTO") BoardDTO boardDTO, HttpServletRequest request) throws Exception {
@@ -264,7 +262,6 @@ public class BoardController {
     Integer board_number = Integer.parseInt(request.getParameter("board_number"));
     String board_pw = request.getParameter("board_pw");
 
-
     Map<String, Object> map = new HashMap<>();
 
     map.put("board_number", board_number);
@@ -274,4 +271,5 @@ public class BoardController {
 
     return "redirect:/board/list.do";
   }
+
 }

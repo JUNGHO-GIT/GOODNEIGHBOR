@@ -6,8 +6,8 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
@@ -26,6 +26,13 @@
     <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
 
+      <!------------------------------------------------------------------------------------------->
+      <input type="hidden" id="board_number" name="board_number" value="${dto.board_number}" />
+      <input type="hidden" id="board_group" name="board_group" value="${dto.board_group}" default="1" />
+      <input type="hidden" id="board_level" name="board_level" value="${dto.board_level}" default="0" />
+      <input type="hidden" id="board_step" name="board_step" value="${dto.board_step}"
+      default="0" />
+
       <!---------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
@@ -39,7 +46,7 @@
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <div class="card">
             <div class="card-header p">
-              ${dto.board_title}
+              <c:out value="${dto.board_title}" />
             </div>
             <div class="card-body">
               <table class="table table-sm">
@@ -74,11 +81,14 @@
       <!----------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
-          <button class="btn btn btn-primary btn-sm me-2" onclick="return updateCheck();">글수정</button>
-          <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/insertForm.do'">새글쓰기</button>
-          <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/insertForm.do?board_number=${dto.board_number}&board_group=${dto.board_group}&board_step=${dto.board_step}&board_level=${dto.board_level}'">답글쓰기</button>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="return updateBoardCheck();">
+          글수정</button>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="return insertBoardCheck();">
+          글 쓰기</button>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="return replyBoardCheck();">
+          답글 쓰기</button>
           <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/list.do?pageNum=${pageNum}'">리스트</button>
-          <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteCheck();">글삭제</button>
+          <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteBoardCheck();">글삭제</button>
         </div>
       </div>
 

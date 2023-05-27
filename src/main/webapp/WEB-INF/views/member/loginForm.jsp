@@ -4,11 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"/>
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources"/>
-<c:set var="member_id" value="${sessionScope.member_id}"/>
-<c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
-<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -50,7 +45,7 @@
               &nbsp;&nbsp;
               <button type="button" onclick="window.location.href='${ctxPath}/member/searchIdForm.do'" class="btn btn-primary btn-sm">아이디 찾기</button>
               &nbsp;&nbsp;
-              <button type="button" onclick="window.location.href='${ctxPath}/member/searchPw1Form.do'" class="btn btn-primary btn-sm">비밀번호 찾기</button>
+              <button type="button" onclick="window.location.href='${ctxPath}/member/searchPwForm.do'" class="btn btn-primary btn-sm">비밀번호 찾기</button>
             </div>
           </div>
         </div>

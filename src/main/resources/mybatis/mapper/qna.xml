@@ -23,8 +23,7 @@
       qna_number, qna_writer, qna_pw, qna_title, qna_content, qna_regdate, qna_group, qna_step,qna_level
     )
     values (
-      #{qna_number, jdbcType=INTEGER}, #{qna_writer, jdbcType=VARCHAR}, #{qna_pw}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_group},
-      #{qna_step}, #{qna_level}
+      #{qna_number, jdbcType=INTEGER}, #{qna_writer, jdbcType=VARCHAR}, #{qna_pw, jdbcType=VARCHAR}, #{qna_title, jdbcType=VARCHAR}, #{qna_content, jdbcType=VARCHAR}, sysdate, #{qna_group, jdbcType=INTEGER}, #{qna_step, jdbcType=INTEGER}, #{qna_level, jdbcType=INTEGER}
     )
   </insert>
 
@@ -32,7 +31,7 @@
   <update id="getUpdateStep" parameterType="qnaDTO">
     update qna
     set qna_step = qna_step + 1
-    where qna_group = #{qna_group} and qna_step <![CDATA[>]]> #{qna_step}
+    where qna_group = #{qna_group, jdbcType=INTEGER} and qna_step <![CDATA[>]]> #{qna_step, jdbcType=INTEGER}
   </update>
 
   <!-- 5. 전체 게시글 목록 -->
@@ -85,14 +84,35 @@
     where qna_number = #{qna_number, jdbcType=INTEGER}
   </select>
 
-  <!-- 8. 게시물 수정 -->
+  <!-- 7-1. 글번호에 해당하는 게시글 정보(비밀번호 확인) -->
+  <select id="getSecretCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from qna
+    where qna_number=#{qna_number, jdbcType=INTEGER} and qna_pw=#{qna_pw, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 8-1. 게시물 수정을 위한 아이디 확인 -->
+  <select id="getUpdateCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from qna
+    where qna_number = #{qna_number, jdbcType=INTEGER} and qna_writer = #{qna_writer, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 8-2. 게시물 수정 -->
   <update id="getUpdate" parameterType="qnaDTO">
     update qna
-    set qna_writer = #{qna_writer, jdbcType=VARCHAR}, qna_title = #{qna_title}, qna_content = #{qna_content}
-    where qna_number = #{qna_number, jdbcType=INTEGER} and qna_pw = #{qna_pw}
+    set qna_writer = #{qna_writer, jdbcType=VARCHAR}, qna_title = #{qna_title, jdbcType=VARCHAR}, qna_content = #{qna_content, jdbcType=VARCHAR}
+    where qna_number = #{qna_number, jdbcType=INTEGER}
   </update>
 
-  <!-- 9. 게시물 삭제 -->
+  <!-- 9-1. 게시물 비밀번호 확인 -->
+  <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
+    select count(*)
+    from qna
+    where qna_number = #{qna_number, jdbcType=INTEGER} and qna_pw = #{qna_pw, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 9-2. 게시물 삭제 -->
   <delete id="getDelete" parameterType="int">
     delete from qna
     where qna_number = #{qna_number, jdbcType=INTEGER}

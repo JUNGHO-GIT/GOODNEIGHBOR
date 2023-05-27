@@ -2,12 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-    <!-- <property name="url" value="jdbc:oracle:thin:@20.196.194.241:1521:xe" />
+    <property name="url" value="jdbc:oracle:thin:@20.196.194.241:1521:xe" />
     <property name="username" value="system" />
-    <property name="password" value="m7m7m7m7m7" /> -->
-    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+    <property name="password" value="m7m7m7m7m7" />
+    <!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
     <property name="username" value="JUNGHO" />
-    <property name="password" value="m7m7m7m7m7!" />
+    <property name="password" value="m7m7m7m7m7!" /> -->
   </bean>
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource" />

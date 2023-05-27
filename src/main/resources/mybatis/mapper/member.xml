@@ -46,18 +46,38 @@
     where member_id=#{member_id, jdbcType=VARCHAR} and member_pw=#{member_pw, jdbcType=VARCHAR}
 	</delete>
 
-	<!-- 8. 아이디 찾기 -->
-	<select id="getSearchId" parameterType="java.util.Map" resultType="memberDTO">
+	<!-- 8-1. 아이디 찾기 -->
+	<select id="getSearchIdByTel" parameterType="java.util.Map" resultType="memberDTO">
 		select * from member
-    where member_name = #{member_name, jdbcType=VARCHAR}
-    and member_tel = #{member_tel}
+    where
+      member_name = #{member_name, jdbcType=VARCHAR} and
+      member_tel = #{member_tel}
 	</select>
 
-	<!-- 9. 비밀번호 찾기 -->
-	<select id="getSearchPw" parameterType="java.util.Map" resultType="memberDTO">
-		select * from member
-    where member_id = #{member_id, jdbcType=VARCHAR}
-    and member_tel = #{member_tel} and member_name = #{member_name, jdbcType=VARCHAR}
-	</select>
+  <!-- 8-2. 아이디 찾기 -->
+  <select id="getSearchIdByEmail" parameterType="java.util.Map" resultType="memberDTO">
+    select * from member
+    where
+      member_name = #{member_name, jdbcType=VARCHAR} and
+      member_email = #{member_email}
+  </select>
+
+  <!-- 9-1. 비밀번호 찾기 -->
+  <select id="getSearchPwByTel" parameterType="java.util.Map" resultType="memberDTO">
+    select * from member
+    where
+      member_name = #{member_name, jdbcType=VARCHAR} and
+      member_id = #{member_id, jdbcType=VARCHAR} and
+      member_tel = #{member_tel}
+  </select>
+
+  <!-- 9-2. 비밀번호 찾기 -->
+  <select id="getSearchPwByEmail" parameterType="java.util.Map" resultType="memberDTO">
+    select * from member
+    where
+      member_name = #{member_name, jdbcType=VARCHAR} and
+      member_id = #{member_id, jdbcType=VARCHAR} and
+      member_email = #{member_email}
+  </select>
 
 </mapper>

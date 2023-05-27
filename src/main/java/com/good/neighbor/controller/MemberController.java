@@ -114,7 +114,6 @@ public class MemberController {
     return "member/loginPro";
   }
 
-
   // 2-3. logout() -------------------------------------------------------------------------------->
   @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
   public String logout() {
@@ -189,55 +188,59 @@ public class MemberController {
     return "member/search_main";
   }
 
-  // 5-2. searchIdForm() ----------------------------------------------------------------------------->
+  // 5-2. searchIdForm() -------------------------------------------------------------------------->
   @RequestMapping(value = "/searchIdForm", method = RequestMethod.GET)
   public String searchIdForm() {
 
     return "member/searchIdForm";
   }
 
-  // 5-3. searchIdPro() ------------------------------------------------------------------------->
-  @RequestMapping(value = "/searchIdPro", method = RequestMethod.POST)
-  public String searchIdPro(HttpServletRequest request, Model model) {
+  // 5-3. searchIdByTel() -------------------------------------------------------------------->
+  @RequestMapping(value = "/searchIdByTel.do", method = RequestMethod.POST)
+  public String searchIdByTel(HttpServletRequest request, Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");
     String search_tel_number = request.getParameter("search_tel_number");
 
-    System.out.println("member_name : " + search_tel_name);
-    System.out.println("member_tel : " + search_tel_number);
-
     HashMap<String, Object> map = new HashMap<>();
     map.put("member_name", search_tel_name);
     map.put("member_tel", search_tel_number);
-    MemberDTO dto = sqlSession.selectOne("member.getSearchId", map);
+
+    MemberDTO dto = sqlSession.selectOne("member.getSearchIdByTel", map);
 
     model.addAttribute("dto", dto);
 
     return "member/searchIdPro";
   }
 
-  // 5-4. searchPw1Form() ---------------------------------------------------------------------------->
-  @RequestMapping(value = "/searchPw1Form", method = RequestMethod.GET)
-  public String searchPw1FormForm() {
+  // 5-4. searchIdByEmail() ------------------------------------------------------------------>
+  @RequestMapping(value = "/searchIdByEmail.do", method = RequestMethod.POST)
+  public String searchIdByEmail(HttpServletRequest request, Model model) {
 
-    return "member/searchPw1Form";
-  }
+    String search_email_name = request.getParameter("search_email_name");
+    String search_email_domain = request.getParameter("search_email_domain");
 
-  // 5-5. searchPw1Pro() ------------------------------------------------------------------------>
-  @RequestMapping(value = "/searchPw1Form.do", method = RequestMethod.POST)
-  public String searchPw1FormPro(HttpServletRequest request, Model model) {
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("member_name", search_email_name);
+    map.put("member_email", search_email_domain);
 
-    String searchPw1Form_id = request.getParameter("searchPw1Form_id");
-    MemberDTO dto = sqlSession.selectOne("member.getDetails", searchPw1Form_id);
+    MemberDTO dto = sqlSession.selectOne("member.getSearchIdByEmail", map);
 
     model.addAttribute("dto", dto);
 
-    return "member/searchPw2Form";
+    return "member/searchIdPro";
   }
 
-  // 5-6. searchPw2Form() ----------------------------------------------------------------------->
-  @RequestMapping(value = "/searchPw2Form.do", method = RequestMethod.POST)
-  public String searchPw2FormForm(HttpServletRequest request, Model model) {
+  // 6-1. searchPwForm() ------------------------------------------------------------------------->
+  @RequestMapping(value = "/searchPwForm", method = RequestMethod.GET)
+  public String searchPwForm() {
+
+    return "member/searchPwForm";
+  }
+
+  // 6-2. searchPwByTel() -------------------------------------------------------------------->
+  @RequestMapping(value = "/searchPwByTel.do", method = RequestMethod.POST)
+  public String searchPwByTel(HttpServletRequest request, Model model) {
 
     String search_tel_name = request.getParameter("search_tel_name");
     String search_tel_number = request.getParameter("search_tel_number");
@@ -247,7 +250,26 @@ public class MemberController {
     map.put("member_id", search_tel_id);
     map.put("member_name", search_tel_name);
     map.put("member_tel", search_tel_number);
-    MemberDTO dto = sqlSession.selectOne("member.getSearchPw", map);
+    MemberDTO dto = sqlSession.selectOne("member.getSearchPwByTel", map);
+
+    model.addAttribute("dto", dto);
+
+    return "member/searchPwPro";
+  }
+
+  // 6-3. searchPwByEmail() ------------------------------------------------------------------>
+  @RequestMapping(value = "/searchPwByEmail.do", method = RequestMethod.POST)
+  public String searchPwByEmail(HttpServletRequest request, Model model) {
+
+    String search_email_name = request.getParameter("search_email_name");
+    String search_email_domain = request.getParameter("search_email_domain");
+    String search_email_id = request.getParameter("search_email_id");
+
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("member_id", search_email_id);
+    map.put("member_name", search_email_name);
+    map.put("member_email", search_email_domain);
+    MemberDTO dto = sqlSession.selectOne("member.getSearchPwByEmail", map);
 
     model.addAttribute("dto", dto);
 

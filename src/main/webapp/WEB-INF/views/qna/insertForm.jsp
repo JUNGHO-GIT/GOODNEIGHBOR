@@ -6,74 +6,84 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-<head>
-  <jsp:include page="/WEB-INF/views/common/head.jsp" />
-</head>
+  <!----------------------------------------------------------------------------------------------->
+  <head>
+    <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  </head>
 
-<body>
+  <!----------------------------------------------------------------------------------------------->
+  <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-  <jsp:include page="/WEB-INF/views/common/header.jsp" />
-  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
+    <!--------------------------------------------------------------------------------------------->
+    <main class="main container-fluid">
+      <form name="writeFrom" method="POST" action="${ctxPath}/qna/insertPro.do">
 
-  <main class="main container-fluid">
-    <h2>Q&A 게시글 작성</h2>
+        <!----------------------------------------------------------------------------------------->
+        <input type="hidden" name="qna_number" id="qna_number" value="${qna_number}">
+        <input type="hidden" name="qna_step" id="qna_step" value="${qna_step}">
+        <input type="hidden" name="qna_level" id="qna_level" value="${qna_level}">
+        <input type="hidden" name="qna_group" id="qna_group" value="${qna_group}">
 
-    <form name="writeFrom" method="POST" action="${ctxPath}/qna/insertPro.do"
-      onsubmit="return qnaCheck()">
-      <input type="hidden" name="qna_number" value="${qna_number}">
-      <input type="hidden" name="qna_step" value="${qna_step}">
-      <input type="hidden" name="qna_level" value="${qna_level}">
-      <input type="hidden" name="qna_group" value="${qna_group}">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <td>글쓴이</td>
-              <td>
-                <input type="text" class="form-control" name="qna_writer" id="writer" size="30" />
-              </td>
-            </tr>
-            <tr>
-              <td>글제목</td>
-              <td>
-                <input type="text" class="form-control" name="qna_title" id="title" size="50" />
-              </td>
-            </tr>
-            <tr>
-              <td>글내용</td>
-              <td>
-                <textarea class="form-control" name="qna_content" id="content" rows="10"></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td>암호</td>
-              <td>
-                <input type="password" class="form-control" name="qna_pw" id="pw" size="20" />
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="text-center">
-                <input type="submit" class="btn btn-primary btn-sm me-2" value="작성하기" />
-                <input type="button" class="btn btn-primary btn-sm" value="취소" onclick="window.location.href='${ctxPath}/qna/list.do'" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <!---------------------------------------------------------------------------------------->
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <h1 class="text-center">Q&A 작성</h1>
+          </div>
+        </div><hr />
 
-      </div>
-    </form>
+        <!----------------------------------------------------------------------------------------->
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-left">
+              <label for="qna_title" class="form-label">글제목</label>
+              <!-- 원글 -->
+              <c:if test="${qna_number==0}">
+                <input type="text" name="qna_title" id="qna_title" size="40" class="form-control" />
+              </c:if>
+              <!--  답글 -->
+              <c:if test="${qna_number!=0}">
+                <input type="text" name="qna_title" id="qna_title" size="40" class="form-control" />
+              </c:if>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="qna_writer" class="form-label">작성자</label>
+              <input type="text" class="form-control" name="qna_writer" id="writer" size="30"  value="${member_id}" readonly/>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="qna_content" class="form-label">글내용</label>
+              <textarea class="form-control" name="qna_content" id="qna_content" rows="10"></textarea>
+            </div>
+            <div class="mb-3 text-left">
+              <label for="qna_pw" class="form-label">암호</label>
+              <input type="password" class="form-control" name="qna_pw" id="qna_pw" size="20" />
+              <span class="text-danger">*암호는 필수 입력</span>
+            </div>
+          </div>
+        </div><br/>
 
-  </main><br /><br />
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <div class="mb-3 text-center">
+              <button type="submit" class="btn btn-primary btn-sm me-2" onclick="return qnaCheck()">작성하기</button>
+              <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/qna/list.do'">취소</button>
+            </div>
+          </div>
+        </div><br/>
 
-  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+      </form>
+    </main><br /><br />
 
-</body>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+  </body>
 
 </html>

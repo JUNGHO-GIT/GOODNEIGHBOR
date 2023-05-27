@@ -6,83 +6,87 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
 
-<head>
-  <jsp:include page="/WEB-INF/views/common/head.jsp" />
-</head>
+  <!----------------------------------------------------------------------------------------------->
+  <head>
+    <jsp:include page="/WEB-INF/views/common/head.jsp" />
+  </head>
 
-<body>
+  <!----------------------------------------------------------------------------------------------->
+  <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/slider.jsp" />
 
-  <jsp:include page="/WEB-INF/views/common/header.jsp" />
-  <jsp:include page="/WEB-INF/views/common/slider.jsp" />
+    <!--------------------------------------------------------------------------------------------->
+    <main class="main container-fluid">
 
-  <main class="main container-fluid">
-
-    <div class="container mt-5">
-      <div class="text-center mb-4">
-        <h1>QNA</h1>
-      </div>
-      <div class="card">
-        <div class="card-header" align="center">
-          ${dto.qna_title}
-        </div>
-        <div class="card-body">
-          <table class="table table-sm">
-            <tbody>
-              <tr>
-                <td style="width:100px;">작성자</td>
-                <td>${dto.qna_writer}</td>
-              </tr>
-              <tr>
-                <td style="width:100px;">조회수</td>
-                <td>${dto.qna_readcount}</td>
-              </tr>
-              <tr>
-                <td style="width:100px;">작성일</td>
-                <td>
-                  <fmt:formatDate value="${dto.qna_regdate}" pattern="yyyy-MM-dd" />
-                </td>
-              </tr>
-              <tr>
-                <td style="width:100px;">내용</td>
-                <td>${dto.qna_content}</td>
-              </tr>
-            </tbody>
-          </table>
+      <!---------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <h1 class="text-center my-4 p">질문과 답변</h1>
         </div>
       </div>
-    </div><br/><br/>
+      <hr class="mb-3" />
 
-    <div class="d-flex justify-content-center mt-5">
-      <c:if test="${member_id  != null}">
-        <input type="button" class="btn btn-primary btn-sm me-2" value="글수정"
-          onclick="window.location.href='${ctxPath}/qna/updateForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
-        <input type="button" class="btn btn-danger btn-sm me-2" value="글삭제"
-          onclick="window.location.href='${ctxPath}/qna/deleteForm.do?qna_number=${dto.qna_number}&pageNum=${pageNum}'" />
-      </c:if>
-      &nbsp;&nbsp;
-      <input type="button" class="btn btn-primary btn-sm me-2" value="새글쓰기"
-        onclick="window.location.href='${ctxPath}/qna/insertForm.do'" />
-      &nbsp;&nbsp;
-      <c:if test="${admin_id != null}">
-        <input type="button" class="btn btn-primary btn-sm me-2" value="답변작성"
-          onclick="window.location.href='${ctxPath}/qna/insertForm.do?qna_number=${dto.qna_number}&qna_group=${dto.qna_group}&qna_step=${dto.qna_step}&qna_level=${dto.qna_level}&qna_pw=${dto.qna_pw}'" />
-      </c:if>
-      <input type="button" class="btn btn-primary btn-sm" value="리스트"
-        onclick="window.location.href='${ctxPath}/qna/list.do?pageNum=${pageNum}'" />
-      &nbsp;&nbsp;
-    </div>
+      <!----------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="card">
+            <div class="card-header p">
+              <c:out value="${dto.qna_title}" />
+            </div>
+            <div class="card-body">
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <td style="width:100px;">작성일</td>
+                    <td>
+                      <fmt:formatDate value="${dto.qna_regdate}" pattern="yyyy-MM-dd" />
+                      <input type="hidden" id="qna_number" name="qna_number" value="${dto.qna_number}" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">작성자</td>
+                    <td><c:out value="${dto.qna_writer}" /></td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">조회수</td>
+                    <td><c:out value="${dto.qna_readcount}" /></td>
+                  </tr>
+                  <tr>
+                    <td style="width:100px;">내용</td>
+                    <td><c:out value="${dto.qna_content}" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
 
-  </main><br /><br />
+      <!----------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+          <button class="btn btn btn-primary btn-sm me-2" onclick="return updateQnaCheck();">
+          글수정</button>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="return insertQnaCheck();">
+          글작성</button>
+          <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteQnaCheck();">
+          글삭제</button>
+          <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/qna/list.do?pageNum=${pageNum}'">리스트</button>
+        </div>
+      </div>
 
-  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    </main><br /><br />
 
-</body>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+  </body>
 </html>

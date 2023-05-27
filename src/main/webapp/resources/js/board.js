@@ -64,8 +64,44 @@ function pwCheck2() {
 	}
 }
 
-// 4. updateCheck() ------------------------------------------------------------------------------->
-const updateCheck = async () => {
+// 4. insertBoardCheck() -------------------------------------------------------------------------->
+const insertBoardCheck = async () => {
+  const board_writer = document.getElementById("member_id").value;
+  const ctxPath = new URL(location.href).pathname.split("/")[1];
+
+  if (board_writer == "" || board_writer == null) {
+    alert("로그인이 필요합니다.");
+    window.location.href = `/${ctxPath}/member/loginForm.do`;
+    return false;
+  }
+  else {
+    window.location.href = `/${ctxPath}/board/insertForm.do`;
+    return true;
+  }
+}
+
+// 4-1. replyBoardCheck() ------------------------------------------------------------------------->
+const replyBoardCheck = async () => {
+  const board_writer = document.getElementById("member_id").value;
+  const board_number = document.getElementById("board_number").value;
+  const board_group = document.getElementById("board_group").value;
+  const board_step = document.getElementById("board_step").value;
+  const board_level = document.getElementById("board_level").value;
+  const ctxPath = new URL(location.href).pathname.split("/")[1];
+
+  if (board_writer == "" || board_writer == null) {
+    alert("로그인이 필요합니다.");
+    window.location.href = `/${ctxPath}/member/loginForm.do`;
+    return false;
+  }
+  else {
+    window.location.href = `/${ctxPath}/board/insertForm.do?board_number=${board_number}&board_group=${board_group}&board_step=${board_step}&board_level=${board_level}`;
+    return true;
+  }
+}
+
+// 4. updateBoardCheck() -------------------------------------------------------------------------->
+const updateBoardCheck = async () => {
   const board_number = document.getElementById("board_number").value;
   const board_writer = document.getElementById("member_id").value;
   const pageNum = document.getElementById("pageNum").value;
@@ -106,8 +142,9 @@ const updateCheck = async () => {
   }
 }
 
-// 5. deleteCheck() ------------------------------------------------------------------------------->
-const deleteCheck = async () => {
+
+// 5. deleteBoardCheck() -------------------------------------------------------------------------->
+const deleteBoardCheck = async () => {
   const board_number = document.getElementById("board_number").value;
   const board_pw = prompt("글을 삭제하시려면 암호를 입력하세요");
 

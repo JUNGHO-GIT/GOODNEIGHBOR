@@ -4,11 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
-<c:set var="member_id" value="${sessionScope.member_id}"/>
-<c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
-<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -25,7 +20,7 @@
 
     <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
-      <form name="searchId" id="searchId" action="${ctxPath}/member/searchIdPro.do" method="POST">
+      <form name="searchId" id="searchId" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <h1 class="text-center my-4 p">아이디 찾기</h1>
@@ -37,7 +32,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <div class="ms-3 mb-3 text-left">
-              <input type="radio" id="search_tel" class="form-check-input" name="search_method" onclick="return searchIdCheck(`reset`);"/>
+              <input type="radio" id="search_tel" class="form-check-input" name="search_method" onclick="setSearchMethod('tel');" />
               <label for="search_tel" class="form-check-label text-left p">
                 휴대전화 번호로 아이디 찾기
               </label>
@@ -59,7 +54,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
            <div class="ms-3 mb-3 text-left">
-              <input type="radio" id="search_email" class="form-check-input" name="search_method" onclick="return searchIdCheck(`reset`);"/>
+              <input type="radio" id="search_email" class="form-check-input" name="search_method" onclick="setSearchMethod('email');" />
               <label for="search_email" class="form-check-label text-left p">
                 이메일로 아이디 찾기
               </label>
@@ -79,8 +74,8 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
             <div class="mb-3 text-center">
-              <button type="submit" name="search" class="btn btn-primary btn-sm"
-              onclick="return searchPwCheck(`check`);">아이디 찾기</button>
+              <button type="button" name="search" class="btn btn-primary btn-sm"
+              onclick="searchIdCheck();">아이디 찾기</button>
             </div>
           </div>
         </div>

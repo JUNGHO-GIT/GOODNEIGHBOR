@@ -3,8 +3,6 @@
 
 <mapper namespace="board">
 
-  <!-- jdbcType mapping (board_writer = VARCHAR) -->
-
   <!-- 1. 전체 게시글 수 -->
   <select id="getCount" resultType="Integer">
     select count(*)
@@ -25,7 +23,7 @@
       board_number, board_writer, board_pw, board_title, board_content, board_regdate, board_group, board_step, board_level
     )
     values (
-      #{board_number, jdbcType=INTEGER}, #{board_writer, jdbcType=VARCHAR}, #{board_pw}, #{board_title}, #{board_content}, SYSDATE, #{board_group}, #{board_step}, #{board_level}
+      #{board_number, jdbcType=INTEGER}, #{board_writer, jdbcType=VARCHAR}, #{board_pw, jdbcType=VARCHAR}, #{board_title, jdbcType=VARCHAR}, #{board_content, jdbcType=VARCHAR}, SYSDATE, #{board_group, jdbcType=INTEGER}, #{board_step, jdbcType=INTEGER}, #{board_level, jdbcType=INTEGER}
     )
   </insert>
 
@@ -33,7 +31,7 @@
   <update id="getUpdateStep" parameterType="boardDTO">
     update board
     set board_step = board_step + 1
-    where board_group = #{board_group} and board_step <![CDATA[>]]> #{board_step}
+    where board_group = #{board_group, jdbcType=INTEGER} and board_step <![CDATA[>]]> #{board_step, jdbcType=INTEGER}
   </update>
 
   <!-- 5. 전체 게시글 목록 -->
@@ -96,15 +94,15 @@
   <!-- 8-2. 게시물 수정 -->
   <update id="getUpdate" parameterType="boardDTO">
     update board
-    set board_writer = #{board_writer, jdbcType=VARCHAR}, board_title = #{board_title}, board_content = #{board_content}
-    where board_number = #{board_number, jdbcType=INTEGER} and board_pw = #{board_pw}
+    set board_writer = #{board_writer, jdbcType=VARCHAR}, board_title = #{board_title, jdbcType=VARCHAR}, board_content = #{board_content, jdbcType=VARCHAR}
+    where board_number = #{board_number, jdbcType=INTEGER}
   </update>
 
   <!-- 9-1. 게시물 비밀번호 확인 -->
   <select id="getDeleteCheck" parameterType="java.util.HashMap" resultType="Integer">
     select count(*)
     from board
-    where board_number = #{board_number, jdbcType=INTEGER} and board_pw = #{board_pw}
+    where board_number = #{board_number, jdbcType=INTEGER} and board_pw = #{board_pw, jdbcType=VARCHAR}
   </select>
 
   <!-- 9-2. 게시물 삭제 -->

@@ -6,8 +6,8 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
@@ -57,8 +57,7 @@
                 <c:forEach var="dto" items="${list}">
                   <tr style="border-top: 2px solid #ddd;">
                     <td width="10%" align="left">
-                      ${number}
-                      <c:set var="number" value="${number-1}" />
+                      <c:out value="${dto.qna_number}" />
                     </td>
                     <td width="60%" align="left">
                       <c:if test="${dto.qna_level > 0}">
@@ -69,15 +68,14 @@
                         <i class="fas fa-star" style="color: #FFD700;"></i>
                       </c:if>
                       <c:if test="${admin_id != null}">
-                        <a href="${ctxPath}/qna/content.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none linkHover">
+                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover">
                           ${dto.qna_title}
                         </a>
                       </c:if>
                       <c:if test="${admin_id == null}">
                         <i class="fas fa-lock"></i>
                         &nbsp;&nbsp;
-                        <a href="${ctxPath}/qna/secretForm.do?qna_number=${dto.qna_number}&qna_pw=${dto.qna_pw}&pageNum=${pageNum}" class="text-decoration-none linkHover">
-                          <input type="hidden" name="qna_title" value="${dto.qna_title}" />
+                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover">
                           ${dto.qna_title}
                         </a>
                       </c:if>

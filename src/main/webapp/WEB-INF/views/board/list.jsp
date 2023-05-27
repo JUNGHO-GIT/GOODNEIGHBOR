@@ -6,8 +6,8 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}"/>
 <c:set var="admin_id" value="${sessionScope.admin_id}"/>
-<input type="hidden" id="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" value="${sessionScope.admin_id}" />
+<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
+<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
 <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
@@ -57,8 +57,7 @@
                 <c:forEach var="dto" items="${list}">
                   <tr style="border-top: 2px solid #ddd;">
                     <td width="10%" align="left">
-                      ${number}
-                      <c:set var="number" value="${number-1}" />
+                      <c:out value="${dto.board_number}" />
                     </td>
                     <td width="60%" align="left">
                       <c:if test="${dto.board_level > 0}">
