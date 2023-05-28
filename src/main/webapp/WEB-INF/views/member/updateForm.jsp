@@ -20,7 +20,7 @@
       <form action="${ctxPath}/member/updatePro.do" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4 p">내 정보 수정</h1>
+            <h2 class="text-center my-4 p">내 정보 수정</h2>
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
@@ -48,7 +48,7 @@
               <label for="member_zipcode" class="form-label">우편번호</label>
               <div class="input-group">
                 <input type="text" name="member_zipcode" id="member_zipcode" class="form-control" value="${dto.member_zipcode}"/>
-                <button type="button" class="btn btn btn-primary btn-sm" onclick="openDaumPostcode()">주소찾기</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="openDaumPostcode()">주소찾기</button>
               </div>
             </div>
             <div class="mb-3 text-left">

@@ -25,7 +25,7 @@
 
 		<h2 align="center">[필수] 웹사이트 이용약관 동의</h2>
 
-		<hr/>
+		<hr class="green-line"/>
 
 		<div class="popup">
 

@@ -36,17 +36,20 @@
       <!---------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-          <h1 class="text-center my-4 p">자유게시판</h1>
+          <h2 class="text-center my-4 p">
+            <i class="fas fa-users"></i>
+            <b class="ms-1">자유게시판</b>
+          </h2>
         </div>
       </div>
-      <hr class="mb-3" />
+      <hr class="green-line"/>
 
       <!----------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <div class="card">
-            <div class="card-header p">
-              <c:out value="${dto.board_title}" />
+            <div class="card-header">
+              <span>${dto.board_title}</span>
             </div>
             <div class="card-body">
               <table class="table table-sm">
@@ -81,14 +84,13 @@
       <!----------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
-          <button class="btn btn btn-primary btn-sm me-2" onclick="return updateBoardCheck();">
+          <button class="btn btn-primary btn-sm ms-2" onclick="return updateBoardCheck();">
           글수정</button>
-          <button class="btn btn btn-primary btn-sm me-2" onclick="return insertBoardCheck();">
+          <button class="btn btn-primary btn-sm ms-2" onclick="return insertBoardCheck();">
           글 쓰기</button>
-          <button class="btn btn btn-primary btn-sm me-2" onclick="return replyBoardCheck();">
+          <button class="btn btn-primary btn-sm ms-2" onclick="return replyBoardCheck();">
           답글 쓰기</button>
-          <button class="btn btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/board/list.do?pageNum=${pageNum}'">리스트</button>
-          <button class="btn btn btn-danger btn-sm me-2" onclick="return deleteBoardCheck();">글삭제</button>
+          <button class="btn btn-danger btn-sm ms-2" onclick="return deleteBoardCheck();">글삭제</button>
         </div>
       </div>
 

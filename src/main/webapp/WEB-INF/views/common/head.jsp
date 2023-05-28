@@ -42,6 +42,7 @@
 <script defer src="${srcPath}/js/notice.js"></script>
 <script defer src="${srcPath}/js/member.js"></script>
 <script defer src="${srcPath}/js/board.js"></script>
+<script defer src="${srcPath}/js/product.js"></script>
 
 <!-- script 3 -->
 <script>
@@ -66,3 +67,6 @@
   }
   document.addEventListener("DOMContentLoaded", applyHoverEffect);
 </script>
+
+
+

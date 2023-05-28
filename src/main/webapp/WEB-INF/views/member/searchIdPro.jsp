@@ -24,10 +24,10 @@
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-          <h1 class="text-center my-4 p">아이디 찾기</h1>
+          <h2 class="text-center my-4 p">아이디 찾기</h1>
         </div>
       </div>
-      <hr />
+      <hr class="green-line"/>
 
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
@@ -50,7 +50,7 @@
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
           <div class="mb-3 text-center">
-            <button type="button" class="btn btn-primary btn-sm me-2" onclick="window.location.href='${ctxPath}/member/loginForm.do'">로그인</button>
+            <button type="button" class="btn btn-primary btn-sm ms-2" onclick="window.location.href='${ctxPath}/member/loginForm.do'">로그인</button>
             &nbsp;&nbsp;
             <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}'">메인화면으로</button>
           </div>

@@ -40,7 +40,7 @@
   <main class="main container-fluid">
 
     <div class="row d-flex justify-content-center text-center align-items-center">
-      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
         <c:if test="${pt.cnt==0}">
           <div class="alert alert-danger text-center" role="alert" id="no_search">
             게시된 글이 없습니다
@@ -50,7 +50,10 @@
           <div class="table-responsive mt-4">
             <table class="table table-hover table-bordered">
               <thead>
-                <h1 class="p">질문과 답변</h1>
+                <h2 class="text-center my-4 p">
+                  <i class="fas fa-question-circle"></i>
+                  <b class="ms-1">QnA</b>
+                </h2>
               </thead>
               <br/><br/>
               <tbody>
@@ -68,16 +71,12 @@
                         <i class="fas fa-star" style="color: #FFD700;"></i>
                       </c:if>
                       <c:if test="${admin_id != null}">
-                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover">
-                          ${dto.qna_title}
-                        </a>
+                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover p">${dto.qna_title}</a>
                       </c:if>
                       <c:if test="${admin_id == null}">
                         <i class="fas fa-lock"></i>
                         &nbsp;&nbsp;
-                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover">
-                          ${dto.qna_title}
-                        </a>
+                        <a onclick="return contentQnaCheck(`${dto.qna_number}`);"  class="text-hover p">${dto.qna_title}</a>
                       </c:if>
                       <br/><br/>
                       <i class="fas fa-user"></i>

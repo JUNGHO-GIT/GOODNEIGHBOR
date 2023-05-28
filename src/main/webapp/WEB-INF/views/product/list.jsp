@@ -6,9 +6,6 @@
 <c:set var="srcPath" value="${pageContext.request.contextPath}/resources" />
 <c:set var="member_id" value="${sessionScope.member_id}" />
 <c:set var="admin_id" value="${sessionScope.admin_id}" />
-<input type="hidden" id="member_id" name="member_id" value="${sessionScope.member_id}" />
-<input type="hidden" id="admin_id" name="admin_id" value="${sessionScope.admin_id}" />
-<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}" />
 
 <!DOCTYPE html>
 <html lang="en, ko">
@@ -17,6 +14,9 @@
   <head>
     <jsp:include page="/WEB-INF/views/common/head.jsp" />
     <% String keyField = ""; String keyWord = ""; if (request.getParameter("keyWord") != null) { keyField = request.getParameter("keyField"); keyWord = request.getParameter("keyWord"); } if (request.getParameter("reload") != null) { if (request.getParameter("reload").equals("true")) { keyWord = ""; keyField = ""; } } %>
+    <style>
+
+    </style>
   </head>
 
   <!----------------------------------------------------------------------------------------------->
@@ -29,65 +29,68 @@
 
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <c:if test="${pt.cnt==0}">
             <div class="alert alert-danger text-center" role="alert" id="no_search">
               게시된 글이 없습니다
             </div>
           </c:if>
           <c:if test="${pt.cnt > 0}">
-            <div class="table-responsive mt-4">
-              <table class="table table-hover table-bordered">
-                <thead>
-                  <h2 class="text-center my-4 p">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <b class="ms-1">공지사항</b>
-                  </h2>
-                </thead>
-                <br /><br />
-                <tbody>
-                  <c:forEach var="dto" items="${list}">
-                    <tr style="border-top: 2px solid #ddd;">
-                      <td width="10%" align="left">
-                        <c:out value="${dto.notice_number}" />
-                      </td>
-                      <td width="60%" align="left">
-                        <a href="${ctxPath}/notice/content.do?notice_number=${dto.notice_number}&pageNum=${pageNum}" class="text-decoration-none linkHover p">${dto.notice_title}</a>
-                        <br /><br />
-                        <i class="fas fa-user"></i>
-                        &nbsp;&nbsp;
-                        <c:out value="${dto.notice_writer}" />
-                      </td>
-                      <td width="30%" align="left">
-                        <i class="far fa-clock"></i>
-                        &nbsp;&nbsp;
-                        <fmt:formatDate value="${dto.notice_regdate}" pattern="MM-dd" />
-                        <br /><br />
-                        <i class="fas fa-eye"></i>
-                        &nbsp;&nbsp;
-                        <c:out value="${dto.notice_readcount}" />
-                      </td>
-                    </tr>
-                  </c:forEach>
-                </tbody>
-              </table>
-            </div>
+            <h2 class="text-center mt-4 p">
+              <i class="fas fa-dove"></i>
+              <b class="ms-1">후원 상품</b>
+            </h2>
           </c:if>
+        </div>
+      </div><br/><br/>
+
+      <!------------------------------------------------------------------------------------------->
+      <div class="row d-flex justify-content-center text-center align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="container our-blog">
+            <div class="row">
+              <c:forEach var="dto" items="${list}">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 col-12">
+                  <div class="single-blog">
+                    <figure>
+                      <c:if test="${dto.product_image != null}">
+                        <div class="imgs-container">
+                          <img src="${srcPath}/upload/${dto.product_image}" class="product-imgs"/>
+                        </div>
+                      </c:if>
+                      <c:if test="${dto.product_image == null}">
+                        <div class="imgs-container">
+                          <img src="${srcPath}/imgs/etc/main.png" class="product-imgs"/>
+                        </div>
+                      </c:if>
+                    </figure>
+                    <div class="blog-detail">
+                      <p>${dto.product_name}</p>
+                      <div class="link">
+                        <a class="text-hover p" href="${ctxPath}/product/content.do?product_number=${dto.product_number}&pageNum=${pageNum}">Read More</a>
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </c:forEach>
+            </div>
+          </div>
         </div>
       </div>
 
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center mt-5">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 col-6">
-          <form name="searchForm" method="GET" action="${ctxPath}/notice/list.do" class="mb-4">
+          <form name="searchForm" method="GET" action="${ctxPath}/product/list.do" class="mb-4">
             <div class="input-group">
               <select name="keyField" class="form-select" id="select_option">
-                <option value="notice_title">제목</option>
-                <option value="notice_content">내용</option>
+                <option value="product_name">제목</option>
+                <option value="product_content">내용</option>
               </select>
               <input class="form-control" type="text" name="keyWord" placeholder="검색어를 입력하세요" />
               <input type="hidden" name="pageNum" value="1" />
-              <button type="button" class="btn btn-primary btn-sm" onclick="return noticeSearchCheck();">검색</button>
+              <button type="button" class="btn btn-primary btn-sm" onclick="return productSearchCheck();">검색</button>
             </div>
           </form>
         </div>
@@ -97,7 +100,7 @@
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
           <c:if test="${admin_id != null}">
-            <a href="${ctxPath}/notice/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
+            <a href="${ctxPath}/product/insertForm.do" class="btn btn-primary btn-sm">글쓰기</a>
           </c:if>
         </div>
       </div>
@@ -110,17 +113,17 @@
               <ul class="pagination justify-content-center">
                 <c:if test="${pt.startPage>10}">
                   <li>
-                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/notice/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/product/list.do?pageNum=${pt.startPage-10}">이전블럭</a>
                   </li>
                 </c:if>
                 <c:forEach var="i" begin="${pt.startPage}" end="${pt.endPage}">
                   <li>
-                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/notice/list.do?pageNum=${i}&keyField=${keyField}&keyWord=${keyWord}">${i}</a>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/product/list.do?pageNum=${i}&keyField=${keyField}&keyWord=${keyWord}">${i}</a>
                   </li>
                 </c:forEach>
                 <c:if test="${pt.endPage<pt.pageCnt}">
                   <li>
-                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/notice/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
+                    <a class="btn btn-primary btn-sm me-1" href="${ctxPath}/product/list.do?pageNum=${pt.startPage+10}">다음블럭</a>
                   </li>
                 </c:if>
               </ul>
@@ -128,6 +131,7 @@
           </c:if>
         </div>
       </div>
+
     </main>
     <br /><br />
 
@@ -135,3 +139,4 @@
 
   </body>
 </html>
+

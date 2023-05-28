@@ -23,10 +23,10 @@
       <form name="searchPw" id="searchPw" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4 p">비밀번호 찾기</h1>
+            <h2 class="text-center my-4 p">비밀번호 찾기</h2>
           </div>
         </div>
-        <hr class="mb-3" />
+        <hr class="green-line"/>
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
@@ -52,7 +52,7 @@
           </div>
         </div>
 
-        <hr class="mb-3" />
+        <hr class="green-line"/>
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">

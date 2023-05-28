@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.good.neighbor.model.QnaDTO;
-import com.good.neighbor.util.PageTest;
+import com.good.neighbor.util.PageTest1;
 
 @Controller
 @RequestMapping("/qna")
@@ -128,7 +128,7 @@ public class QnaController {
     }
 
     int curPage = Integer.parseInt(pageNum);
-    PageTest pt = new PageTest(cnt, curPage);
+    PageTest1 pt = new PageTest1(cnt, curPage);
     int startPos = pt.getStartRow() - 1;
 
     List<QnaDTO> list = null;

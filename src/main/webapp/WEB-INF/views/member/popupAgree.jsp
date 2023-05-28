@@ -25,7 +25,7 @@
 
 		<h2 align="center">[필수] 개인정보 수집 ∙ 이용 동의</h2>
 
-		<hr/>
+		<hr class="green-line"/>
 
 		<div class="popup">
 			제 1 장 총칙

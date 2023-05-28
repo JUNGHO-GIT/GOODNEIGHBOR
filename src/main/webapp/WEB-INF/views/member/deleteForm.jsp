@@ -20,7 +20,7 @@
       <form name="delForm" method="POST" action="${ctxPath}/member/deletePro.do">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4 p">회원 탈퇴</h1>
+            <h2 class="text-center my-4 p">회원 탈퇴</h1>
             <h5 class="text-center my-4 p">회원 탈퇴를 신청하시면 회원님의 모든 정보가 삭제되며, 삭제된 정보는 복구되지 않습니다.</h5>
           </div>
         </div>

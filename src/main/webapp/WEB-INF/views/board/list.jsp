@@ -40,7 +40,7 @@
   <main class="main container-fluid">
 
     <div class="row d-flex justify-content-center text-center align-items-center">
-      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
         <c:if test="${pt.cnt == 0}">
           <div class="alert alert-danger text-center" role="alert" id="no_search">
             게시된 글이 없습니다.
@@ -50,7 +50,10 @@
           <div class="table-responsive mt-4">
             <table class="table table-hover table-bordered">
               <thead>
-                <h1 class="p">자유 게시판</h1>
+                <h2 class="text-center my-4 p">
+                  <i class="fas fa-users"></i>
+                  <b class="ms-1">자유 게시판</b>
+                </h2>
               </thead>
               <br/><br/>
               <tbody>
@@ -67,9 +70,8 @@
                       <c:if test="${dto.board_readcount>=10}">
                         <i class="fas fa-star" style="color: #FFD700;"></i>
                       </c:if>
-                      <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" height="16" id="none_color" class="text-decoration-none linkHover p">
-                        ${dto.board_title}
-                      </a>
+                      <a href="${ctxPath}/board/content.do?board_number=${dto.board_number}&pageNum=${pageNum}" class="text-decoration-none linkHover p">
+                        ${dto.board_title}</a>
                       <br/><br/>
                       <i class="fas fa-user"></i>
                       &nbsp;&nbsp;

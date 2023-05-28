@@ -10,11 +10,17 @@
   }
 
   table th {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   table td {
     font-size: 18px;
+  }
+
+  .product-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 
 }
@@ -31,11 +37,17 @@
   }
 
   table th {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   table td {
     font-size: 18px;
+  }
+
+  .product-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 }
 
@@ -51,11 +63,17 @@
   }
 
   table th {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   table td {
     font-size: 16px;
+  }
+
+  .product-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 }
 
@@ -71,11 +89,17 @@
   }
 
   table th {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   table td {
     font-size: 14px;
+  }
+
+  .product-title {
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 }
 
@@ -91,10 +115,16 @@
   }
 
   table th {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   table td {
     font-size: 12px;
+  }
+
+  .product-title {
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 }

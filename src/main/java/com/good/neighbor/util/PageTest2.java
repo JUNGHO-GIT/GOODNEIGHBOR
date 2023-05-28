@@ -1,9 +1,9 @@
 package com.good.neighbor.util;
 
-public class PageTest {
+public class PageTest2 {
 
-  private int pageSize = 10;
-	private int pageBlock = 10;
+  private int pageSize = 6;
+	private int pageBlock = 6;
 	private int curPage=1;
 	private int startRow;
 	private int endRow;
@@ -50,9 +50,9 @@ public class PageTest {
 		this.keyWord = keyWord;
 	}
 
-	public PageTest() {}
+	public PageTest2() {}
 
-	public PageTest(int cnt, int curPage) {
+	public PageTest2(int cnt, int curPage) {
 		this.cnt=cnt;
 		this.curPage=curPage;
 
@@ -61,7 +61,7 @@ public class PageTest {
 		this.startRow=(curPage - 1)*pageSize + 1;
 		this.endRow=curPage*pageSize;
 
-		this.startPage = (curPage/pageBlock)*10 + 1;
+		this.startPage = (curPage/pageBlock)*6 + 1;
 		this.endPage = startPage+pageBlock - 1;
 	}
 
@@ -115,12 +115,12 @@ public class PageTest {
 	}
 
 	public int getPrevBlock() {
-		this.prevBlock = startPage - 10;
+		this.prevBlock = startPage - 6;
 		return prevBlock;
 	}
 
 	public int getNextBlock() {
-		this.nextBlock = startPage + 10;
+		this.nextBlock = startPage + 6;
 		return nextBlock;
 	}
 

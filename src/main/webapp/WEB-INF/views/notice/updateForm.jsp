@@ -37,10 +37,13 @@
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4 p">글 수정 하기</h1>
+            <h2 class="text-center my-4 p">
+              <i class="fas fa-exclamation-circle"></i>
+              <b class="ms-1">글 수정</b>
+            </h2>
           </div>
         </div>
-        <hr/>
+        <hr class="green-line"/>
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
@@ -64,7 +67,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
-              <button type="submit" class="btn btn-primary btn-sm me-2" onsubmit="return noticeCheck()">글수정</button>
+              <button type="submit" class="btn btn-primary btn-sm ms-2" onsubmit="return noticeCheck()">글수정</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/notice/list.do'">취소</button>
             </div>
           </div>

@@ -7,7 +7,7 @@ public class ProductDTO {
   // fields --------------------------------------------------------------------------------------->
   private Integer product_number;
   private String product_name;
-  private String product_detail;
+  private String product_content;
   private String product_price;
   private String product_stock;
   private String product_company;
@@ -25,8 +25,8 @@ public class ProductDTO {
   public String getProduct_name() {
     return product_name;
   }
-  public String getProduct_detail() {
-    return product_detail;
+  public String getProduct_content() {
+    return product_content;
   }
   public String getProduct_price() {
     return product_price;
@@ -63,8 +63,8 @@ public class ProductDTO {
   public void setProduct_name(String product_name) {
     this.product_name = product_name;
   }
-  public void setProduct_detail(String product_detail) {
-    this.product_detail = product_detail;
+  public void setProduct_content(String product_content) {
+    this.product_content = product_content;
   }
   public void setProduct_price(String product_price) {
     this.product_price = product_price;

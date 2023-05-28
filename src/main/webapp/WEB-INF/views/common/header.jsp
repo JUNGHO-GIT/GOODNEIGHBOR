@@ -12,6 +12,8 @@
 <header class="container-fluid">
   <div class="header-top">
 
+    <div class="background"><div class="loader"></div></div>
+
     <!--------------------------------------------------------------------------------------------->
     <div class="row">
       <div class="col-xl-6 col-lg-6 d-lg-block d-none">
@@ -27,20 +29,20 @@
       </div>
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12 btn-bhed">
         <c:if test="${member_id == null && admin_id == null}">
-          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/loginForm.do'">로그인</button>
-          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/insertForm.do'">회원가입</button>
-          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/loginForm.do'">관리자</button>
+          <button class="btn btn-success" onclick="window.location.href='${ctxPath}/member/loginForm.do'">로그인</button>
+          <button class="btn btn-success" onclick="window.location.href='${ctxPath}/member/insertForm.do'">회원가입</button>
+          <button class="btn btn-success" onclick="window.location.href='${ctxPath}/admin/loginForm.do'">관리자</button>
         </c:if>
         <c:if test="${member_id != null}">
           <form method="POST" action="${ctxPath}/member/updateForm.do">
             <input type="hidden" name="member_name" value="${member_name}" />
-            <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/member/logout.do'" type="button">로그아웃</button>
-            <button class="btn btn-sm btn-default" type="submit">내정보 변경</button>
+            <button class="btn btn-success" onclick="window.location.href='${ctxPath}/member/logout.do'" type="button">로그아웃</button>
+            <button class="btn btn-default" type="submit">내정보 변경</button>
           </form>
         </c:if>
         <c:if test="${admin_id != null}">
-          <button class="btn btn-sm btn-success" onclick="window.location.href='${ctxPath}/admin/logout.do'">로그아웃</button>
-          <button class="btn btn-sm btn-default" onclick="window.location.href='${ctxPath}/product/listProduct'">상품관리</button>
+          <button class="btn btn-success" onclick="window.location.href='${ctxPath}/admin/logout.do'">로그아웃</button>
+          <button class="btn btn-default" onclick="window.location.href='${ctxPath}/product/list.do'" type="button">후원목록</button>
         </c:if>
       </div>
     </div>
@@ -61,6 +63,9 @@
           <ul class="navbad">
             <li class="nav-item">
               <a class="nav-link" href="${ctxPath}"> 홈 </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="${ctxPath}/product/list.do"> 후원하기 </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="${ctxPath}/board/list.do"> 블로그 </a>

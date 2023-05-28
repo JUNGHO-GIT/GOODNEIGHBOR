@@ -38,14 +38,20 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <c:if test="${board_number==0}">
-              <h1 class="text-center my-4 p">글쓰기</h1>
+              <h2 class="text-center my-4 p">
+                <i class="fas fa-users"></i>
+                <b class="ms-1">글쓰기</b>
+              </h1>
             </c:if>
             <c:if test="${board_number!=0}">
-              <h1 class="text-center my-4 p">답글쓰기</h1>
+              <h2 class="text-center my-4 p">
+                <i class="fas fa-users"></i>
+                <b class="ms-1">답글쓰기</b>
+              </h1>
             </c:if>
           </div>
         </div>
-        <hr />
+        <hr class="green-line"/>
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">

@@ -23,10 +23,10 @@
       <form action="${ctxPath}/member/insertPro.do" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h1 class="text-center my-4 p">회원가입</h1>
+            <h2 class="text-center my-4 p">회원가입</h2>
           </div>
         </div>
-        <hr />
+        <hr class="green-line"/>
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
@@ -62,12 +62,12 @@
               <label for="member_zipcode" class="form-label">주소</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="member_zipcode" id="member_zipcode" placeholder="우편번호 입력" readonly />
-                <button class="btn btn btn-primary btn-sm" type="button" onclick="openDaumPostcode()">주소찾기</button>
+                <button class="btn btn-primary btn-sm" type="button" onclick="openDaumPostcode()">주소찾기</button>
               </div>
               <input type="text" class="form-control my-2" name="member_addr" id="member_addr" placeholder="기본주소" readonly />
               <input type="text" class="form-control" name="member_addr2" id="member_addr2" placeholder="상세주소" />
             </div>
-            <hr />
+            <hr class="green-line"/>
             <div class="mb-3 form-check">
               <h5 class="text-center my-4 p" id="agree_willU">
                 약관.개인정보 수집·이용 동의
