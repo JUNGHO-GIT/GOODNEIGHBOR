@@ -51,14 +51,14 @@
             <table class="table table-hover table-bordered">
               <thead>
                 <h2 class="text-center my-4 p">
-                  <i class="fas fa-question-circle"></i>
+                  <i class="fas fa-question-circle" style="color: #32be85;"></i>
                   <b class="ms-1">QnA</b>
                 </h2>
               </thead>
               <br/><br/>
               <tbody>
                 <c:forEach var="dto" items="${list}">
-                  <tr style="border-top: 2px solid #ddd;">
+                  <tr>
                     <td width="10%" align="left">
                       <c:out value="${dto.qna_number}" />
                     </td>
@@ -74,7 +74,7 @@
                         <a onclick="return contentQnaCheck(`${dto.qna_number}`);" class="text-decoration-none linkHover p">${dto.qna_title}</a>
                       </c:if>
                       <c:if test="${admin_id == null}">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" style="color: #32be85;"></i>
                         &nbsp;&nbsp;
                         <a onclick="return contentQnaCheck(`${dto.qna_number}`);"  class="text-hover p">${dto.qna_title}</a>
                       </c:if>

@@ -76,9 +76,6 @@
             <li class="nav-item">
               <a class="nav-link" href="${ctxPath}/qna/list.do"> Q&A </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="${ctxPath}/contact/contact"> Contact </a>
-            </li>
           </ul>
         </div>
       </div>

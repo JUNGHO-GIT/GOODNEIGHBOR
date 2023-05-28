@@ -39,7 +39,7 @@
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
-              <i class="fas fa-users"></i>
+              <i class="fas fa-users" style="color: #32be85;"></i>
               <b class="ms-1">글 수정 하기</b>
             </h2>
           </div>

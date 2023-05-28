@@ -15,14 +15,38 @@
 
   table td {
     font-size: 18px;
+    margin-top: 3px;
   }
 
   .product-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bolder;
     margin-bottom: 10px;
   }
 
+  .card-span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .card-title {
+    font-size: 35px;
+    font-weight: bolder;
+  }
+
+  .card-text {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .card-text2 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    font-size: 16px;
+  }
 }
 
 /** 2. (992 ~ 1199) *******************************************************************************/
@@ -42,12 +66,37 @@
 
   table td {
     font-size: 18px;
+    margin-top: 3px;
   }
 
   .product-title {
-    font-size: 24px;
+    font-size: 27px;
     font-weight: bolder;
     margin-bottom: 10px;
+  }
+
+  .card-span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .card-title {
+    font-size: 35px;
+    font-weight: bolder;
+  }
+
+  .card-text {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .card-text2 {
+    font-size:  20px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    font-size: 16px;
   }
 }
 
@@ -68,12 +117,37 @@
 
   table td {
     font-size: 16px;
+    margin-top: 3px;
   }
 
   .product-title {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: bolder;
     margin-bottom: 10px;
+  }
+
+  .card-span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .card-title {
+    font-size: 33px;
+    font-weight: bolder;
+  }
+
+  .card-text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .card-text2 {
+    font-size: 19px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    font-size: 14px;
   }
 }
 
@@ -94,12 +168,37 @@
 
   table td {
     font-size: 14px;
+    margin-top: 3px;
   }
 
   .product-title {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bolder;
     margin-bottom: 10px;
+  }
+
+  .card-span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .card-title {
+    font-size: 28px;
+    font-weight: bolder;
+  }
+
+  .card-text {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .card-text2 {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    font-size: 13px;
   }
 }
 
@@ -120,11 +219,36 @@
 
   table td {
     font-size: 12px;
+    margin-top: 3px;
   }
 
   .product-title {
     font-size: 22px;
     font-weight: bolder;
     margin-bottom: 10px;
+  }
+
+  .card-span {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .card-title {
+    font-size: 25px;
+    font-weight: bolder;
+  }
+
+  .card-text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .card-text2 {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    font-size: 12px;
   }
 }

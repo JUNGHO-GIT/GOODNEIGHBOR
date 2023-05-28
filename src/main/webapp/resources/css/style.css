@@ -12,6 +12,10 @@ body {
   border-collapse: collapse;
 }
 
+.table-bordered {
+  border: 1.5px solid #b6b6b6 !important;
+}
+
 .table td,
 .table th {
   padding: 10px;
@@ -1228,15 +1232,28 @@ header .small-menu {
   padding: 20px;
   overflow: hidden;
 }
+.product-img {
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: contain;
+}
 .product-imgs {
   width: 180px;
   height: 200px;
 }
 .donation-card {
+  justify-content: center;
   margin: 20px 40px 20px 40px;
-  padding: 15px;
+  padding: 30px 10px 30px 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  object-position: center;
+  vertical-align: middle;
+  max-width: 550px;
+  max-height: 450px;
+  overflow: hidden;
 }
 .donation-card input {
   width: 100%;
@@ -1249,4 +1266,8 @@ header .small-menu {
   width: 350px;
   height: 350px;
   object-fit: content;
+}
+
+.table-empty {
+  height: 10px;
 }

@@ -30,7 +30,7 @@
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <h2 class="text-center my-4 p">
-            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-question-circle" style="color: #32be85;"></i>
             <b class="ms-1">QnA</b>
           </h2>
         </div>
@@ -41,7 +41,7 @@
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
           <div class="card">
             <div class="card-header">
-              <span>${dto.qna_title}</span>
+              <span class="card-span">${dto.qna_title}</span>
             </div>
             <div class="card-body">
               <table class="table table-sm">

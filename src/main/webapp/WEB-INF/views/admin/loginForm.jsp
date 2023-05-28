@@ -27,7 +27,10 @@
       <form action="${ctxPath}/admin/loginPro.do" method="POST" name="adminlogin">
         <div class="row d-flex justify-content-center text-center align-items-center">
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
-            <h2 class="text-center my-4 p">관리자 로그인</h2>
+            <h2 class="text-center my-4 p">
+              <i class="fas fa-user-edit" style="color: #32be85;"></i>
+              <b class="ms-1">관리자 로그인</b>
+            </h2>
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">

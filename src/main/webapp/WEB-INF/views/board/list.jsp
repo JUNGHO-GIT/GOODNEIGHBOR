@@ -51,14 +51,14 @@
             <table class="table table-hover table-bordered">
               <thead>
                 <h2 class="text-center my-4 p">
-                  <i class="fas fa-users"></i>
+                  <i class="fas fa-users" style="color: #32be85;"></i>
                   <b class="ms-1">자유 게시판</b>
                 </h2>
               </thead>
               <br/><br/>
               <tbody>
                 <c:forEach var="dto" items="${list}">
-                  <tr style="border-top: 2px solid #ddd;">
+                  <tr>
                     <td width="10%" align="left">
                       <c:out value="${dto.board_number}" />
                     </td>

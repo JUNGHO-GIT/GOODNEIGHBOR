@@ -47,15 +47,19 @@
 <!-- script 3 -->
 <script>
   function hoverIn(event) {
+    event.target.dataset.originalFontSize = window.getComputedStyle(event.target, null).getPropertyValue('font-size');
+    const newFontSize = parseInt(event.target.dataset.originalFontSize) + 3;
     event.target.style.color = "#3cc88f";
     event.target.style.fontWeight = "800";
     event.target.style.cursor = "pointer";
+    event.target.style.fontSize = newFontSize + 'px';
   }
 
   function hoverOut(event) {
     event.target.style.color = "black";
     event.target.style.fontWeight = "normal";
     event.target.style.cursor = "auto";
+    event.target.style.fontSize = event.target.dataset.originalFontSize;
   }
 
   function applyHoverEffect() {
@@ -67,6 +71,8 @@
   }
   document.addEventListener("DOMContentLoaded", applyHoverEffect);
 </script>
+
+
 
 
 

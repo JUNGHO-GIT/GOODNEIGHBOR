@@ -4,6 +4,7 @@
 
 # Compiled output
 /target/
+/.settings/
 /build/
 /classes/
 /*.class

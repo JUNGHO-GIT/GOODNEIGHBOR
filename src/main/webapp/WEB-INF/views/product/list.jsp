@@ -37,7 +37,7 @@
           </c:if>
           <c:if test="${pt.cnt > 0}">
             <h2 class="text-center mt-4 p">
-              <i class="fas fa-dove"></i>
+              <i class="fas fa-dove" style="color: #32be85;"></i>
               <b class="ms-1">후원 상품</b>
             </h2>
           </c:if>
@@ -65,9 +65,9 @@
                       </c:if>
                     </figure>
                     <div class="blog-detail">
-                      <p>${dto.product_name}</p>
+                      <h6 class="p">${dto.product_name}</h6>
                       <div class="link">
-                        <a class="text-hover p" href="${ctxPath}/product/content.do?product_number=${dto.product_number}&pageNum=${pageNum}">Read More</a>
+                        <a class="text-decoration-none linkHover p" href="${ctxPath}/product/content.do?product_number=${dto.product_number}&pageNum=${pageNum}">Read More</a>
                         <i class="fas fa-arrow-right"></i>
                       </div>
                     </div>

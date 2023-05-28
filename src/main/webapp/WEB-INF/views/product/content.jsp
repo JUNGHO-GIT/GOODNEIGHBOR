@@ -45,23 +45,23 @@
               </th>
             </tr>
             <tr>
-              <td style="width:100px;">상세설명</td>
+              <td style="width:100px;"><div class="table-empty"></div>상세설명</td>
               <td><textarea id="product_content" name="product_content" class="form-control" rows="5" readonly="readonly">${dto.product_content}</textarea></td>
             </tr>
             <tr>
-              <td style="width:100px;">후원금</td>
+              <td style="width:100px;"><div class="table-empty"></div>후원금</td>
               <td>
                 <input type="text" id="product_price" name="product_price" class="form-control" readonly value="&#8361; <fmt:formatNumber value='${dto.product_price}' type='number' pattern='#,###'/>" />
               </td>
             </tr>
             <tr>
-              <td style="width:100px;">제조사</td>
+              <td style="width:100px;"><div class="table-empty"></div>제조사</td>
               <td>
                 <input type="text" id="product_company" name="product_company" class="form-control" value="${dto.product_company}" readonly="readonly" />
               </td>
             </tr>
-             <tr>
-              <td style="width:100px;">등록날짜</td>
+            <tr>
+              <td style="width:100px;"><div class="table-empty"></div>등록날짜</td>
               <td>
                 <input type="text" id="product_regdate" name="product_regdate" class="form-control" readonly value="<fmt:formatDate value='${dto.product_regdate}' pattern='yyyy-MM-dd' />" />
                 <input type="hidden" id="product_number" name="product_number" value="${dto.product_number}" />
@@ -76,16 +76,16 @@
       <div class="row d-flex justify-content-center text-center align-items-center">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
           <c:if test="${admin_id != null}">
-            <button class="btn btn-primary btn-sm ms-2" onclick="return insertProductCheck();">
+            <button class="btn btn-primary ms-2" onclick="return insertProductCheck();">
             후원품 등록</button>
-            <button class="btn btn-primary btn-sm ms-2" onclick="return updateProductCheck();">
+            <button class="btn btn-primary ms-2" onclick="return updateProductCheck();">
             글수정</button>
-            <button class="btn btn-danger btn-sm ms-2" onclick="return deleteProductCheck();">
+            <button class="btn btn-danger ms-2" onclick="return deleteProductCheck();">
             글삭제</button>
           </c:if>
-          <button class="btn btn-primary btn-sm ms-2" onclick="return insertProductCheck();">
+          <button class="btn btn-primary ms-2" onclick="return insertProductCheck();">
           후원하기</button>
-          <button class="btn btn-primary btn-sm ms-2" onclick="window.location.href='${ctxPath}/product/list.do?pageNum=${pageNum}'">리스트</button>
+          <button class="btn btn-primary ms-2" onclick="window.location.href='${ctxPath}/product/list.do?pageNum=${pageNum}'">리스트</button>
         </div>
       </div>
 

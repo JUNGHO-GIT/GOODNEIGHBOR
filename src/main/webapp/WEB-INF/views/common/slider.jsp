@@ -16,7 +16,7 @@
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
               <div class="slider-captions">
-                <h5 class="slider-title">Be Better Life</h5>
+                <h5 class="slider-title">Better Life</h5>
               </div>
             </div>
           </div>

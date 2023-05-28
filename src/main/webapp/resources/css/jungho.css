@@ -380,9 +380,9 @@
   vertical-align: middle !important;
 }
 
-textarea {
+textarea.form-control {
   resize: none;
-  height: 200px;
+  height: 100px;
 }
 
 * {
@@ -390,7 +390,7 @@ textarea {
 }
 
 .form-control[readonly] {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 
 ::-webkit-scrollbar {

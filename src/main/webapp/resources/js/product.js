@@ -142,8 +142,16 @@ setInterval(() => {
 
 let randomAmount = Math.floor(Math.random() * (2000000 - 1000000 + 1)) + 1000000;
 let formattedAmount = randomAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-document.getElementById('randomAmount').innerHTML = formattedAmount;
-document.getElementById('randomAmount').style.color = "#3cc88f";
+
+// insert won icon
+let wonIcon = document.createElement('i');
+wonIcon.classList.add('fas', 'fa-won-sign');
+
+// Format the output string and color
+let output = document.getElementById('randomAmount');
+output.innerHTML = wonIcon.outerHTML + ' ' + formattedAmount;
+output.style.color = "#3cc88f";
+
 
 // 5. makeDonation() ---------------------------------------------------------------------------->
 const makeDonation = () => {
