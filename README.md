@@ -1,10 +1,6 @@
 ## 1. 📝 정보
 <table style="width:100%">
   <tr>
-    <th style="width:20%"></th>
-    <th style="width:80%"></th>
-  </tr>
-  <tr>
     <td><b>🔹프로젝트명</b></td>
     <td>GOODNEIGHBOR</td>
   </tr>
@@ -29,10 +25,6 @@
 ## 2. ⭐ 특징
 <table style="width:100%">
   <tr>
-    <th style="width:30%"></th>
-    <th style="width:70%"></th>
-  </tr>
-  <tr>
     <td><b>🔹Spring Framework</b></td>
     <td>Spring Framework(v4.3)를 활용한 MVC model2 방식의 웹개발로 인한 서버사이드 개발의 효율성 확장과 프로젝트 관리의 유연성 확보</td>
   </tr>
@@ -56,10 +48,6 @@
 
 ## 3. 🛠️ 사용 기술
 <table style="width:100%">
-  <tr>
-    <th style="width:20%"></th>
-    <th style="width:80%"></th>
-  </tr>
   <tr>
     <td><b>🔹프론트엔드</b></td>
     <td>JSP, HTML, CSS, Javascript, Bootstrap 4</td>
