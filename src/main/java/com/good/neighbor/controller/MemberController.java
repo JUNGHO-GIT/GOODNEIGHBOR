@@ -50,16 +50,16 @@ public class MemberController {
   @ResponseBody
   @PostMapping(value = "/idCheck.do", produces = "text/plain; charset=utf-8")
   public String idCheck(HttpServletRequest request) throws Exception {
+
     String member_id = request.getParameter("member_id");
     Integer result = sqlSession.selectOne("member.getCheckId", member_id);
 
     // 1. 중복된 아이디가 있을 경우
-    if (result != null) {
-      return "1";
+    if (result != null && result > 0) {
+      return "false";
     }
-    // 2. 중복된 아이디가 없을 경우
     else {
-      return "-1";
+      return "true";
     }
   }
 

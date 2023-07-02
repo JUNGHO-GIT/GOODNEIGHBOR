@@ -106,37 +106,35 @@ function updateMemberCheck() {
 function confirmIdCheck() {
 
   const id_validation = /^[a-zA-Z0-9]{6,12}$/;
-  const member_id = document.getElementById("member_id")
-  const memberId = document.getElementById("member_id").value;
+  const member_id = document.getElementById("member_id");
   const member_pw = document.getElementById("member_pw");
-  const memberPw = document.getElementById("member_pw").value;
 
-  if (memberId == "") {
+  if (member_id.value == "") {
     alert("아이디를 입력하세요.");
     return false;
   }
-  else if (!id_validation.test(memberId)) {
+  else if (!id_validation.test(member_id.value)) {
     alert("6~12자리의 영문 대소문자, 숫자로 이루어진 아이디를 작성하시오.");
-    memberId = "";
-    memberId.focus();
+    member_id.value = "";
+    member_id.focus();
     return false;
   }
   else {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `/${ctxPath}/member/idCheck.do`, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("member_id=" + memberId);
+    xhr.send("member_id=" + member_id.value);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        if (xhr.responseText == -1) {
+        if (xhr.responseText == "false") {
           alert("중복된 아이디입니다.");
-          memberId.value = "";
-          memberId.focus();
+          member_id.value = "";
+          member_id.focus();
           return false;
         }
-        else if (xhr.responseText == 1) {
+        else if (xhr.responseText == "true") {
           alert("사용 가능한 아이디입니다.");
-          memberPw.focus();
+          member_pw.focus();
           return true;
         }
         else {
@@ -216,7 +214,7 @@ function confirmTelCheck() {
   }
 }
 
-// 5. viewTerms() -------------------------------------------------------------------------------->
+// 5. viewTerms() --------------------------------------------------------------------------------->
 function viewTerms(event) {
   event.preventDefault();
   window.open(
@@ -237,7 +235,7 @@ function agree_check() {
   return true;
 }
 
-// 7. loginCheck() ------------------------------------------------------------------------------->
+// 7. loginCheck() -------------------------------------------------------------------------------->
 function loginCheck() {
   if (document.loginForm.member_id.value == "") {
     alert("아이디를 입력하세요.");
