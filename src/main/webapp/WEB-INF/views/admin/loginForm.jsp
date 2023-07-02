@@ -26,7 +26,7 @@
     <main class="main container-fluid">
       <form action="${ctxPath}/admin/loginPro.do" method="POST" name="adminlogin">
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">관리자 로그인</b>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3">
               <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디 입력"/>
             </div>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3">
               <button type="submit" id="submit_button" class="btn btn-primary btn-sm"  onclick="return adminIdPwCheck()">로그인</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/admin/insertForm.do'">회원가입</button>

@@ -19,7 +19,7 @@
     <main class="main container-fluid">
       <form action="${ctxPath}/member/updatePro.do" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">내 정보 수정</b>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="member_id" class="form-label">아이디</label>
               <div class="input-group">
@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="text-center mb-3">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return updateMemberCheck();">수정하기</button>
               &nbsp;&nbsp;

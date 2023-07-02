@@ -37,7 +37,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-users" style="color: #32be85;"></i>
               <b class="ms-1">글 수정 하기</b>
@@ -48,7 +48,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
            <div class="mb-3 text-left">
               <label for="board_title" class="form-label">글제목</label>
               <input type="text" name="board_title" id="board_title" value="${dto.board_title}" class="form-control" />
@@ -67,7 +67,7 @@
         <br/><br/>
 
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return boardCheck();">글수정</button>
               <button type="button" onclick="window.location.href='${ctxPath}/board/list.do'" class="btn btn-primary btn-sm">글목록</button>

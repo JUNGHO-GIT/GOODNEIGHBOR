@@ -36,7 +36,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-exclamation-circle" style="color: #32be85;"></i>
               <b class="ms-1">글 수정</b>
@@ -47,7 +47,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="notice_title" class="form-label">글제목</label>
               <input type="text" class="form-control" name="notice_title" id="notice_title" value="${dto.notice_title}"/>
@@ -65,7 +65,7 @@
         <br/><br/>
 
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm ms-2" onsubmit="return noticeCheck()">글수정</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/notice/list.do'">취소</button>

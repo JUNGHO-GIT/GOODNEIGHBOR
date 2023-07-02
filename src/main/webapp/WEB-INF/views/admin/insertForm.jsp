@@ -29,7 +29,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">관리자 회원가입</b>
@@ -39,7 +39,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="admin_id" class="form-label">아이디</label>
               <div class="input-group">
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return adminCheck()">가입하기</button>
             </div>

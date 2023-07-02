@@ -36,7 +36,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <c:if test="${board_number==0}">
               <h2 class="text-center my-4 p">
                 <i class="fas fa-users" style="color: #32be85;"></i>
@@ -55,7 +55,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="board_title" class="form-label">글제목</label>
               <!-- 원글 -->
@@ -85,7 +85,7 @@
         <br/><br/>
 
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" value="글쓰기" class="btn btn-primary btn-sm" onclick="return boardCheck();">글쓰기</button>
               <button type="button" value="글목록" onclick="window.location.href='${ctxPath}/board/list.do'" class="btn btn-primary btn-sm">글목록</button>

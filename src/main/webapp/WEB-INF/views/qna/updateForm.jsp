@@ -36,7 +36,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-question-circle" style="color: #32be85;"></i>
               <b class="ms-1">QnA 수정</b>
@@ -47,7 +47,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="board_title" class="form-label">글제목</label>
               <input type="text" class="form-control" id="board_title" name="qna_title" value="${dto.qna_title}" size="50" />
@@ -66,7 +66,7 @@
         <br/><br/>
 
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return qnaCheck()">글수정</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/qna/list.do'">취소</button>

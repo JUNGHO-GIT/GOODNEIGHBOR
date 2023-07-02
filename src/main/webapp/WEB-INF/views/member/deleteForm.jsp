@@ -19,7 +19,7 @@
     <main class="main container-fluid">
       <form name="delForm" method="POST" action="${ctxPath}/member/deletePro.do">
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">회원 탈퇴</b>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="member_pw" class="form-label">비밀번호 입력</label>
               <input type="password" name="member_pw" id="member_pw" class="form-control" size="30" placeholder="암호를 입력해 주세요."/>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="text-center">
               <button type="submit" class="btn btn-danger btn-sm" onclick="return memberPwCheck()">회원탈퇴</button>
             </div>

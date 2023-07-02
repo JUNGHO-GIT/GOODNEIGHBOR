@@ -20,15 +20,18 @@
     <main class="main container-fluid">
       <form name="loginForm" method="POST" action="${ctxPath}/member/loginPro.do">
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">로그인</b>
             </h2>
           </div>
         </div>
+
+        <hr class="green-line"/>
+
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3">
               <input type="text" id="member_id" name="member_id" class="form-control" size="30" value="<%=cookie%>" placeholder="아이디"/>
             </div>
@@ -40,9 +43,9 @@
               <label class="form-check-label" for="rememberId">아이디 저장</label>
             </div>
           </div>
-        </div>
+        </div><br/>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" id="submit_button" class="btn btn-primary btn-sm" onclick="return loginCheck()">로그인</button>
               &nbsp;&nbsp;

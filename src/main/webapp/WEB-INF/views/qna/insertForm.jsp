@@ -35,7 +35,7 @@
 
         <!---------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-question-circle" style="color: #32be85;"></i>
               <b class="ms-1">Q&A 작성</b>
@@ -45,7 +45,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="qna_title" class="form-label">글제목</label>
               <!-- 원글 -->
@@ -74,7 +74,7 @@
         </div><br/>
 
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm ms-2" onclick="return qnaCheck()">작성하기</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='${ctxPath}/qna/list.do'">취소</button>

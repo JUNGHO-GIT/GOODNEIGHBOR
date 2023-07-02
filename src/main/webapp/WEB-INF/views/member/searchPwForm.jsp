@@ -22,7 +22,7 @@
     <main class="main container-fluid">
       <form name="searchPw" id="searchPw" method="POST">
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">비밀번호 찾기</b>
@@ -33,7 +33,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="ms-3 mb-3 text-left">
               <input type="radio" id="search_tel" class="form-check-input" name="search_method" onclick="setSearchMethod('tel');" />
               <label for="search_tel" class="form-check-label text-left p">
@@ -59,7 +59,7 @@
 
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
            <div class="ms-3 mb-3 text-left">
               <input type="radio" id="search_email" class="form-check-input" name="search_method" onclick="setSearchMethod('email');" />
               <label for="search_email" class="form-check-label text-left p">

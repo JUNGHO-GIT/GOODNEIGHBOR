@@ -36,7 +36,7 @@ public class MemberController {
   @RequestMapping(value = "/agree_TermsOfUse.do", method = RequestMethod.GET)
   public String popup1(HttpSession session) {
 
-    return "/member/agree_TermsOfUse";
+    return "/member/popupTerms";
   }
 
   // 1-3. popup2() -------------------------------------------------------------------------------->
@@ -48,20 +48,18 @@ public class MemberController {
 
   // 1-4. idCheck() ------------------------------------------------------------------------------->
   @ResponseBody
-  @PostMapping(value = "/idCheck.do", produces = "application/text; charset=utf8")
-  public Integer idCheck(HttpServletRequest request) throws Exception {
-
+  @PostMapping(value = "/idCheck.do", produces = "text/plain; charset=utf-8")
+  public String idCheck(HttpServletRequest request) throws Exception {
     String member_id = request.getParameter("member_id");
     Integer result = sqlSession.selectOne("member.getCheckId", member_id);
 
     // 1. 중복된 아이디가 있을 경우
     if (result != null) {
-      return 1;
+      return "1";
     }
-
     // 2. 중복된 아이디가 없을 경우
     else {
-      return -1;
+      return "-1";
     }
   }
 
@@ -140,7 +138,6 @@ public class MemberController {
     return "member/updateForm";
   }
 
-
   // 3-2. updatePro() ----------------------------------------------------------------------------->
   @RequestMapping(value = "/updatePro.do", method = RequestMethod.POST)
   public String updatePro(@ModelAttribute("memberDTO") MemberDTO memberDTO,
@@ -195,7 +192,7 @@ public class MemberController {
     return "member/searchIdForm";
   }
 
-  // 5-3. searchIdByTel() -------------------------------------------------------------------->
+  // 5-3. searchIdByTel() ------------------------------------------------------------------------->
   @RequestMapping(value = "/searchIdByTel.do", method = RequestMethod.POST)
   public String searchIdByTel(HttpServletRequest request, Model model) {
 
@@ -231,14 +228,14 @@ public class MemberController {
     return "member/searchIdPro";
   }
 
-  // 6-1. searchPwForm() ------------------------------------------------------------------------->
+  // 6-1. searchPwForm() -------------------------------------------------------------------------->
   @RequestMapping(value = "/searchPwForm", method = RequestMethod.GET)
   public String searchPwForm() {
 
     return "member/searchPwForm";
   }
 
-  // 6-2. searchPwByTel() -------------------------------------------------------------------->
+  // 6-2. searchPwByTel() ------------------------------------------------------------------------->
   @RequestMapping(value = "/searchPwByTel.do", method = RequestMethod.POST)
   public String searchPwByTel(HttpServletRequest request, Model model) {
 
@@ -257,7 +254,7 @@ public class MemberController {
     return "member/searchPwPro";
   }
 
-  // 6-3. searchPwByEmail() ------------------------------------------------------------------>
+  // 6-3. searchPwByEmail() ----------------------------------------------------------------------->
   @RequestMapping(value = "/searchPwByEmail.do", method = RequestMethod.POST)
   public String searchPwByEmail(HttpServletRequest request, Model model) {
 

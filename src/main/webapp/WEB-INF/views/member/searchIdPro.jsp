@@ -23,7 +23,7 @@
 
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
           <h2 class="text-center my-4 p">아이디 찾기</h1>
         </div>
       </div>
@@ -31,7 +31,7 @@
 
       <!------------------------------------------------------------------------------------------->
       <div class="row d-flex justify-content-center text-center align-items-center">
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
           <div id="result" class="text-center my-4">
             <c:choose>
               <c:when test="${empty dto}">

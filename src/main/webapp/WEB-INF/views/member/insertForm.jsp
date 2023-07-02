@@ -21,18 +21,21 @@
     <!--------------------------------------------------------------------------------------------->
     <main class="main container-fluid">
       <form action="${ctxPath}/member/insertPro.do" method="POST">
+
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <h2 class="text-center my-4 p">
               <i class="fas fa-user-edit" style="color: #32be85;"></i>
               <b class="ms-1">회원가입</b>
             </h2>
           </div>
         </div>
+
         <hr class="green-line"/>
+
         <!----------------------------------------------------------------------------------------->
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-left">
               <label for="member_id" class="form-label">아이디</label>
               <div class="input-group">
@@ -70,7 +73,11 @@
               <input type="text" class="form-control my-2" name="member_addr" id="member_addr" placeholder="기본주소" readonly />
               <input type="text" class="form-control" name="member_addr2" id="member_addr2" placeholder="상세주소" />
             </div>
-            <hr class="green-line"/>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center text-center align-items-center">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 form-check">
               <h5 class="text-center my-4 p" id="agree_willU">
                 약관.개인정보 수집·이용 동의
@@ -100,10 +107,9 @@
               <span id="agreeMessage"></span>
             </div>
           </div>
-        </div>
-
+        </div><br/>
         <div class="row d-flex justify-content-center text-center align-items-center">
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-10 col-10">
             <div class="mb-3 text-center">
               <button type="submit" class="btn btn-primary btn-sm" onclick="return memberCheck();">회원가입</button>
             </div>
